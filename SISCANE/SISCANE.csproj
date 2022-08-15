@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B96EF594-D24E-4EDC-8C73-98DFF012C2EE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SISCANE</RootNamespace>
+    <AssemblyName>SISCANE</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publicar\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>propagation_calculator_calc_6110.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bonificaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bonificaciones.Designer.cs">
+      <DependentUpon>Bonificaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Conexion\Conexion.cs" />
+    <Compile Include="Consulta de Deducciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consulta de Deducciones.Designer.cs">
+      <DependentUpon>Consulta de Deducciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consulta de Impuestos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consulta de Impuestos.Designer.cs">
+      <DependentUpon>Consulta de Impuestos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consulta de Incidencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consulta de Incidencias.Designer.cs">
+      <DependentUpon>Consulta de Incidencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consulta de Posiciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consulta de Posiciones.Designer.cs">
+      <DependentUpon>Consulta de Posiciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu Principal.Designer.cs">
+      <DependentUpon>Menu Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Volante de Pago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Volante de Pago.Designer.cs">
+      <DependentUpon>Generar Volante de Pago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Nomina Salarial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Nomina Salarial.Designer.cs">
+      <DependentUpon>Generar Nomina Salarial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento de Empleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento de Empleados.Designer.cs">
+      <DependentUpon>Mantenimiento de Empleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestión de Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestión de Usuarios.Designer.cs">
+      <DependentUpon>Gestión de Usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consulta de Empleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consulta de Empleados.Designer.cs">
+      <DependentUpon>Consulta de Empleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consulta de Departamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consulta de Departamentos.Designer.cs">
+      <DependentUpon>Consulta de Departamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporte de Empleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte de Empleados.Designer.cs">
+      <DependentUpon>Reporte de Empleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporte de Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte de Usuarios.Designer.cs">
+      <DependentUpon>Reporte de Usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporte de Nomina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte de Nomina.Designer.cs">
+      <DependentUpon>Reporte de Nomina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consulta de Nomina Salarial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consulta de Nomina Salarial.Designer.cs">
+      <DependentUpon>Consulta de Nomina Salarial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestión de Empresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestión de Empresa.Designer.cs">
+      <DependentUpon>Gestión de Empresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Incidencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Incidencias.Designer.cs">
+      <DependentUpon>Incidencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento de Deducciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento de Deducciones.Designer.cs">
+      <DependentUpon>Mantenimiento de Deducciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento de Departamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento de Departamentos.Designer.cs">
+      <DependentUpon>Mantenimiento de Departamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento de Impuestos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento de Impuestos.Designer.cs">
+      <DependentUpon>Mantenimiento de Impuestos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento de Posiciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento de Posiciones.Designer.cs">
+      <DependentUpon>Mantenimiento de Posiciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SISCANEDataSet.cs">
+      <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SISCANEDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Bonificaciones.resx">
+      <DependentUpon>Bonificaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consulta de Deducciones.resx">
+      <DependentUpon>Consulta de Deducciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consulta de Impuestos.resx">
+      <DependentUpon>Consulta de Impuestos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consulta de Incidencias.resx">
+      <DependentUpon>Consulta de Incidencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consulta de Posiciones.resx">
+      <DependentUpon>Consulta de Posiciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu Principal.resx">
+      <DependentUpon>Menu Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Volante de Pago.resx">
+      <DependentUpon>Generar Volante de Pago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Nomina Salarial.resx">
+      <DependentUpon>Generar Nomina Salarial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento de Empleados.resx">
+      <DependentUpon>Mantenimiento de Empleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestión de Usuarios.resx">
+      <DependentUpon>Gestión de Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consulta de Empleados.resx">
+      <DependentUpon>Consulta de Empleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consulta de Departamentos.resx">
+      <DependentUpon>Consulta de Departamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte de Empleados.resx">
+      <DependentUpon>Reporte de Empleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte de Usuarios.resx">
+      <DependentUpon>Reporte de Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte de Nomina.resx">
+      <DependentUpon>Reporte de Nomina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consulta de Nomina Salarial.resx">
+      <DependentUpon>Consulta de Nomina Salarial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestión de Empresa.resx">
+      <DependentUpon>Gestión de Empresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Incidencias.resx">
+      <DependentUpon>Incidencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento de Deducciones.resx">
+      <DependentUpon>Mantenimiento de Deducciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento de Departamentos.resx">
+      <DependentUpon>Mantenimiento de Departamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento de Impuestos.resx">
+      <DependentUpon>Mantenimiento de Impuestos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento de Posiciones.resx">
+      <DependentUpon>Mantenimiento de Posiciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="SISCANEDataSet.xsc">
+      <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SISCANEDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SISCANEDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SISCANEDataSet.xss">
+      <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\istockphoto-482585715-1024x1024.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="propagation_calculator_calc_6110.ico" />
+    <None Include="Resources\propagation_calculator_calc_61101.ico" />
+    <None Include="Resources\kisspng-computer-icons-button-scalable-vector-graphics-cli-black-close-button-png-5ab16c3a5851d8.6467345515215770183618.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{5634a8bd-f159-47b1-bd20-9869ee8b67a8}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{0fb134d5-bceb-446d-91dc-ad2aa2fbe6cf}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
