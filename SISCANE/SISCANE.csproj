@@ -5,10 +5,10 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B96EF594-D24E-4EDC-8C73-98DFF012C2EE}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SISCANE</RootNamespace>
-    <AssemblyName>SISCANE</AssemblyName>
+    <AssemblyName>ManSys</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>propagation_calculator_calc_6110.ico</ApplicationIcon>
+    <ApplicationIcon>manager.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -214,6 +214,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SISCANEDataSet.cs">
+      <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SISCANEDataSet.Designer.cs">
+      <DependentUpon>SISCANEDataSet.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Bonificaciones.resx">
       <DependentUpon>Bonificaciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,6 +308,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SISCANEDataSet.xsc">
+      <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SISCANEDataSet.xsd" />
+    <None Include="SISCANEDataSet.xss">
+      <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -310,6 +323,7 @@
     <None Include="Resources\istockphoto-482585715-1024x1024.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="manager.ico" />
     <Content Include="propagation_calculator_calc_6110.ico" />
     <None Include="Resources\propagation_calculator_calc_61101.ico" />
     <None Include="Resources\kisspng-computer-icons-button-scalable-vector-graphics-cli-black-close-button-png-5ab16c3a5851d8.6467345515215770183618.png" />
