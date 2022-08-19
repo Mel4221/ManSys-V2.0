@@ -351,9 +351,9 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(397, 103);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 18);
+            this.label7.Size = new System.Drawing.Size(60, 18);
             this.label7.TabIndex = 124;
-            this.label7.Text = "DNI";
+            this.label7.Text = "Cedula";
             // 
             // txttelefono
             // 
@@ -486,7 +486,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(754, 532);
             this.Controls.Add(this.txtpuestoocupado);
             this.Controls.Add(this.txtdeparmento);

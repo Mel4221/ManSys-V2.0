@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mantenimientoDept));
             this.gblistadovisitas = new System.Windows.Forms.GroupBox();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.ListadodeUsuarios = new System.Windows.Forms.DataGridView();
@@ -106,7 +107,7 @@
             this.label15.ForeColor = System.Drawing.Color.Black;
             this.label15.Location = new System.Drawing.Point(10, 22);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(154, 16);
+            this.label15.Size = new System.Drawing.Size(153, 16);
             this.label15.TabIndex = 1;
             this.label15.Text = "Criterio de Búsqueda";
             // 
@@ -283,7 +284,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SkyBlue;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(754, 532);
             this.Controls.Add(this.gblistadovisitas);
             this.Controls.Add(this.label14);
@@ -293,7 +294,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "mantenimientoDept";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "mantenimientoDept";
             this.Load += new System.EventHandler(this.mantenimientoDept_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mantenimientoDept_MouseDown_1);

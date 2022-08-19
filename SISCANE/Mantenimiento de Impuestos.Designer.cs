@@ -110,7 +110,7 @@
             this.label15.ForeColor = System.Drawing.Color.Black;
             this.label15.Location = new System.Drawing.Point(10, 22);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(154, 16);
+            this.label15.Size = new System.Drawing.Size(153, 16);
             this.label15.TabIndex = 1;
             this.label15.Text = "Criterio de Búsqueda";
             // 
@@ -324,7 +324,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SkyBlue;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(754, 532);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label3);
@@ -339,6 +339,7 @@
             this.Controls.Add(this.txtid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "mantenimientoImp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "mantenimientoImp";
             this.Load += new System.EventHandler(this.mantenimientoImp_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mantenimientoImp_MouseDown);
