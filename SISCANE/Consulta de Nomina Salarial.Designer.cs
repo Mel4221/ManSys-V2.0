@@ -271,7 +271,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SkyBlue;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(894, 694);
             this.Controls.Add(this.ListadodeNominaRegistrada);
             this.Controls.Add(this.textBox1);
@@ -289,6 +289,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConsultadeNominaSalarial";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "generarnomina";
             this.Load += new System.EventHandler(this.generarnomina_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ConsultadeNominaSalarial_MouseDown);

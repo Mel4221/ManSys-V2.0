@@ -203,7 +203,7 @@ namespace SISCANE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SkyBlue;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(809, 399);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.comboBox1);
@@ -214,6 +214,7 @@ namespace SISCANE
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Consulta_de_Posiciones";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta_de_Posiciones";
             this.Load += new System.EventHandler(this.Consulta_de_Posiciones_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Consulta_de_Posiciones_MouseDown);
