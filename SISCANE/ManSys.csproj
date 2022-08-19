@@ -49,6 +49,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>manager.ico</ApplicationIcon>
@@ -87,11 +88,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bonificaciones.cs">
+    <Compile Include="Generar Bonificaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bonificaciones.Designer.cs">
-      <DependentUpon>Bonificaciones.cs</DependentUpon>
+    <Compile Include="Generar Bonificaciones.Designer.cs">
+      <DependentUpon>Generar Bonificaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="Consulta de Deducciones.cs">
       <SubType>Form</SubType>
@@ -189,11 +190,11 @@
     <Compile Include="Gestión de Empresa.Designer.cs">
       <DependentUpon>Gestión de Empresa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Incidencias.cs">
+    <Compile Include="Generar Incidencias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Incidencias.Designer.cs">
-      <DependentUpon>Incidencias.cs</DependentUpon>
+    <Compile Include="Generar Incidencias.Designer.cs">
+      <DependentUpon>Generar Incidencias.cs</DependentUpon>
     </Compile>
     <Compile Include="Mantenimiento de Deducciones.cs">
       <SubType>Form</SubType>
@@ -227,8 +228,8 @@
     <Compile Include="SISCANEDataSet.Designer.cs">
       <DependentUpon>SISCANEDataSet.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Bonificaciones.resx">
-      <DependentUpon>Bonificaciones.cs</DependentUpon>
+    <EmbeddedResource Include="Generar Bonificaciones.resx">
+      <DependentUpon>Generar Bonificaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Consulta de Deducciones.resx">
       <DependentUpon>Consulta de Deducciones.cs</DependentUpon>
@@ -278,8 +279,8 @@
     <EmbeddedResource Include="Gestión de Empresa.resx">
       <DependentUpon>Gestión de Empresa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Incidencias.resx">
-      <DependentUpon>Incidencias.cs</DependentUpon>
+    <EmbeddedResource Include="Generar Incidencias.resx">
+      <DependentUpon>Generar Incidencias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenimiento de Deducciones.resx">
       <DependentUpon>Mantenimiento de Deducciones.cs</DependentUpon>
