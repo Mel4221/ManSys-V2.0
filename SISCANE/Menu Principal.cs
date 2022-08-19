@@ -27,6 +27,7 @@ namespace SISCANE
 
         private void LoadUserData()
         {
+            // NO SERA UTILIZADO EN ESTA VERSION 
            // lblposicion.Text = UserLoginCache.Puesto_Ocupado;
            // lblnombrecompleto.Text = UserLoginCache.Nombre + ", " + UserLoginCache.Apellido;
            // lbldepartamento.Text = UserLoginCache.Departamento;
@@ -81,7 +82,7 @@ namespace SISCANE
 
         private void salirDelSistemaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Estas Seguro que Quieres Cerrar Sesion?", "Warning",
+            if(MessageBox.Show("Estas Seguro que Quieres Cerrar el Systema?", "Warning",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             this.Close();
         }

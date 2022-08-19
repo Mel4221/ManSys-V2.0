@@ -51,7 +51,13 @@
   <PropertyGroup>
     <ApplicationIcon>propagation_calculator_calc_6110.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="QuickTools">
+      <HintPath>..\..\QuickTools\bin\Release\QuickTools.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -208,14 +214,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SISCANEDataSet.cs">
-      <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="SISCANEDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Bonificaciones.resx">
       <DependentUpon>Bonificaciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -304,17 +302,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SISCANEDataSet.xsc">
-      <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="SISCANEDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SISCANEDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SISCANEDataSet.xss">
-      <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
