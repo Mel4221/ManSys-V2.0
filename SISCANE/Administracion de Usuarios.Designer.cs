@@ -392,7 +392,7 @@
             this.label15.ForeColor = System.Drawing.Color.Black;
             this.label15.Location = new System.Drawing.Point(10, 22);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(154, 16);
+            this.label15.Size = new System.Drawing.Size(153, 16);
             this.label15.TabIndex = 1;
             this.label15.Text = "Criterio de Búsqueda";
             // 
@@ -424,7 +424,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SkyBlue;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(754, 532);
             this.Controls.Add(this.txtdepartamento);
             this.Controls.Add(this.txtpuesto);

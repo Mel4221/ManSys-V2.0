@@ -142,11 +142,11 @@
     <Compile Include="Mantenimiento de Empleados.Designer.cs">
       <DependentUpon>Mantenimiento de Empleados.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gestión de Usuarios.cs">
+    <Compile Include="Administracion de Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gestión de Usuarios.Designer.cs">
-      <DependentUpon>Gestión de Usuarios.cs</DependentUpon>
+    <Compile Include="Administracion de Usuarios.Designer.cs">
+      <DependentUpon>Administracion de Usuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Consulta de Empleados.cs">
       <SubType>Form</SubType>
@@ -184,11 +184,11 @@
     <Compile Include="Consulta de Nomina Salarial.Designer.cs">
       <DependentUpon>Consulta de Nomina Salarial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gestión de Empresa.cs">
+    <Compile Include="Administracion de  Empresa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gestión de Empresa.Designer.cs">
-      <DependentUpon>Gestión de Empresa.cs</DependentUpon>
+    <Compile Include="Administracion de  Empresa.Designer.cs">
+      <DependentUpon>Administracion de  Empresa.cs</DependentUpon>
     </Compile>
     <Compile Include="Generar Incidencias.cs">
       <SubType>Form</SubType>
@@ -255,8 +255,8 @@
     <EmbeddedResource Include="Mantenimiento de Empleados.resx">
       <DependentUpon>Mantenimiento de Empleados.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gestión de Usuarios.resx">
-      <DependentUpon>Gestión de Usuarios.cs</DependentUpon>
+    <EmbeddedResource Include="Administracion de Usuarios.resx">
+      <DependentUpon>Administracion de Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Consulta de Empleados.resx">
       <DependentUpon>Consulta de Empleados.cs</DependentUpon>
@@ -276,8 +276,8 @@
     <EmbeddedResource Include="Consulta de Nomina Salarial.resx">
       <DependentUpon>Consulta de Nomina Salarial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gestión de Empresa.resx">
-      <DependentUpon>Gestión de Empresa.cs</DependentUpon>
+    <EmbeddedResource Include="Administracion de  Empresa.resx">
+      <DependentUpon>Administracion de  Empresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Incidencias.resx">
       <DependentUpon>Generar Incidencias.cs</DependentUpon>
