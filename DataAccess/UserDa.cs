@@ -12,10 +12,15 @@ namespace DataAccess
 {
     public class UserDa:ConexionaSql
     {
-        public bool Login(string user, string pass)
+        public void Login(string user, string pass)
         {
+            /*
+             
             using (var connection = GetConnection())
             {
+
+
+
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
@@ -42,6 +47,8 @@ namespace DataAccess
                         return false;
                 }
             }
+
+            */
         }
     }
 }
