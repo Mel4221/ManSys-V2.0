@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>QuickTools</name>
+    </assembly>
+    <members>
+        <member name="M:QuickTools.Options.Select">
+            <summary>
+            Select this instance.
+            This instance is the one that start the 
+            Selection process so even thouth you may call
+            the Constructor you may need to also start the Selction 
+            with Select example
+            var app = new Options(string[] list||List<object/>||bool true || false);
+            app.Select(); 
+            </summary>
+            <returns>The select.</returns>
+        </member>
+        <member name="M:QuickTools.Options.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:QuickTools.Options"/> class.
+            If you would like to get basically an answer were the first shoudl be answer should be 
+            NO you shoudl just type new Options(true); other wise the order would be back wards
+            remember that the return type will be always the same location in the array 
+            so it you select now if you select the yes it will return 0 which is the position of in the array 
+            </summary>
+            <param name="type">If set to <c>true</c> type.</param>
+        </member>
+        <member name="T:QuickTools.Encrypter">
+            <summary>
+             This class Allwo you to Encrypt Files 
+             And it has 1 method which takes 2 arguments
+             and write to the file the encrypted text 
+             </summary>
+        </member>
+        <member name="M:QuickTools.Encrypter.EncryptFile(System.String,System.Object)">
+            <summary>
+            Encrypts the file , and the first argument is the file
+            the second argument is the password to encrypt the file 
+            </summary>
+            <param name="fileToEncrypt">File to encrypt.</param>
+            <param name="FilePassword">File password.</param>
+        </member>
+        <member name="T:QuickTools.Decrypter">
+            <summary>
+            This class basically dencrypt the files and contaings 
+            2 Methods 1  that read the encrypted that from the file
+            then it will decrypt the data and will write it back to the file
+            </summary>
+        </member>
+        <member name="M:QuickTools.Decrypter.GetList(System.String)">
+            <summary>
+            This Member Can not be Accest to due to 
+            it main funtionality is only to read the data from
+            the file and converted in a way that it can be 
+            desencrypted.
+            </summary>
+            <returns>The list.</returns>
+            <param name="file">File.</param>
+        </member>
+        <member name="M:QuickTools.Decrypter.DecryptFile(System.String,System.Object)">
+            <summary>
+            This method basically works by passing the fileto it 
+            as the first argument then the password wich would end up
+            being written to the file passed in first place after desencrypting 
+            the file. 
+            </summary>
+            <param name="fileToDecrypt">File to decrypt.</param>
+            <param name="FilePassword">File password.</param>
+        </member>
+        <member name="T:QuickTools.C">
+            <summary>
+            this was created entrily for fun 
+             but it could be usful if you hate to write Consol.WriteLine("content"); 
+            they are basycally many language added but sadly there are some that only works 
+            with a costructor example : new echo("content"); 
+            </summary>
+        </member>
+    </members>
+</doc>
