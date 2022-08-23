@@ -43,38 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.dll" size="5120">
-      <assemblyIdentity name="Common" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>BrU4tdwqFIYSmosA/1bSAIHbwzgywjDJD1F6q0Cacmg=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Domain.dll" size="4096">
-      <assemblyIdentity name="Domain" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>54RudkZQuGnTJe/KpIPh0EIuUCeNUf7BXd8lZncY8aE=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ManSys.exe" size="1708992">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ManSys.exe" size="1781696">
       <assemblyIdentity name="ManSys" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>NyuocJGecsMzMokbeBsObxkzzbe3aAYBbaGM0AiNIPE=</dsig:DigestValue>
+        <dsig:DigestValue>+8NcZ9PfsuR+QU+ymfI0Cam36W68LPzKwAXgz7d5BG0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

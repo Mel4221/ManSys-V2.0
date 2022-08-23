@@ -7,7 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Common.Cache;
+using System.Data;
+using System.Data.SqlClient; 
+//using Common.Cache;
+using QuickTools; 
+//using DataAccess; 
 
 namespace SISCANE
 {
@@ -17,6 +21,7 @@ namespace SISCANE
 
         public Form1()
         {
+            Get.Green("InitializeComponent From MenuPrincipal");
             InitializeComponent();
         }
 
@@ -27,11 +32,41 @@ namespace SISCANE
 
         private void LoadUserData()
         {
+         //   ConnectionString con = new ConnectionString(); 
+
+       //    Get.Yellow( con.Connection());
+
+
+          /*
+                using (SqlConnection connection = new SqlConnection(con.Connection()))
+                {
+                    connection.Open();
+                    Get.Write("Messages", 10);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM dbo.chatapp order by ID", connection);
+                    DataTable data = new DataTable();
+                    adapter.Fill(data);
+                    foreach (DataRow row in data.Rows)
+                    {
+                        Get.Yellow("[" + row["ID"] + "]" + "[" + row["created"] + "]" + " " + "[" + row["uname"] + "]" + " " + "[" + row["msg"] + "]");
+                    }
+                }
+ 
+            */
+
+
+
+
+
+
+
+
+
+
             // NO SERA UTILIZADO EN ESTA VERSION 
-           // lblposicion.Text = UserLoginCache.Puesto_Ocupado;
-           // lblnombrecompleto.Text = UserLoginCache.Nombre + ", " + UserLoginCache.Apellido;
-           // lbldepartamento.Text = UserLoginCache.Departamento;
-           
+            // lblposicion.Text = UserLoginCache.Puesto_Ocupado;
+            // lblnombrecompleto.Text = UserLoginCache.Nombre + ", " + UserLoginCache.Apellido;
+            // lbldepartamento.Text = UserLoginCache.Departamento;
+
         }
 
         private void mantenimientoDeNominaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -199,6 +234,10 @@ namespace SISCANE
             formulario.Show();
         }
 
-    
+        private void pToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var app = new ProveedorDeAplicacion();
+            app.Show(); 
+        }
     }
 }

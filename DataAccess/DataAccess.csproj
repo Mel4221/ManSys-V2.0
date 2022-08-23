@@ -31,6 +31,9 @@
     <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="QuickTools">
+      <HintPath>..\..\QuickTools\bin\Release\QuickTools.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,7 +46,6 @@
   <ItemGroup>
     <Compile Include="ConexionaSql.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserDa.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

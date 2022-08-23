@@ -88,6 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection.cs" />
     <Compile Include="Generar Bonificaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +160,12 @@
     </Compile>
     <Compile Include="Consulta de Departamentos.Designer.cs">
       <DependentUpon>Consulta de Departamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProveedorDeAplicacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProveedorDeAplicacion.Designer.cs">
+      <DependentUpon>ProveedorDeAplicacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Reporte de Empleados.cs">
       <SubType>Form</SubType>
@@ -264,6 +271,9 @@
     <EmbeddedResource Include="Consulta de Departamentos.resx">
       <DependentUpon>Consulta de Departamentos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProveedorDeAplicacion.resx">
+      <DependentUpon>ProveedorDeAplicacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reporte de Empleados.resx">
       <DependentUpon>Reporte de Empleados.cs</DependentUpon>
     </EmbeddedResource>
@@ -345,16 +355,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{5634a8bd-f159-47b1-bd20-9869ee8b67a8}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{0fb134d5-bceb-446d-91dc-ad2aa2fbe6cf}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
