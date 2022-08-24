@@ -10,16 +10,22 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Runtime.InteropServices;
-
+using QuickTools;
 
 namespace SISCANE
 {
     public partial class Form2 : Form
     {
-        string connectionString = @"Server=DESKTOP-802OK33;Database=SISCANE;Trusted_Connection=True;";
+        string connectionString = "";
         public Form2()
         {
+            //string connectionString = "";
+            ConnectionString con = new ConnectionString();
+            connectionString = con.Connection();
+            Get.Green("InitializeComponent Gestor de nomina salarial  ");
+            Get.Yellow("Not completed yet ");
             InitializeComponent();
+   
         }
 
 
@@ -41,7 +47,7 @@ int wparam, int lparam);
 
             DataTable dtempleados = new DataTable();
 
-            SqlConnection dataConnection = new SqlConnection(ConfigurationSettings.AppSettings["conexion"].ToString());
+            SqlConnection dataConnection = new SqlConnection(connectionString);
             SqlCommand cm = new SqlCommand();
             cm.Connection = dataConnection;
 
@@ -327,7 +333,7 @@ int wparam, int lparam);
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            SqlConnection cn = new SqlConnection(ConfigurationSettings.AppSettings["conexion"].ToString());
+            SqlConnection cn = new SqlConnection(connectionString);
             SqlCommand cm = new SqlCommand();
             cm.Connection = cn;
             cm.CommandText = "SP_Insert_Mantenimiento_de_Nomina";
@@ -413,7 +419,7 @@ int wparam, int lparam);
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            SqlConnection cn = new SqlConnection(ConfigurationSettings.AppSettings["conexion"].ToString());
+            SqlConnection cn = new SqlConnection(connectionString);
             SqlCommand cm = new SqlCommand();
             cm.Connection = cn;
             cm.CommandText = "SP_Update_Mantenimiento_de_Nomina";

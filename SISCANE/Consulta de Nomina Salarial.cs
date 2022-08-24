@@ -8,14 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
+using QuickTools;
 
 namespace SISCANE
 {
     public partial class ConsultadeNominaSalarial : Form
     {
+
+
+
+        string connectionString = "";
         public ConsultadeNominaSalarial()
         {
+            //string connectionString = "";
+            ConnectionString con = new ConnectionString();
+            connectionString = con.Connection();
+            Get.Green("InitializeComponent Consulta_De_Nomina");
+            Get.Yellow("Not Complete yet ");
             InitializeComponent();
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]

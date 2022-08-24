@@ -8,13 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using QuickTools;
 
 namespace SISCANE
 {
     public partial class Form10 : Form
     {
+        string connectionString  ="";
         public Form10()
         {
+
+            //string connectionString = "";
+            ConnectionString con = new ConnectionString();
+            connectionString = con.Connection();
+            Get.Green("InitializeComponent Generar Volante De Pago ");
+            Get.Yellow("Not completed yet ");
+
             InitializeComponent();
         }
 

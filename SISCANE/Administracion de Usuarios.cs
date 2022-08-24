@@ -10,18 +10,23 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Runtime.InteropServices;
-
+using QuickTools;
 
 namespace SISCANE
 {
     public partial class Gestión_de_Usuarios : Form
     {
         // Realizo la Conexión a la Base de Datos
-        string connectionString = @"Server=DESKTOP-802OK33;Database=SISCANE;Trusted_Connection=True;";
+        string connectionString;
 
         public Gestión_de_Usuarios()
         {
-            InitializeComponent();
+            //   string connectionString;
+            ConnectionString con = new ConnectionString();
+            connectionString = con.Connection();
+            Get.Green("InitializeComponent Gestión_de_Usuarios"); 
+
+           InitializeComponent();
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -49,7 +54,7 @@ int wparam, int lparam);
 
             DataTable dtempleados = new DataTable();
 
-            SqlConnection dataConnection = new SqlConnection(ConfigurationSettings.AppSettings["conexion"].ToString());
+            SqlConnection dataConnection = new SqlConnection(connectionString);
             SqlCommand cm = new SqlCommand();
             cm.Connection = dataConnection;
 
@@ -190,7 +195,7 @@ int wparam, int lparam);
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            SqlConnection cn = new SqlConnection(ConfigurationSettings.AppSettings["conexion"].ToString());
+            SqlConnection cn = new SqlConnection(connectionString);
             SqlCommand cm = new SqlCommand();
             cm.Connection = cn;
             cm.CommandText = "SP_Insert_Gestión_de_Usuarios";
@@ -254,7 +259,7 @@ int wparam, int lparam);
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            SqlConnection cn = new SqlConnection(ConfigurationSettings.AppSettings["conexion"].ToString());
+            SqlConnection cn = new SqlConnection(connectionString);
             SqlCommand cm = new SqlCommand();
             cm.Connection = cn;
             cm.CommandText = "SP_Update_Gestión_de_Usuarios";

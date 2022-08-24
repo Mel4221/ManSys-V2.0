@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuickTools;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,14 @@ namespace SISCANE
 {
     public partial class ProveedorDeAplicacion : Form
     {
+        string connectionString;
         public ProveedorDeAplicacion()
         {
+            //string connectionString;
+            ConnectionString con = new ConnectionString();
+            connectionString = con.Connection();
+            Get.Green("InitializeComponent Proveedor_De_Applicacion");
+            Get.Yellow("Not Completed Yet ");
             InitializeComponent();
         }
 

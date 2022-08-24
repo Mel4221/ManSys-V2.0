@@ -8,13 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using QuickTools;
 
 namespace SISCANE
 {
+
+
+        /*
+         WARNING THIS PART IS NOT FUNCTIONING YET 
+         
+         */
     public partial class Consulta_de_Impuestos : Form
     {
+        string connectionString;
         public Consulta_de_Impuestos()
         {
+
+            //string connectionString;
+            ConnectionString con = new ConnectionString();
+            connectionString = con.Connection();
+            Get.Green("InitializeComponent Consulta_de_Impuestos");
+            Get.Yellow("Still Not Completed nor implemented");
             InitializeComponent();
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]

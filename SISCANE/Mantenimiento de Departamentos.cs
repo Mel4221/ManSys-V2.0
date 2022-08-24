@@ -8,13 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using QuickTools;
 
 namespace SISCANE
 {
     public partial class mantenimientoDept : Form
     {
+        string connectionString = "";
         public mantenimientoDept()
         {
+        
+            ConnectionString con = new ConnectionString();
+            connectionString = con.Connection();
+            Get.Green("InitializeComponent Mantenimiento de  Departamentos");
+            Get.Yellow("Not completed yet ");
+
             InitializeComponent();
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]

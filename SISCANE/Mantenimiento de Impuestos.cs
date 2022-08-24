@@ -8,13 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
+using QuickTools; 
 namespace SISCANE
 {
     public partial class mantenimientoImp : Form
     {
+        string connectionString;
         public mantenimientoImp()
         {
+            //string connectionString;
+            ConnectionString con = new ConnectionString();
+            connectionString = con.Connection();
+            Get.Green("InitializeComponent Mantenimiento de impuestos");
+            Get.Yellow("Not Completed Yet ");
             InitializeComponent();
         }
 

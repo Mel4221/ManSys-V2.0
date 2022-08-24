@@ -8,13 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using QuickTools;
 
 namespace SISCANE
 {
     public partial class Consulta_de_Posiciones : Form
     {
+        string connectionString;
         public Consulta_de_Posiciones()
         {
+            //   string connectionString;
+            ConnectionString con = new ConnectionString();
+            connectionString = con.Connection();
+            Get.Green("InitializeComponent Consulta de empleados ");
             InitializeComponent();
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]

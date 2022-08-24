@@ -8,20 +8,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using QuickTools;
+/*
+WARNING NOT COMPLETED 
 
+
+*/
 namespace SISCANE
 {
     public partial class Consulta_de_Deducciones : Form
     {
+
+        string connectionString = "";
         public Consulta_de_Deducciones()
         {
+            //string connectionString = "";
+            ConnectionString con = new ConnectionString();
+            connectionString = con.Connection();
+            Get.Green("InitializeComponent Gestión_de_Empresa");
+            Get.Yellow("Not Complete yet ");
             InitializeComponent();
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg,
-        int wparam, int lparam);
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg,int wparam, int lparam);
 
         private void Consulta_de_Deducciones_Load(object sender, EventArgs e)
         {

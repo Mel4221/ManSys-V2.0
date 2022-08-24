@@ -8,13 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using QuickTools; 
 
 namespace SISCANE
 {
     public partial class mantenimientoPosc : Form
     {
+        string connectionString;
         public mantenimientoPosc()
         {
+            //string connectionString;
+            ConnectionString con = new ConnectionString();
+            connectionString = con.Connection();
+            Get.Green("InitializeComponent Mntenimiento_Posiciones");
+            Get.Yellow("Not Completed Yet ");
             InitializeComponent();
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]

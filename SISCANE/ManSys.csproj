@@ -232,8 +232,10 @@
     <Compile Include="SISCANEDataSet.cs">
       <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SISCANEDataSet.Designer.cs">
-      <DependentUpon>SISCANEDataSet.cs</DependentUpon>
+    <Compile Include="SISCANEDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Generar Bonificaciones.resx">
       <DependentUpon>Generar Bonificaciones.cs</DependentUpon>
@@ -327,7 +329,11 @@
     <None Include="SISCANEDataSet.xsc">
       <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
     </None>
-    <None Include="SISCANEDataSet.xsd" />
+    <None Include="SISCANEDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SISCANEDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="SISCANEDataSet.xss">
       <DependentUpon>SISCANEDataSet.xsd</DependentUpon>
     </None>

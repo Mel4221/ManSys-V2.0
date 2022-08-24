@@ -10,13 +10,19 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Runtime.InteropServices;
+using QuickTools;
 
 namespace SISCANE
 {
     public partial class Form5 : Form
     {
+        string connectionString;
+
         public Form5()
         {
+            ConnectionString con = new ConnectionString();
+            connectionString = con.Connection();
+            Get.Green("InitializeComponent Consulta de empleados ");
             InitializeComponent();
         }
 
@@ -74,7 +80,7 @@ namespace SISCANE
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection cn = new SqlConnection(ConfigurationSettings.AppSettings["conexion"].ToString());
+            SqlConnection cn = new SqlConnection(connectionString);
             SqlCommand cm = new SqlCommand();
             cm.Connection = cn;
 
@@ -101,7 +107,7 @@ namespace SISCANE
 
             DataTable dtempleados = new DataTable();
 
-            SqlConnection dataConnection = new SqlConnection(ConfigurationSettings.AppSettings["conexion"].ToString());
+            SqlConnection dataConnection = new SqlConnection(connectionString);
             SqlCommand cm = new SqlCommand();
             cm.Connection = dataConnection;
 

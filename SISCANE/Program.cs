@@ -14,24 +14,6 @@ namespace SISCANE
     {
 
 
-            /// <summary>
-            /// This method Get The connection string from the configuration file then return it 
-            /// </summary>
-            /// <returns>The Connection String </returns>
-            public static string Connection()
-        {
-            string conection = null;
-
-            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["connection"];
-
-
-            conection = settings.ConnectionString;
-
-            return conection; 
-
-        }
-
-
 
 
         /// <summary>
