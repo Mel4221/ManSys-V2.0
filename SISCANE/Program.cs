@@ -24,14 +24,13 @@ namespace SISCANE
         {
 
 
-            
-              Color.Green("Starting ManSys...");
-          
+
+
+                Color.Green("Starting ManSys...");
                 Log.Event("LastStarted","The Program Attendted to start for the last time on "+DateTime.UtcNow+"\n");
-  
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Form3());
+                Application.Run(new Form1());
 
          
 
@@ -40,5 +39,6 @@ namespace SISCANE
             
 
         }
+
     }
 }

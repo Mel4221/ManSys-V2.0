@@ -48,7 +48,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtsalariobase = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtturno = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -69,6 +68,7 @@
             this.txttipodecobro = new System.Windows.Forms.ComboBox();
             this.txtdeparmento = new System.Windows.Forms.ComboBox();
             this.txtpuestoocupado = new System.Windows.Forms.ComboBox();
+            this.txtturno = new System.Windows.Forms.ComboBox();
             this.gblistadovisitas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListadodeEmpleados)).BeginInit();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -302,13 +302,6 @@
             this.label11.TabIndex = 131;
             this.label11.Text = "Tipo de Cobro";
             // 
-            // txtturno
-            // 
-            this.txtturno.Location = new System.Drawing.Point(477, 124);
-            this.txtturno.Name = "txtturno";
-            this.txtturno.Size = new System.Drawing.Size(63, 20);
-            this.txtturno.TabIndex = 130;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -448,8 +441,9 @@
             // txtId
             // 
             this.txtId.Location = new System.Drawing.Point(113, 49);
+            this.txtId.MaxLength = 5000;
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(91, 20);
+            this.txtId.Size = new System.Drawing.Size(103, 20);
             this.txtId.TabIndex = 141;
             // 
             // txtfechadeingreso
@@ -462,6 +456,10 @@
             // txttipodecobro
             // 
             this.txttipodecobro.FormattingEnabled = true;
+            this.txttipodecobro.Items.AddRange(new object[] {
+            "Efectivo",
+            "Cuenta Bancaria",
+            "Cheque"});
             this.txttipodecobro.Location = new System.Drawing.Point(519, 147);
             this.txttipodecobro.Name = "txttipodecobro";
             this.txttipodecobro.Size = new System.Drawing.Size(200, 21);
@@ -483,12 +481,26 @@
             this.txtpuestoocupado.Size = new System.Drawing.Size(200, 21);
             this.txtpuestoocupado.TabIndex = 145;
             // 
+            // txtturno
+            // 
+            this.txtturno.FormattingEnabled = true;
+            this.txtturno.Items.AddRange(new object[] {
+            "Mañana",
+            "Tarde",
+            "Noche",
+            "Rotativo"});
+            this.txtturno.Location = new System.Drawing.Point(476, 125);
+            this.txtturno.Name = "txtturno";
+            this.txtturno.Size = new System.Drawing.Size(72, 21);
+            this.txtturno.TabIndex = 146;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(754, 532);
+            this.Controls.Add(this.txtturno);
             this.Controls.Add(this.txtpuestoocupado);
             this.Controls.Add(this.txtdeparmento);
             this.Controls.Add(this.txttipodecobro);
@@ -500,7 +512,6 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtsalariobase);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.txtturno);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -552,7 +563,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtsalariobase;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtturno;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -576,5 +586,6 @@
         private System.Windows.Forms.ComboBox txttipodecobro;
         private System.Windows.Forms.ComboBox txtdeparmento;
         private System.Windows.Forms.ComboBox txtpuestoocupado;
+        private System.Windows.Forms.ComboBox txtturno;
     }
 }

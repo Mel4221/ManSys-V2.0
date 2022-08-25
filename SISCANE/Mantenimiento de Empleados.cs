@@ -29,7 +29,7 @@ namespace SISCANE
 
             InitializeComponent();
 
-            MessageBox.Show(connectionString);
+//            MessageBox.Show(connectionString);
             // MessageBox.Show(con.Connection()); 
         }
         /*
@@ -127,7 +127,7 @@ namespace SISCANE
             txtdni.Clear();
             txtsalariobase.Clear();
             txttipodecobro.ResetText();
-            txtturno.Clear();
+            txtturno.ResetText(); 
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -331,6 +331,7 @@ namespace SISCANE
 
             cm.Parameters.Add(new SqlParameter("@Turno", SqlDbType.VarChar));
             cm.Parameters["@Turno"].Value = txtturno.Text;
+
 
 
 

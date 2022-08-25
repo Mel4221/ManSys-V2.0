@@ -25,8 +25,26 @@ namespace SISCANE
             InitializeComponent();
         }
 
+
+
+        static void LoadConection()
+        {
+            ConnectionString con = new ConnectionString();
+            string conection = con.Connection(); // start the connection
+            if (conection.IndexOf("ManSys") > 0)
+            {
+                MessageBox.Show("Conectado a ManSys");
+            }
+       
+           
+
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
+
+
+            LoadConection();
+           
             LoadUserData();
         }
 

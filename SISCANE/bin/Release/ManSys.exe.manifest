@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ManSys.exe" size="1784256">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ManSys.exe" size="1784768">
       <assemblyIdentity name="ManSys" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>qom0k5qSi/n4LcJo028lL+3gwkg4D++QSKbq09lvQog=</dsig:DigestValue>
+        <dsig:DigestValue>twaPATfyVJ9DxJLzSmZlpgRTkzsF1uXHp73ya0bYo14=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
