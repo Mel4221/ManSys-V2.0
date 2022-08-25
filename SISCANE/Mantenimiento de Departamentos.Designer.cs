@@ -32,14 +32,10 @@
             this.gblistadovisitas = new System.Windows.Forms.GroupBox();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.ListadodeUsuarios = new System.Windows.Forms.DataGridView();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtbusqueda = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.bntlimpiar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
@@ -49,6 +45,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtid = new System.Windows.Forms.TextBox();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gblistadovisitas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListadodeUsuarios)).BeginInit();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -59,9 +57,6 @@
             // 
             this.gblistadovisitas.Controls.Add(this.btnRefrescar);
             this.gblistadovisitas.Controls.Add(this.ListadodeUsuarios);
-            this.gblistadovisitas.Controls.Add(this.btnBuscar);
-            this.gblistadovisitas.Controls.Add(this.label15);
-            this.gblistadovisitas.Controls.Add(this.txtbusqueda);
             this.gblistadovisitas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gblistadovisitas.ForeColor = System.Drawing.Color.DarkCyan;
             this.gblistadovisitas.Location = new System.Drawing.Point(7, 172);
@@ -74,50 +69,27 @@
             // btnRefrescar
             // 
             this.btnRefrescar.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnRefrescar.Location = new System.Drawing.Point(483, 45);
+            this.btnRefrescar.Location = new System.Drawing.Point(225, 44);
             this.btnRefrescar.Name = "btnRefrescar";
             this.btnRefrescar.Size = new System.Drawing.Size(103, 23);
             this.btnRefrescar.TabIndex = 7;
             this.btnRefrescar.Text = "Refrescar";
             this.btnRefrescar.UseVisualStyleBackColor = true;
+            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
             // 
             // ListadodeUsuarios
             // 
             this.ListadodeUsuarios.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.ListadodeUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListadodeUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Codigo,
+            this.Departamento});
             this.ListadodeUsuarios.Location = new System.Drawing.Point(7, 73);
             this.ListadodeUsuarios.Name = "ListadodeUsuarios";
             this.ListadodeUsuarios.ReadOnly = true;
             this.ListadodeUsuarios.Size = new System.Drawing.Size(579, 275);
             this.ListadodeUsuarios.TabIndex = 8;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnBuscar.Location = new System.Drawing.Point(249, 45);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 5;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(10, 22);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(153, 16);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Criterio de Búsqueda";
-            // 
-            // txtbusqueda
-            // 
-            this.txtbusqueda.Location = new System.Drawing.Point(10, 45);
-            this.txtbusqueda.Name = "txtbusqueda";
-            this.txtbusqueda.Size = new System.Drawing.Size(233, 22);
-            this.txtbusqueda.TabIndex = 0;
-            this.txtbusqueda.Text = "Digitar Codigo de Departamento";
+            this.ListadodeUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadodeUsuarios_CellContentClick);
             // 
             // label14
             // 
@@ -138,7 +110,6 @@
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.bntlimpiar);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.btnCancelar);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.btnNuevo);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label13);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.btnCerrar);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.btnModificar);
@@ -162,41 +133,31 @@
             // 
             this.bntlimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntlimpiar.ForeColor = System.Drawing.Color.Black;
-            this.bntlimpiar.Location = new System.Drawing.Point(10, 118);
+            this.bntlimpiar.Location = new System.Drawing.Point(10, 120);
             this.bntlimpiar.Name = "bntlimpiar";
             this.bntlimpiar.Size = new System.Drawing.Size(135, 26);
             this.bntlimpiar.TabIndex = 110;
             this.bntlimpiar.Text = "Limpiar";
             this.bntlimpiar.UseVisualStyleBackColor = true;
+            this.bntlimpiar.Click += new System.EventHandler(this.bntlimpiar_Click);
             // 
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.Red;
-            this.btnCancelar.Location = new System.Drawing.Point(8, 178);
+            this.btnCancelar.Location = new System.Drawing.Point(10, 150);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(135, 29);
             this.btnCancelar.TabIndex = 109;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.ForeColor = System.Drawing.Color.Black;
-            this.btnNuevo.Location = new System.Drawing.Point(10, 146);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(135, 26);
-            this.btnNuevo.TabIndex = 108;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(36, 255);
+            this.label13.Location = new System.Drawing.Point(38, 227);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(89, 18);
             this.label13.TabIndex = 107;
@@ -208,7 +169,7 @@
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.Black;
-            this.btnCerrar.Location = new System.Drawing.Point(8, 213);
+            this.btnCerrar.Location = new System.Drawing.Point(10, 185);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(135, 26);
             this.btnCerrar.TabIndex = 106;
@@ -225,6 +186,7 @@
             this.btnModificar.TabIndex = 32;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
@@ -235,6 +197,7 @@
             this.btnEliminar.TabIndex = 33;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnRegistrar
             // 
@@ -245,6 +208,7 @@
             this.btnRegistrar.TabIndex = 31;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // txtnombre
             // 
@@ -280,6 +244,20 @@
             this.txtid.Size = new System.Drawing.Size(79, 20);
             this.txtid.TabIndex = 141;
             // 
+            // Codigo
+            // 
+            this.Codigo.DataPropertyName = "Codigo";
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // Departamento
+            // 
+            this.Departamento.DataPropertyName = "Departamento";
+            this.Departamento.HeaderText = "Departamento";
+            this.Departamento.Name = "Departamento";
+            this.Departamento.ReadOnly = true;
+            // 
             // mantenimientoDept
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,7 +279,6 @@
             this.Load += new System.EventHandler(this.mantenimientoDept_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mantenimientoDept_MouseDown_1);
             this.gblistadovisitas.ResumeLayout(false);
-            this.gblistadovisitas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListadodeUsuarios)).EndInit();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.ContentPanel.PerformLayout();
@@ -317,14 +294,10 @@
         private System.Windows.Forms.GroupBox gblistadovisitas;
         private System.Windows.Forms.Button btnRefrescar;
         private System.Windows.Forms.DataGridView ListadodeUsuarios;
-        private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txtbusqueda;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.Button bntlimpiar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnModificar;
@@ -334,5 +307,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Departamento;
     }
 }
