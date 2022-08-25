@@ -52,9 +52,9 @@
             this.gblistadovisitas = new System.Windows.Forms.GroupBox();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.ListadodeEmpresas = new System.Windows.Forms.DataGridView();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
             this.txtbusqueda = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.gblistadovisitas.SuspendLayout();
@@ -294,11 +294,12 @@
             this.gblistadovisitas.TabIndex = 142;
             this.gblistadovisitas.TabStop = false;
             this.gblistadovisitas.Text = "Empleados Registrados";
+            this.gblistadovisitas.Visible = false;
             // 
             // btnRefrescar
             // 
             this.btnRefrescar.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnRefrescar.Location = new System.Drawing.Point(483, 45);
+            this.btnRefrescar.Location = new System.Drawing.Point(237, 44);
             this.btnRefrescar.Name = "btnRefrescar";
             this.btnRefrescar.Size = new System.Drawing.Size(103, 23);
             this.btnRefrescar.TabIndex = 7;
@@ -317,16 +318,14 @@
             this.ListadodeEmpresas.TabIndex = 8;
             this.ListadodeEmpresas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadodeEmpresas_CellContentClick);
             // 
-            // btnBuscar
+            // txtbusqueda
             // 
-            this.btnBuscar.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnBuscar.Location = new System.Drawing.Point(218, 45);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 5;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.txtbusqueda.Location = new System.Drawing.Point(10, 45);
+            this.txtbusqueda.Name = "txtbusqueda";
+            this.txtbusqueda.Size = new System.Drawing.Size(202, 22);
+            this.txtbusqueda.TabIndex = 0;
+            this.txtbusqueda.Text = "Digitar RNC";
+            this.txtbusqueda.Visible = false;
             // 
             // label15
             // 
@@ -337,14 +336,19 @@
             this.label15.Size = new System.Drawing.Size(153, 16);
             this.label15.TabIndex = 1;
             this.label15.Text = "Criterio de Búsqueda";
+            this.label15.Visible = false;
             // 
-            // txtbusqueda
+            // btnBuscar
             // 
-            this.txtbusqueda.Location = new System.Drawing.Point(10, 45);
-            this.txtbusqueda.Name = "txtbusqueda";
-            this.txtbusqueda.Size = new System.Drawing.Size(202, 22);
-            this.txtbusqueda.TabIndex = 0;
-            this.txtbusqueda.Text = "Digitar RNC";
+            this.btnBuscar.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btnBuscar.Location = new System.Drawing.Point(98, 41);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 5;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Visible = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // Gestión_de_Empresa
             // 
@@ -352,7 +356,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(754, 532);
-            this.Controls.Add(this.gblistadovisitas);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtpais);
@@ -365,6 +368,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtrnc);
+            this.Controls.Add(this.gblistadovisitas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Gestión_de_Empresa";

@@ -35,7 +35,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.bntlimpiar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
@@ -109,7 +108,6 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.bntlimpiar);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.btnCancelar);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label13);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.btnCerrar);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.btnModificar);
@@ -141,23 +139,12 @@
             this.bntlimpiar.UseVisualStyleBackColor = true;
             this.bntlimpiar.Click += new System.EventHandler(this.bntlimpiar_Click);
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.Red;
-            this.btnCancelar.Location = new System.Drawing.Point(10, 150);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(135, 29);
-            this.btnCancelar.TabIndex = 109;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(38, 227);
+            this.label13.Location = new System.Drawing.Point(38, 194);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(89, 18);
             this.label13.TabIndex = 107;
@@ -169,7 +156,7 @@
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.Black;
-            this.btnCerrar.Location = new System.Drawing.Point(10, 185);
+            this.btnCerrar.Location = new System.Drawing.Point(10, 152);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(135, 26);
             this.btnCerrar.TabIndex = 106;
@@ -297,7 +284,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.Button bntlimpiar;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnModificar;

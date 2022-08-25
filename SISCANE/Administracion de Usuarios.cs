@@ -40,8 +40,8 @@ int wparam, int lparam);
         {
             LLenarGridUsuarios();
             btnNuevo.Enabled = true;
-            btnRegistrar.Enabled = false;
-            btnModificar.Enabled = false;
+            btnRegistrar.Enabled = true;
+            btnModificar.Enabled = true;
             btnCancelar.Enabled = true;
             btnEliminar.Enabled = true;
             btnBuscar.Enabled = true;
@@ -52,18 +52,26 @@ int wparam, int lparam);
             //Codigo para llenar grid de empleados
 
 
-            DataTable dtempleados = new DataTable();
 
-            SqlConnection dataConnection = new SqlConnection(connectionString);
-            SqlCommand cm = new SqlCommand();
-            cm.Connection = dataConnection;
+            //"GetDB_Gestión_de_Usuarios", dataConnection);
 
-            SqlDataAdapter daempleados = new SqlDataAdapter("GetDB_Gestión_de_Usuarios", dataConnection);
 
-            daempleados.SelectCommand.CommandType = CommandType.StoredProcedure;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("GetDB_Gestión_de_Usuarios", con);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
 
-      
-            ListadodeUsuarios.DataSource = dtempleados;
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                data.Load(reader);
+                ListadodeUsuarios.DataSource = data;
+            }
+
+
+            
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -108,7 +116,7 @@ int wparam, int lparam);
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            string sql = "DELETE FROM Gestión_de_Usuarios WHERE Id=" + txtid.Text;
+            string sql = "DELETE FROM Gestion_de_Usuarios WHERE Id=" + txtid.Text;
 
             SqlConnection con = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand(sql, con);
@@ -131,17 +139,17 @@ int wparam, int lparam);
             }
 
             btnNuevo.Enabled = true;
-            btnRegistrar.Enabled = false;
-            btnModificar.Enabled = false;
+            btnRegistrar.Enabled = true;
+            btnModificar.Enabled = true;
             btnCancelar.Enabled = true;
-            btnEliminar.Enabled = false;
+            btnEliminar.Enabled = true;
             btnBuscar.Enabled = true;
             txtbusqueda.Enabled = true;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string sql = "SELECT * FROM Gestión_de_Usuarios WHERE Id=" + txtbusqueda.Text;
+            string sql = "SELECT * FROM Gestion_de_Usuarios WHERE Id=" + txtbusqueda.Text;
 
             SqlConnection con = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand(sql, con);
@@ -232,7 +240,7 @@ int wparam, int lparam);
 
             btnNuevo.Enabled = true;
             btnRegistrar.Enabled = false;
-            btnModificar.Enabled = false;
+            btnModificar.Enabled = true;
             btnCancelar.Enabled = true;
             btnEliminar.Enabled = true;
             btnBuscar.Enabled = true;
@@ -295,8 +303,8 @@ int wparam, int lparam);
 
 
             btnNuevo.Enabled = true;
-            btnRegistrar.Enabled = false;
-            btnModificar.Enabled = false;
+            btnRegistrar.Enabled = true;
+            btnModificar.Enabled = true;
             btnCancelar.Enabled = true;
             btnEliminar.Enabled = true;
             btnBuscar.Enabled = true;

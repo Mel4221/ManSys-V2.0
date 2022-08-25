@@ -202,6 +202,14 @@ int wparam, int lparam);
         {
             //Codigo para llenar grid de empleados
 
+            /*
+             
+             
+             
+             
+             
+             */
+
 
             DataTable dtempleados = new DataTable();
 
