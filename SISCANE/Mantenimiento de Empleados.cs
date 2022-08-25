@@ -26,74 +26,93 @@ namespace SISCANE
             ConnectionString con = new ConnectionString();
             connectionString = con.Connection();
             Get.Green("InitializeComponent Mantenimiento_De_Empleados ");
-            
+
             InitializeComponent();
+
+            MessageBox.Show(connectionString);
+            // MessageBox.Show(con.Connection()); 
         }
-
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg,
-int wparam, int lparam);
-
+        /*
+                [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+                private extern static void ReleaseCapture();
+                [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+                private extern static void SendMessage(System.IntPtr hwnd, int wmsg,
+                int wparam, int lparam);
+        */
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            SqlConnection cn = new SqlConnection(connectionString);
-            SqlCommand cm = new SqlCommand();
-            cm.Connection = cn;
-            cm.CommandText = "SP_Insert_Mantenimiento_de_Empleados";
-            cm.CommandType = CommandType.StoredProcedure;
-
-            cm.Parameters.Add(new SqlParameter("@Id", SqlDbType.Int));
-            cm.Parameters["@Id"].Value = txtId.Text;
-
-            cm.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
-            cm.Parameters["@Nombre"].Value = txtNombre.Text;
-
-            cm.Parameters.Add(new SqlParameter("@Apellido", SqlDbType.VarChar));
-            cm.Parameters["@Apellido"].Value = txtApellido.Text;
-
-            cm.Parameters.Add(new SqlParameter("@Dirección", SqlDbType.VarChar));
-            cm.Parameters["@Dirección"].Value = txtdireccion.Text;
-
-            cm.Parameters.Add(new SqlParameter("@Teléfono", SqlDbType.VarChar));
-            cm.Parameters["@Teléfono"].Value = txttelefono.Text;
-
-            cm.Parameters.Add(new SqlParameter("@Fecha_de_Ingreso", SqlDbType.VarChar));
-            cm.Parameters["@Fecha_de_Ingreso"].Value = txtfechadeingreso.Text;
-
-            cm.Parameters.Add(new SqlParameter("@Puesto_Ocupado", SqlDbType.VarChar));
-            cm.Parameters["@Puesto_Ocupado"].Value = txtpuestoocupado.Text;
-
-            cm.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar));
-            cm.Parameters["@Departamento"].Value = txtdeparmento.Text;
-
-            cm.Parameters.Add(new SqlParameter("@DNI", SqlDbType.VarChar));
-            cm.Parameters["@DNI"].Value = txtdni.Text;
-
-            cm.Parameters.Add(new SqlParameter("@Salario_Base", SqlDbType.VarChar));
-            cm.Parameters["@Salario_Base"].Value = txtsalariobase.Text;
-
-            cm.Parameters.Add(new SqlParameter("@Tipo_de_Cobro", SqlDbType.VarChar));
-            cm.Parameters["@Tipo_de_Cobro"].Value = txttipodecobro.Text;
-
-            cm.Parameters.Add(new SqlParameter("@Turno", SqlDbType.VarChar));
-            cm.Parameters["@Turno"].Value = txtturno.Text;
-
-            cn.Open();
-            cm.ExecuteNonQuery();
-            MessageBox.Show("Registro Guardado Satisfactoriamente");
             
 
-            btnNuevo.Enabled = true;
-            btnRegistrar.Enabled = false;
-            btnModificar.Enabled = false;
-            btnCancelar.Enabled = true;
-            btnEliminar.Enabled = true;
-            btnBuscar.Enabled = true;
-            txtbusqueda.Enabled = true;
+            /*
+             SqlCommand cmd = new SqlCommand("AddFool", con);
+            cmd.CommandType = CommandType.StoredProcedure; 
+            cmd.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 9;
+            cmd.Parameters.AddWithValue("@Name", SqlDbType.VarChar).Value = "W333333333";
+            cmd.Parameters.AddWithValue("@LastName", SqlDbType.VarChar).Value = "B"; 
+            cmd.Parameters.AddWithValue("@Password", SqlDbType.VarChar).Value = "S"; 
+            cmd.ExecuteNonQuery(); DataTable dt = new DataTable(); 
+            SqlDataAdapter adapter = new SqlDataAdapter("GetFools", con); 
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure; 
+            adapter.Fill(dt);
+           */
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cm = new SqlCommand("SP_Insert_Mantenimiento_de_Empleados", con);
+                
+                cm.CommandType = CommandType.StoredProcedure;
+
+                cm.Parameters.AddWithValue(@"id",SqlDbType.Int).Value = int.Parse(txtId.Text);
+
+                cm.Parameters.AddWithValue("@Nombre", SqlDbType.VarChar).Value = txtNombre.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Apellido", SqlDbType.VarChar));
+                cm.Parameters["@Apellido"].Value = txtApellido.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Dirección", SqlDbType.VarChar));
+                cm.Parameters["@Dirección"].Value = txtdireccion.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Teléfono", SqlDbType.VarChar));
+                cm.Parameters["@Teléfono"].Value = txttelefono.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Fecha_de_Ingreso", SqlDbType.VarChar));
+                cm.Parameters["@Fecha_de_Ingreso"].Value = txtfechadeingreso.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Puesto_Ocupado", SqlDbType.VarChar));
+                cm.Parameters["@Puesto_Ocupado"].Value = txtpuestoocupado.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar));
+                cm.Parameters["@Departamento"].Value = txtdeparmento.Text;
+
+                cm.Parameters.Add(new SqlParameter("@DNI", SqlDbType.VarChar));
+                cm.Parameters["@DNI"].Value = txtdni.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Salario_Base", SqlDbType.VarChar));
+                cm.Parameters["@Salario_Base"].Value = txtsalariobase.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Tipo_de_Cobro", SqlDbType.VarChar));
+                cm.Parameters["@Tipo_de_Cobro"].Value = txttipodecobro.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Turno", SqlDbType.VarChar));
+                cm.Parameters["@Turno"].Value = txtturno.Text;
+
+               
+                cm.ExecuteNonQuery();
+              
+
+                MessageBox.Show("Registro Guardado Satisfactoriamente");
 
 
+                btnNuevo.Enabled = true;
+                // btnRegistrar.Enabled = false;
+                // btnModificar.Enabled = false;
+                btnCancelar.Enabled = true;
+                btnEliminar.Enabled = true;
+                btnBuscar.Enabled = true;
+                txtbusqueda.Enabled = true;
+
+            }
         }
         private void Limpiar()
         {
@@ -116,14 +135,14 @@ int wparam, int lparam);
             LLenarGridEmpleados();
 
             btnNuevo.Enabled = true;
-            btnRegistrar.Enabled = false;
-            btnModificar.Enabled = false;
+            btnRegistrar.Enabled = true;
+            btnModificar.Enabled = true;
             btnCancelar.Enabled = true;
             btnEliminar.Enabled = true;
             btnBuscar.Enabled = true;
             txtbusqueda.Enabled = true;
 
-            
+
         }
 
         private void LLenarGridEmpleados()
@@ -141,7 +160,7 @@ int wparam, int lparam);
 
             daempleados.SelectCommand.CommandType = CommandType.StoredProcedure;
 
-           
+
             ListadodeEmpleados.DataSource = dtempleados;
         }
 
@@ -254,7 +273,7 @@ int wparam, int lparam);
                 else
                     MessageBox.Show("Ningun Registro Encontrado con el Dato de Busqueda Ingresado !");
 
-                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.ToString());
@@ -266,7 +285,7 @@ int wparam, int lparam);
 
             txtbusqueda.Text = "";
 
-            }
+        }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
@@ -364,10 +383,73 @@ int wparam, int lparam);
 
         private void Form3_MouseDown(object sender, MouseEventArgs e)
         {
-
+            /*
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+            */
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            C.W("Recieved");
+            //    MessageBox.Show(connectionString); 
+            using (SqlConnection cn = new SqlConnection(connectionString))
+            {
+                cn.Open();
+
+                SqlCommand cm = new SqlCommand();
+
+                cm.Connection = cn;
+
+                cm.CommandText = "SP_Update_Mantenimiento_de_Empleados";
+                cm.CommandType = CommandType.StoredProcedure;
+
+                cm.Parameters.Add(new SqlParameter("@Id", SqlDbType.Int));
+                cm.Parameters["@Id"].Value = txtId.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
+                cm.Parameters["@Nombre"].Value = txtNombre.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Apellido", SqlDbType.VarChar));
+                cm.Parameters["@Apellido"].Value = txtApellido.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Dirección", SqlDbType.VarChar));
+                cm.Parameters["@Dirección"].Value = txtdireccion.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Teléfono", SqlDbType.VarChar));
+                cm.Parameters["@Teléfono"].Value = txttelefono.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Fecha_de_Ingreso", SqlDbType.VarChar));
+                cm.Parameters["@Fecha_de_Ingreso"].Value = txtfechadeingreso.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Puesto_Ocupado", SqlDbType.VarChar));
+                cm.Parameters["@Puesto_Ocupado"].Value = txtpuestoocupado.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar));
+                cm.Parameters["@Departamento"].Value = txtdeparmento.Text;
+
+                cm.Parameters.Add(new SqlParameter("@DNI", SqlDbType.VarChar));
+                cm.Parameters["@DNI"].Value = txtdni.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Salario_Base", SqlDbType.VarChar));
+                cm.Parameters["@Salario_Base"].Value = txtsalariobase.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Tipo_de_Cobro", SqlDbType.VarChar));
+                cm.Parameters["@Tipo_de_Cobro"].Value = txttipodecobro.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Turno", SqlDbType.VarChar));
+                cm.Parameters["@Turno"].Value = txtturno.Text;
+
+
+
+                cm.ExecuteNonQuery();
+                MessageBox.Show("Registro Actualizado Satisfactoriamente");
+                LLenarGridEmpleados();
+
+
+            }
+
         }
     }
-    }
+}
 

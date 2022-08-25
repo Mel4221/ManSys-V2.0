@@ -26,21 +26,15 @@ namespace SISCANE
 
             
               Color.Green("Starting ManSys...");
-            try
-            {
+          
                 Log.Event("LastStarted","The Program Attendted to start for the last time on "+DateTime.UtcNow+"\n");
   
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Form1());
+                Application.Run(new Form3());
 
-            }
-            catch(Exception e)
-            {
-                Log.Event("FatalError",e+"\n");
-                Log.Event("LastStarted", "The Program Fail to start due to an Error \n");
-                Color.Red("Something Really Bad just happened , more details : \n"+e);
-            }
+         
+
       
             
             

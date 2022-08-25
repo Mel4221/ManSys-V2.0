@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B96EF594-D24E-4EDC-8C73-98DFF012C2EE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SISCANE</RootNamespace>
     <AssemblyName>ManSys</AssemblyName>
@@ -69,7 +69,16 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common">
+      <HintPath>..\Common\bin\Debug\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Domain">
+      <HintPath>..\Domain\bin\Debug\Domain.dll</HintPath>
+    </Reference>
     <Reference Include="QuickTools">
       <HintPath>..\..\QuickTools\bin\Release\QuickTools.dll</HintPath>
     </Reference>

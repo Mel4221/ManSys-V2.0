@@ -23,7 +23,7 @@ namespace SISCANE
         /// <summary>
         /// set the data that has to be cached 
         /// </summary>
-        static public string Data = null;
+        static public string Data = "";
 
         /// <summary>
         /// Cache Data into a list
@@ -50,55 +50,53 @@ namespace SISCANE
         public ConnectionString()
         {
 
-          
-            try
+            try { 
+            if (Cache.IsCached == false)
             {
-                if (Cache.IsCached == false)
+                //   Console.Title = "Stablishing Connection With The Online API";
+                string connection = null;
+
+
+                string token = string.Format("i-am-allowed-to-have-access");
+
+                string webLink = $"http://18.219.52.178/api/connect?user={Environment.UserName}&token={token}";
+                Uri link = new Uri(webLink);
+
+                WebRequest request = WebRequest.Create(link);
+                request.Method = "GET";
+                //  request.Headers["Token"] = "123-456-789";
+                ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
+                HttpWebResponse responceObj = null;
+
+                responceObj = (HttpWebResponse)request.GetResponse();
+                //request.Timeout = (System.Int32)TimeSpan.FromSeconds(10).TotalMilliseconds; 
+                string result = null;
+                using (Stream stream = responceObj.GetResponseStream())
                 {
-                    Console.Title = "Stablishing Connection With The Online API";
-                    string connection = null;
-
-
-                    string token = "i-am-allowed-to-have-access";
-                    string link = String.Format($"http://mbvapps.xyz/api/connect?user={Environment.UserName}&token={token}");
-
-
-
-                    WebRequest request = WebRequest.Create(link);
-                    request.Method = "GET";
-                    //  request.Headers["Token"] = "123-456-789";
-                    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-
-                    HttpWebResponse responceObj = null;
-
-                    responceObj = (HttpWebResponse)request.GetResponse();
-                    request.Timeout = (System.Int32)TimeSpan.FromSeconds(10).TotalMilliseconds; 
-                    string result = null;
-                    using (Stream stream = responceObj.GetResponseStream())
-                    {
-                        StreamReader reader = new StreamReader(stream);
-                        result = reader.ReadToEnd();
-                    }
-                    // this is  a quick fix because is comming as a json format
-                    // and i just need the string 
-                     
-                    connection = result.LastIndexOf("]") == result.Length - 1 || result.IndexOf("[") == 0 ? result.Substring(1, result.Length - 1) : result;
-
-                    Get.WaitTime(2000);
-
-                    connectionString = connection;
-
-                    Cache.IsCached = true;
-                    Cache.Data = connectionString; 
-                    return;
+                    StreamReader reader = new StreamReader(stream);
+                    result = reader.ReadToEnd();
                 }
-                if (Cache.IsCached == true) {
-                    connectionString = Cache.Data; 
-                
-                }
+                // this is  a quick fix because is comming as a json format
+                // and i just need the string 
 
+                connection = result.LastIndexOf("]") == result.Length - 1 || result.IndexOf("[") == 0 ? result.Substring(1, result.Length - 1) : result;
+
+                Get.WaitTime(2000);
+
+                connectionString = connection;
+
+                Cache.IsCached = true;
+                Cache.Data = connectionString;
+                return;
+            }
+            if (Cache.IsCached == true) {
+                connectionString = Cache.Data;
 
             }
+
+
+        }
             catch (Exception e)
             {
 
