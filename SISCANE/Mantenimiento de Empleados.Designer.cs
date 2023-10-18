@@ -1,6 +1,6 @@
-﻿namespace SISCANE
+﻿namespace ManSys
 {
-    partial class Form3
+    partial class MantenimientoDeEmpleados
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MantenimientoDeEmpleados));
             this.label14 = new System.Windows.Forms.Label();
             this.gblistadovisitas = new System.Windows.Forms.GroupBox();
             this.btnRefrescar = new System.Windows.Forms.Button();
@@ -482,7 +482,7 @@
             this.txtpuestoocupado.Size = new System.Drawing.Size(200, 21);
             this.txtpuestoocupado.TabIndex = 145;
             // 
-            // Form3
+            // MantenimientoDeEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -517,11 +517,11 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form3";
+            this.Name = "MantenimientoDeEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento_de_Empleado";
-            this.Load += new System.EventHandler(this.Form3_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form3_MouseDown);
+            this.Load += new System.EventHandler(this.MantenimientoDeEmpleados_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MantenimientoDeEmpleados_MouseDown);
             this.gblistadovisitas.ResumeLayout(false);
             this.gblistadovisitas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListadodeEmpleados)).EndInit();

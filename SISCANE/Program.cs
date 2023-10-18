@@ -2,36 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using QuickTools; 
+using QuickTools.QCore;
+using QuickTools.QIO;
+using QuickTools.QColors; 
 using System.Configuration; 
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace SISCANE
+namespace ManSys
 {
     static class Program
     {
 
 
-            /// <summary>
-            /// This method Get The connection string from the configuration file then return it 
-            /// </summary>
-            /// <returns>The Connection String </returns>
-            public static string Connection()
-        {
-            string conection = null;
-
-            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["connection"];
 
 
-            conection = settings.ConnectionString;
-
-            return conection; 
-
-        }
-
-
+        public const string ProgramKey = "8wWGJ23446L";
 
 
         /// <summary>
@@ -44,11 +31,12 @@ namespace SISCANE
 
             
               Color.Green("Starting ManSys...");
+            Log.Event("ProgramFlow",$"Program Started: {DateTime.Now}");
             try
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Form1());
+                Application.Run(new MenuPrincipal());
             }
             catch(Exception e)
             {

@@ -1,4 +1,4 @@
-﻿namespace SISCANE
+﻿namespace ManSys
 {
     partial class mantenimientoPosc
     {

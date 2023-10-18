@@ -5,11 +5,11 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B96EF594-D24E-4EDC-8C73-98DFF012C2EE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SISCANE</RootNamespace>
+    <RootNamespace>ManSys</RootNamespace>
     <AssemblyName>ManSys</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -69,9 +69,12 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="QuickTools">
-      <HintPath>..\QuickTools.dll</HintPath>
+    <Reference Include="QuickTools, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuickTools.2.7.0\lib\net47\QuickTools.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -119,11 +122,11 @@
     <Compile Include="Consulta de Posiciones.Designer.cs">
       <DependentUpon>Consulta de Posiciones.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu Principal.cs">
+    <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu Principal.Designer.cs">
-      <DependentUpon>Menu Principal.cs</DependentUpon>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Generar Volante de Pago.cs">
       <SubType>Form</SubType>
@@ -250,8 +253,8 @@
     <EmbeddedResource Include="Consulta de Posiciones.resx">
       <DependentUpon>Consulta de Posiciones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu Principal.resx">
-      <DependentUpon>Menu Principal.cs</DependentUpon>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Volante de Pago.resx">
       <DependentUpon>Generar Volante de Pago.cs</DependentUpon>
@@ -314,7 +317,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ManSys_TemporaryKey.pfx" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -339,8 +342,10 @@
     <None Include="Resources\istockphoto-482585715-1024x1024.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="clown.ico" />
     <Content Include="manager.ico" />
     <Content Include="propagation_calculator_calc_6110.ico" />
+    <Content Include="setting.ico" />
     <None Include="Resources\propagation_calculator_calc_61101.ico" />
     <None Include="Resources\kisspng-computer-icons-button-scalable-vector-graphics-cli-black-close-button-png-5ab16c3a5851d8.6467345515215770183618.png" />
   </ItemGroup>

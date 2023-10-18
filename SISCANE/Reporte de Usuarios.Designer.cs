@@ -1,6 +1,6 @@
-﻿namespace SISCANE
+﻿namespace ManSys
 {
-    partial class R
+    partial class ReporteDeUsuarios
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(R));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReporteDeUsuarios));
             this.label1 = new System.Windows.Forms.Label();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -56,13 +56,13 @@
             this.nombreDeUsuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contraseñaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gestióndeUsuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sISCANEDataSet = new SISCANE.SISCANEDataSet();
+            this.ManSysDataSet = new ManSys.ManSysDataSet();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gestióndeUsuariosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sISCANEDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ManSysDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -287,12 +287,12 @@
             // gestióndeUsuariosBindingSource
             // 
             this.gestióndeUsuariosBindingSource.DataMember = "Gestión_de_Usuarios";
-            this.gestióndeUsuariosBindingSource.DataSource = this.sISCANEDataSet;
+            this.gestióndeUsuariosBindingSource.DataSource = this.ManSysDataSet;
             // 
-            // sISCANEDataSet
+            // ManSysDataSet
             // 
-            this.sISCANEDataSet.DataSetName = "SISCANEDataSet";
-            this.sISCANEDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.ManSysDataSet.DataSetName = "ManSysDataSet";
+            this.ManSysDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // button2
             // 
@@ -330,7 +330,7 @@
             this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gestióndeUsuariosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sISCANEDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ManSysDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,7 +355,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private SISCANEDataSet sISCANEDataSet;
+        private ManSysDataSet ManSysDataSet;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombresDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidosDataGridViewTextBoxColumn;

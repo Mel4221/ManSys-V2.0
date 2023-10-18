@@ -1,6 +1,6 @@
-﻿namespace SISCANE
+﻿namespace ManSys
 {
-    partial class Form7
+    partial class ReporteDeEmpleados
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form7));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReporteDeEmpleados));
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -46,7 +46,7 @@
             this.tipodeCobroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.turnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mantenimientodeEmpleadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sISCANEDataSet = new SISCANE.SISCANEDataSet();
+            this.ManSysDataSet = new ManSys.ManSysDataSet();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -61,11 +61,11 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.label1 = new System.Windows.Forms.Label();
-            this.mantenimiento_de_EmpleadosTableAdapter = new SISCANE.SISCANEDataSetTableAdapters.Mantenimiento_de_EmpleadosTableAdapter();
+            this.mantenimiento_de_EmpleadosTableAdapter = new ManSys.ManSysDataSetTableAdapters.Mantenimiento_de_EmpleadosTableAdapter();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mantenimientodeEmpleadosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sISCANEDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ManSysDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.SuspendLayout();
@@ -190,12 +190,12 @@
             // mantenimientodeEmpleadosBindingSource
             // 
             this.mantenimientodeEmpleadosBindingSource.DataMember = "Mantenimiento_de_Empleados";
-            this.mantenimientodeEmpleadosBindingSource.DataSource = this.sISCANEDataSet;
+            this.mantenimientodeEmpleadosBindingSource.DataSource = this.ManSysDataSet;
             // 
-            // sISCANEDataSet
+            // ManSysDataSet
             // 
-            this.sISCANEDataSet.DataSetName = "SISCANEDataSet";
-            this.sISCANEDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.ManSysDataSet.DataSetName = "ManSysDataSet";
+            this.ManSysDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dateTimePicker1
             // 
@@ -343,7 +343,7 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form7
+            // ReporteDeEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -357,14 +357,14 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form7";
+            this.Name = "ReporteDeEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporte de Empleados";
-            this.Load += new System.EventHandler(this.Form7_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form7_MouseDown);
+            this.Load += new System.EventHandler(this.ReporteDeEmpleados_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ReporteDeEmpleados_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mantenimientodeEmpleadosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sISCANEDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ManSysDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
@@ -392,9 +392,9 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.Label label1;
-        private SISCANEDataSet sISCANEDataSet;
+        private ManSysDataSet ManSysDataSet;
         private System.Windows.Forms.BindingSource mantenimientodeEmpleadosBindingSource;
-        private SISCANEDataSetTableAdapters.Mantenimiento_de_EmpleadosTableAdapter mantenimiento_de_EmpleadosTableAdapter;
+        private ManSysDataSetTableAdapters.Mantenimiento_de_EmpleadosTableAdapter mantenimiento_de_EmpleadosTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombresDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidosDataGridViewTextBoxColumn;

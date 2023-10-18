@@ -12,7 +12,7 @@ using System.Configuration;
 using System.Runtime.InteropServices;
 
 
-namespace SISCANE
+namespace ManSys
 {
     public partial class ConsultadeDepartamentos : Form
     {

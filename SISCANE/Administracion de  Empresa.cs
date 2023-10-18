@@ -11,12 +11,12 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Runtime.InteropServices;
 
-namespace SISCANE
+namespace ManSys
 {
     public partial class Gestión_de_Empresa : Form
     {
         // Realizo la Conexión a la Base de Datos
-        string connectionString = @"Server=DESKTOP-802OK33;Database=SISCANE;Trusted_Connection=True;";
+        string connectionString = @"Server=DESKTOP-802OK33;Database=ManSys;Trusted_Connection=True;";
 
         public Gestión_de_Empresa()
         {

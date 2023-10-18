@@ -1,6 +1,6 @@
-﻿namespace SISCANE
+﻿namespace ManSys
 {
-    partial class Form9
+    partial class ReporteDeNomina
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form9));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReporteDeNomina));
             this.label1 = new System.Windows.Forms.Label();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -66,14 +66,14 @@
             this.seguroDePensiónAFPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sueldoNetoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mantenimientodeNominaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sISCANEDataSet = new SISCANE.SISCANEDataSet();
-            this.mantenimiento_de_NominaTableAdapter = new SISCANE.SISCANEDataSetTableAdapters.Mantenimiento_de_NominaTableAdapter();
+            this.ManSysDataSet = new ManSys.ManSysDataSet();
+            this.mantenimiento_de_NominaTableAdapter = new ManSys.ManSysDataSetTableAdapters.Mantenimiento_de_NominaTableAdapter();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mantenimientodeNominaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sISCANEDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ManSysDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -368,12 +368,12 @@
             // mantenimientodeNominaBindingSource
             // 
             this.mantenimientodeNominaBindingSource.DataMember = "Mantenimiento_de_Nomina";
-            this.mantenimientodeNominaBindingSource.DataSource = this.sISCANEDataSet;
+            this.mantenimientodeNominaBindingSource.DataSource = this.ManSysDataSet;
             // 
-            // sISCANEDataSet
+            // ManSysDataSet
             // 
-            this.sISCANEDataSet.DataSetName = "SISCANEDataSet";
-            this.sISCANEDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.ManSysDataSet.DataSetName = "ManSysDataSet";
+            this.ManSysDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // mantenimiento_de_NominaTableAdapter
             // 
@@ -391,7 +391,7 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form9
+            // ReporteDeNomina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -405,17 +405,17 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form9";
+            this.Name = "ReporteDeNomina";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporte de Nomina";
-            this.Load += new System.EventHandler(this.Form9_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form9_MouseDown);
+            this.Load += new System.EventHandler(this.ReporteDeNomina_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ReporteDeNomina_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mantenimientodeNominaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sISCANEDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ManSysDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,9 +440,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private SISCANEDataSet sISCANEDataSet;
+        private ManSysDataSet ManSysDataSet;
         private System.Windows.Forms.BindingSource mantenimientodeNominaBindingSource;
-        private SISCANEDataSetTableAdapters.Mantenimiento_de_NominaTableAdapter mantenimiento_de_NominaTableAdapter;
+        private ManSysDataSetTableAdapters.Mantenimiento_de_NominaTableAdapter mantenimiento_de_NominaTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombresDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidosDataGridViewTextBoxColumn;

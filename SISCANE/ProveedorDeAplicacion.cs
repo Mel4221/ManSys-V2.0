@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SISCANE
+namespace ManSys
 {
     public partial class ProveedorDeAplicacion : Form
     {
@@ -30,8 +30,11 @@ namespace SISCANE
             switch (dr)
             {
                 case DialogResult.Yes:
+
                     Application.Restart();
+                    
                     break;
+
             }
         }
 

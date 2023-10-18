@@ -12,23 +12,21 @@ using System.Configuration;
 using System.Runtime.InteropServices;
 
 
-namespace SISCANE
+namespace ManSys
 {
     public partial class Gestión_de_Usuarios : Form
     {
         // Realizo la Conexión a la Base de Datos
-        string connectionString = @"Server=DESKTOP-802OK33;Database=SISCANE;Trusted_Connection=True;";
+        string connectionString = @"Server=DESKTOP-802OK33;Database=ManSys;Trusted_Connection=True;";
 
+      
         public Gestión_de_Usuarios()
         {
             InitializeComponent();
         }
 
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg,
-int wparam, int lparam);
+
+        
 
 
         private void Form4_Load(object sender, EventArgs e)
@@ -46,7 +44,7 @@ int wparam, int lparam);
         {
             //Codigo para llenar grid de empleados
 
-
+            /*
             DataTable dtempleados = new DataTable();
 
             SqlConnection dataConnection = new SqlConnection(ConfigurationSettings.AppSettings["conexion"].ToString());
@@ -58,7 +56,8 @@ int wparam, int lparam);
             daempleados.SelectCommand.CommandType = CommandType.StoredProcedure;
 
       
-            ListadodeUsuarios.DataSource = dtempleados;
+            ListadodeUsuarios.DataSource = dtempleados
+                */
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -195,7 +194,7 @@ int wparam, int lparam);
             cm.Connection = cn;
             cm.CommandText = "SP_Insert_Gestión_de_Usuarios";
             cm.CommandType = CommandType.StoredProcedure;
-
+            
             cm.Parameters.Add(new SqlParameter("@Id", SqlDbType.Int));
             cm.Parameters["@Id"].Value = txtid.Text;
 
@@ -224,7 +223,12 @@ int wparam, int lparam);
             cm.ExecuteNonQuery();
             MessageBox.Show("Registro Guardado Satisfactoriamente");
 
+            this.EnableBtns();
+    
 
+        }
+        private void EnableBtns()
+        {
             btnNuevo.Enabled = true;
             btnRegistrar.Enabled = false;
             btnModificar.Enabled = false;
@@ -232,7 +236,6 @@ int wparam, int lparam);
             btnEliminar.Enabled = true;
             btnBuscar.Enabled = true;
             txtbusqueda.Enabled = true;
-
         }
 
         private void ListadodeUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -315,8 +318,8 @@ int wparam, int lparam);
 
         private void Form4_MouseDown(object sender, MouseEventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            //ReleaseCapture();
+            //SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
         private void txtcontraseña_TextChanged(object sender, EventArgs e)

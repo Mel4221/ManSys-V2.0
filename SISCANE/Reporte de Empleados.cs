@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-namespace SISCANE
+namespace ManSys
 {
-    public partial class Form7 : Form
+    public partial class ReporteDeEmpleados : Form
     {
-        public Form7()
+        public ReporteDeEmpleados()
         {
             InitializeComponent();
         }
@@ -24,7 +24,7 @@ namespace SISCANE
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg,
 int wparam, int lparam);
 
-        private void Form7_Load(object sender, EventArgs e)
+        private void ReporteDeEmpleados_Load(object sender, EventArgs e)
         {
 
 
@@ -35,7 +35,7 @@ int wparam, int lparam);
             this.Close();
         }
 
-        private void Form7_MouseDown(object sender, MouseEventArgs e)
+        private void ReporteDeEmpleados_MouseDown(object sender, MouseEventArgs e)
         {
 
             ReleaseCapture();

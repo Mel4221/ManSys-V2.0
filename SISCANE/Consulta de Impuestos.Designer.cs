@@ -1,5 +1,5 @@
 ﻿
-namespace SISCANE
+namespace ManSys
 {
     partial class Consulta_de_Impuestos
     {
@@ -59,12 +59,14 @@ namespace SISCANE
             this.toolStripContainer1.ContentPanel.Controls.Add(this.btnNuevo);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label25);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.btnCerrar);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(524, 55);
+            this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(786, 85);
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
-            this.toolStripContainer1.Location = new System.Drawing.Point(273, 119);
+            this.toolStripContainer1.Location = new System.Drawing.Point(410, 183);
+            this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new System.Drawing.Size(524, 55);
+            this.toolStripContainer1.Size = new System.Drawing.Size(786, 85);
             this.toolStripContainer1.TabIndex = 275;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -77,9 +79,10 @@ namespace SISCANE
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(98, 20);
+            this.button1.Location = new System.Drawing.Point(147, 31);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(135, 26);
+            this.button1.Size = new System.Drawing.Size(202, 40);
             this.button1.TabIndex = 109;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = true;
@@ -88,9 +91,10 @@ namespace SISCANE
             // 
             this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.ForeColor = System.Drawing.Color.Black;
-            this.btnNuevo.Location = new System.Drawing.Point(239, 20);
+            this.btnNuevo.Location = new System.Drawing.Point(358, 31);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(135, 26);
+            this.btnNuevo.Size = new System.Drawing.Size(202, 40);
             this.btnNuevo.TabIndex = 108;
             this.btnNuevo.Text = "Limpiar";
             this.btnNuevo.UseVisualStyleBackColor = true;
@@ -100,9 +104,10 @@ namespace SISCANE
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(3, 23);
+            this.label25.Location = new System.Drawing.Point(4, 35);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(89, 18);
+            this.label25.Size = new System.Drawing.Size(140, 29);
             this.label25.TabIndex = 107;
             this.label25.Text = "BOTONES";
             // 
@@ -112,19 +117,22 @@ namespace SISCANE
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.Black;
-            this.btnCerrar.Location = new System.Drawing.Point(380, 20);
+            this.btnCerrar.Location = new System.Drawing.Point(570, 31);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(135, 26);
+            this.btnCerrar.Size = new System.Drawing.Size(202, 40);
             this.btnCerrar.TabIndex = 106;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(18, 92);
+            this.comboBox1.Location = new System.Drawing.Point(27, 142);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(216, 21);
+            this.comboBox1.Size = new System.Drawing.Size(322, 28);
             this.comboBox1.TabIndex = 274;
             // 
             // gblistadovisitas
@@ -133,9 +141,11 @@ namespace SISCANE
             this.gblistadovisitas.Controls.Add(this.ListadodeEmpleados);
             this.gblistadovisitas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gblistadovisitas.ForeColor = System.Drawing.Color.DarkCyan;
-            this.gblistadovisitas.Location = new System.Drawing.Point(12, 175);
+            this.gblistadovisitas.Location = new System.Drawing.Point(18, 269);
+            this.gblistadovisitas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gblistadovisitas.Name = "gblistadovisitas";
-            this.gblistadovisitas.Size = new System.Drawing.Size(785, 207);
+            this.gblistadovisitas.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gblistadovisitas.Size = new System.Drawing.Size(1178, 318);
             this.gblistadovisitas.TabIndex = 273;
             this.gblistadovisitas.TabStop = false;
             this.gblistadovisitas.Text = "Impuestos Registrados";
@@ -143,9 +153,10 @@ namespace SISCANE
             // btnRefrescar
             // 
             this.btnRefrescar.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnRefrescar.Location = new System.Drawing.Point(675, 21);
+            this.btnRefrescar.Location = new System.Drawing.Point(1012, 32);
+            this.btnRefrescar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRefrescar.Name = "btnRefrescar";
-            this.btnRefrescar.Size = new System.Drawing.Size(103, 23);
+            this.btnRefrescar.Size = new System.Drawing.Size(154, 35);
             this.btnRefrescar.TabIndex = 7;
             this.btnRefrescar.Text = "Refrescar";
             this.btnRefrescar.UseVisualStyleBackColor = true;
@@ -154,26 +165,30 @@ namespace SISCANE
             // 
             this.ListadodeEmpleados.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.ListadodeEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListadodeEmpleados.Location = new System.Drawing.Point(6, 48);
+            this.ListadodeEmpleados.Location = new System.Drawing.Point(9, 74);
+            this.ListadodeEmpleados.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ListadodeEmpleados.Name = "ListadodeEmpleados";
             this.ListadodeEmpleados.ReadOnly = true;
-            this.ListadodeEmpleados.Size = new System.Drawing.Size(772, 153);
+            this.ListadodeEmpleados.RowHeadersWidth = 62;
+            this.ListadodeEmpleados.Size = new System.Drawing.Size(1158, 235);
             this.ListadodeEmpleados.TabIndex = 8;
             // 
             // txtnombre
             // 
-            this.txtnombre.Location = new System.Drawing.Point(262, 93);
+            this.txtnombre.Location = new System.Drawing.Point(393, 143);
+            this.txtnombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtnombre.Name = "txtnombre";
-            this.txtnombre.Size = new System.Drawing.Size(225, 20);
+            this.txtnombre.Size = new System.Drawing.Size(336, 26);
             this.txtnombre.TabIndex = 272;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(259, 71);
+            this.label2.Location = new System.Drawing.Point(388, 109);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 18);
+            this.label2.Size = new System.Drawing.Size(214, 29);
             this.label2.TabIndex = 271;
             this.label2.Text = "Digitar Busqueda";
             // 
@@ -183,9 +198,10 @@ namespace SISCANE
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F, System.Drawing.FontStyle.Bold);
             this.label22.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label22.Location = new System.Drawing.Point(76, 16);
+            this.label22.Location = new System.Drawing.Point(114, 25);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(311, 25);
+            this.label22.Size = new System.Drawing.Size(446, 35);
             this.label22.TabIndex = 270;
             this.label22.Text = "CONSULTA DE IMPUESTOS";
             // 
@@ -193,18 +209,19 @@ namespace SISCANE
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 71);
+            this.label1.Location = new System.Drawing.Point(22, 109);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 18);
+            this.label1.Size = new System.Drawing.Size(130, 29);
             this.label1.TabIndex = 269;
             this.label1.Text = "Filtrar Por";
             // 
             // Consulta_de_Impuestos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(809, 399);
+            this.ClientSize = new System.Drawing.Size(1214, 614);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.gblistadovisitas);
@@ -214,6 +231,7 @@ namespace SISCANE
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Consulta_de_Impuestos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta_de_Impuestos";

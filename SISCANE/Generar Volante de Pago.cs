@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-namespace SISCANE
+namespace ManSys
 {
-    public partial class Form10 : Form
+    public partial class GenerarVolanteDePago : Form
     {
-        public Form10()
+        public GenerarVolanteDePago()
         {
             InitializeComponent();
         }
@@ -40,12 +40,12 @@ int wparam, int lparam);
             this.Close();
         }
 
-        private void Form10_Load(object sender, EventArgs e)
+        private void GenerarVolanteDePago_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void Form10_MouseDown(object sender, MouseEventArgs e)
+        private void GenerarVolanteDePago_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);

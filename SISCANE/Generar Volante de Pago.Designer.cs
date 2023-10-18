@@ -1,6 +1,6 @@
-﻿namespace SISCANE
+﻿namespace ManSys
 {
-    partial class Form10
+    partial class GenerarVolanteDePago
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form10));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerarVolanteDePago));
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.label12 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -629,7 +629,7 @@
             this.btnEliminar.Text = "Imprimir";
             this.btnEliminar.UseVisualStyleBackColor = true;
             // 
-            // Form10
+            // GenerarVolanteDePago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -687,11 +687,11 @@
             this.Controls.Add(this.label12);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form10";
+            this.Name = "GenerarVolanteDePago";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generar Volante de Pago";
-            this.Load += new System.EventHandler(this.Form10_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form10_MouseDown);
+            this.Load += new System.EventHandler(this.GenerarVolanteDePago_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GenerarVolanteDePago_MouseDown);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.ContentPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);

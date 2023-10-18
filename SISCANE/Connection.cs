@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using QuickTools; 
+using QuickTools.QIO; 
 
-namespace SISCANE
+using QuickTools.QCore;
+
+namespace ManSys
 {
 
     /// <summary>

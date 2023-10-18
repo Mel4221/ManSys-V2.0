@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-namespace SISCANE
+namespace ManSys
 {
-    public partial class Form9 : Form
+    public partial class ReporteDeNomina : Form
     {
-        public Form9()
+        public ReporteDeNomina()
         {
             InitializeComponent();
         }
@@ -24,9 +24,9 @@ namespace SISCANE
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg,
 int wparam, int lparam);
 
-        private void Form9_Load(object sender, EventArgs e)
+        private void ReporteDeNomina_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'sISCANEDataSet.Mantenimiento_de_Nomina' Puede moverla o quitarla según sea necesario.
+            // TODO: esta línea de código carga datos en la tabla 'ManSysDataSet.Mantenimiento_de_Nomina' Puede moverla o quitarla según sea necesario.
 
 
         }
@@ -36,7 +36,7 @@ int wparam, int lparam);
             this.Close();
         }
 
-        private void Form9_MouseDown(object sender, MouseEventArgs e)
+        private void ReporteDeNomina_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);

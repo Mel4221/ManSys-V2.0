@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
 
-namespace SISCANE
+namespace ManSys
 {
     public partial class Bonificaciones : Form
     {

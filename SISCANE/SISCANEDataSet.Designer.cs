@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace SISCANE {
+namespace ManSys {
     
     
     /// <summary>
@@ -20,9 +20,9 @@ namespace SISCANE {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("SISCANEDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("ManSysDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class SISCANEDataSet : global::System.Data.DataSet {
+    public partial class ManSysDataSet : global::System.Data.DataSet {
         
         private Mantenimiento_de_EmpleadosDataTable tableMantenimiento_de_Empleados;
         
@@ -36,7 +36,7 @@ namespace SISCANE {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public SISCANEDataSet() {
+        public ManSysDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -47,7 +47,7 @@ namespace SISCANE {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected SISCANEDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected ManSysDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -172,7 +172,7 @@ namespace SISCANE {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            SISCANEDataSet cln = ((SISCANEDataSet)(base.Clone()));
+            ManSysDataSet cln = ((ManSysDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -271,9 +271,9 @@ namespace SISCANE {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "SISCANEDataSet";
+            this.DataSetName = "ManSysDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/SISCANEDataSet.xsd";
+            this.Namespace = "http://tempuri.org/ManSysDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableMantenimiento_de_Empleados = new Mantenimiento_de_EmpleadosDataTable();
@@ -321,7 +321,7 @@ namespace SISCANE {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            SISCANEDataSet ds = new SISCANEDataSet();
+            ManSysDataSet ds = new ManSysDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -756,7 +756,7 @@ namespace SISCANE {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SISCANEDataSet ds = new SISCANEDataSet();
+                ManSysDataSet ds = new ManSysDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1324,7 +1324,7 @@ namespace SISCANE {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SISCANEDataSet ds = new SISCANEDataSet();
+                ManSysDataSet ds = new ManSysDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1679,7 +1679,7 @@ namespace SISCANE {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SISCANEDataSet ds = new SISCANEDataSet();
+                ManSysDataSet ds = new ManSysDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2054,7 +2054,7 @@ namespace SISCANE {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SISCANEDataSet ds = new SISCANEDataSet();
+                ManSysDataSet ds = new ManSysDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2805,7 +2805,7 @@ namespace SISCANE {
         }
     }
 }
-namespace SISCANE.SISCANEDataSetTableAdapters {
+namespace ManSys.ManSysDataSetTableAdapters {
     
     
     /// <summary>
@@ -3008,7 +3008,7 @@ SELECT Id, [Apellido(s)], DNI, Departamento, Dirección, Fecha_de_Ingreso, [Nomb
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SISCANE.Properties.Settings.Default.SISCANEConnectionString;
+            this._connection.ConnectionString = global::ManSys.Properties.Settings.Default.ManSysConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3027,7 +3027,7 @@ SELECT Id, [Apellido(s)], DNI, Departamento, Dirección, Fecha_de_Ingreso, [Nomb
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SISCANEDataSet.Mantenimiento_de_EmpleadosDataTable dataTable) {
+        public virtual int Fill(ManSysDataSet.Mantenimiento_de_EmpleadosDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3040,9 +3040,9 @@ SELECT Id, [Apellido(s)], DNI, Departamento, Dirección, Fecha_de_Ingreso, [Nomb
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SISCANEDataSet.Mantenimiento_de_EmpleadosDataTable GetData() {
+        public virtual ManSysDataSet.Mantenimiento_de_EmpleadosDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SISCANEDataSet.Mantenimiento_de_EmpleadosDataTable dataTable = new SISCANEDataSet.Mantenimiento_de_EmpleadosDataTable();
+            ManSysDataSet.Mantenimiento_de_EmpleadosDataTable dataTable = new ManSysDataSet.Mantenimiento_de_EmpleadosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3050,14 +3050,14 @@ SELECT Id, [Apellido(s)], DNI, Departamento, Dirección, Fecha_de_Ingreso, [Nomb
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SISCANEDataSet.Mantenimiento_de_EmpleadosDataTable dataTable) {
+        public virtual int Update(ManSysDataSet.Mantenimiento_de_EmpleadosDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SISCANEDataSet dataSet) {
+        public virtual int Update(ManSysDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Mantenimiento_de_Empleados");
         }
         
@@ -3705,7 +3705,7 @@ SELECT Id, [Nombre(s)], [Apellido(s)], [Puesto Ocupado], [Salario Base], [Tipo d
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SISCANE.Properties.Settings.Default.SISCANEConnectionString;
+            this._connection.ConnectionString = global::ManSys.Properties.Settings.Default.ManSysConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3722,7 +3722,7 @@ SELECT Id, [Nombre(s)], [Apellido(s)], [Puesto Ocupado], [Salario Base], [Tipo d
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SISCANEDataSet.Mantenimiento_de_NominaDataTable dataTable) {
+        public virtual int Fill(ManSysDataSet.Mantenimiento_de_NominaDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3735,9 +3735,9 @@ SELECT Id, [Nombre(s)], [Apellido(s)], [Puesto Ocupado], [Salario Base], [Tipo d
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SISCANEDataSet.Mantenimiento_de_NominaDataTable GetData() {
+        public virtual ManSysDataSet.Mantenimiento_de_NominaDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SISCANEDataSet.Mantenimiento_de_NominaDataTable dataTable = new SISCANEDataSet.Mantenimiento_de_NominaDataTable();
+            ManSysDataSet.Mantenimiento_de_NominaDataTable dataTable = new ManSysDataSet.Mantenimiento_de_NominaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3745,14 +3745,14 @@ SELECT Id, [Nombre(s)], [Apellido(s)], [Puesto Ocupado], [Salario Base], [Tipo d
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SISCANEDataSet.Mantenimiento_de_NominaDataTable dataTable) {
+        public virtual int Update(ManSysDataSet.Mantenimiento_de_NominaDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SISCANEDataSet dataSet) {
+        public virtual int Update(ManSysDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Mantenimiento_de_Nomina");
         }
         
@@ -4539,7 +4539,7 @@ SELECT RNC, Nombre, [Sector Empresarial], Dirección, Pais, [Nombre de Usuario],
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SISCANE.Properties.Settings.Default.SISCANEConnectionString;
+            this._connection.ConnectionString = global::ManSys.Properties.Settings.Default.ManSysConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4557,7 +4557,7 @@ SELECT RNC, Nombre, [Sector Empresarial], Dirección, Pais, [Nombre de Usuario],
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SISCANEDataSet.Gestión_de_EmpresasDataTable dataTable) {
+        public virtual int Fill(ManSysDataSet.Gestión_de_EmpresasDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4570,9 +4570,9 @@ SELECT RNC, Nombre, [Sector Empresarial], Dirección, Pais, [Nombre de Usuario],
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SISCANEDataSet.Gestión_de_EmpresasDataTable GetData() {
+        public virtual ManSysDataSet.Gestión_de_EmpresasDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SISCANEDataSet.Gestión_de_EmpresasDataTable dataTable = new SISCANEDataSet.Gestión_de_EmpresasDataTable();
+            ManSysDataSet.Gestión_de_EmpresasDataTable dataTable = new ManSysDataSet.Gestión_de_EmpresasDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4580,14 +4580,14 @@ SELECT RNC, Nombre, [Sector Empresarial], Dirección, Pais, [Nombre de Usuario],
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SISCANEDataSet.Gestión_de_EmpresasDataTable dataTable) {
+        public virtual int Update(ManSysDataSet.Gestión_de_EmpresasDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SISCANEDataSet dataSet) {
+        public virtual int Update(ManSysDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Gestión_de_Empresas");
         }
         
@@ -5028,7 +5028,7 @@ SELECT Id, [Nombre(s)], [Apellido(s)], Puesto_Ocupado, Departamento, Turno, [Nom
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SISCANE.Properties.Settings.Default.SISCANEConnectionString;
+            this._connection.ConnectionString = global::ManSys.Properties.Settings.Default.ManSysConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5046,7 +5046,7 @@ SELECT Id, [Nombre(s)], [Apellido(s)], Puesto_Ocupado, Departamento, Turno, [Nom
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SISCANEDataSet.Gestión_de_UsuariosDataTable dataTable) {
+        public virtual int Fill(ManSysDataSet.Gestión_de_UsuariosDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5059,9 +5059,9 @@ SELECT Id, [Nombre(s)], [Apellido(s)], Puesto_Ocupado, Departamento, Turno, [Nom
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SISCANEDataSet.Gestión_de_UsuariosDataTable GetData() {
+        public virtual ManSysDataSet.Gestión_de_UsuariosDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SISCANEDataSet.Gestión_de_UsuariosDataTable dataTable = new SISCANEDataSet.Gestión_de_UsuariosDataTable();
+            ManSysDataSet.Gestión_de_UsuariosDataTable dataTable = new ManSysDataSet.Gestión_de_UsuariosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5069,14 +5069,14 @@ SELECT Id, [Nombre(s)], [Apellido(s)], Puesto_Ocupado, Departamento, Turno, [Nom
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SISCANEDataSet.Gestión_de_UsuariosDataTable dataTable) {
+        public virtual int Update(ManSysDataSet.Gestión_de_UsuariosDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SISCANEDataSet dataSet) {
+        public virtual int Update(ManSysDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Gestión_de_Usuarios");
         }
         
@@ -5535,7 +5535,7 @@ SELECT Id, [Nombre(s)], [Apellido(s)], Puesto_Ocupado, Departamento, Turno, [Nom
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(SISCANEDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(ManSysDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._mantenimiento_de_EmpleadosTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Mantenimiento_de_Empleados.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -5581,7 +5581,7 @@ SELECT Id, [Nombre(s)], [Apellido(s)], Puesto_Ocupado, Departamento, Turno, [Nom
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(SISCANEDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(ManSysDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._mantenimiento_de_EmpleadosTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Mantenimiento_de_Empleados.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -5623,7 +5623,7 @@ SELECT Id, [Nombre(s)], [Apellido(s)], Puesto_Ocupado, Departamento, Turno, [Nom
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(SISCANEDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(ManSysDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._gestión_de_UsuariosTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Gestión_de_Usuarios.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -5689,7 +5689,7 @@ SELECT Id, [Nombre(s)], [Apellido(s)], Puesto_Ocupado, Departamento, Turno, [Nom
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(SISCANEDataSet dataSet) {
+        public virtual int UpdateAll(ManSysDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

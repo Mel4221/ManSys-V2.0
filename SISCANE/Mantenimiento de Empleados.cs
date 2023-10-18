@@ -11,24 +11,19 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Runtime.InteropServices;
 
-namespace SISCANE
+namespace ManSys
 {
-    public partial class Form3 : Form
+    public partial class MantenimientoDeEmpleados : Form
     {
         // Realizo la Conexión a la Base de Datos
-        string connectionString = @"Server=DESKTOP-802OK33;Database=SISCANE;Trusted_Connection=True;";
+        string connectionString = @"Server=HP\SQLEXPRESS;Database=ManSysDB;Trusted_Connection=True;";
         bool nuevo;
 
-        public Form3()
+        public MantenimientoDeEmpleados()
         {
             InitializeComponent();
         }
 
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg,
-int wparam, int lparam);
     void AgregarUsuario(string nombre,string apellido , string edad)
         {
 
@@ -108,7 +103,7 @@ int wparam, int lparam);
             txtturno.Clear();
         }
 
-        private void Form3_Load(object sender, EventArgs e)
+        private void MantenimientoDeEmpleados_Load(object sender, EventArgs e)
         {
             LLenarGridEmpleados();
 
@@ -359,11 +354,10 @@ int wparam, int lparam);
             Limpiar();
         }
 
-        private void Form3_MouseDown(object sender, MouseEventArgs e)
+        private void MantenimientoDeEmpleados_MouseDown(object sender, MouseEventArgs e)
         {
 
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+           
         }
     }
     }

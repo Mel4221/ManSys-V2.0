@@ -1,5 +1,5 @@
 ﻿
-namespace SISCANE
+namespace ManSys
 {
     partial class Bonificaciones
     {

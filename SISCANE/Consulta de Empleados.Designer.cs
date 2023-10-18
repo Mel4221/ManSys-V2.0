@@ -1,6 +1,6 @@
-﻿namespace SISCANE
+﻿namespace ManSys
 {
-    partial class Form5
+    partial class ConsultaDeEmpleados
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form5));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaDeEmpleados));
             this.label1 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -200,7 +200,7 @@
             this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click_1);
             // 
-            // Form5
+            // ConsultaDeEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -215,11 +215,11 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form5";
+            this.Name = "ConsultaDeEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta de Empleados";
-            this.Load += new System.EventHandler(this.Form5_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form5_MouseDown);
+            this.Load += new System.EventHandler(this.ConsultaDeEmpleados_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ConsultaDeEmpleados_MouseDown);
             this.gblistadovisitas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ListadodeEmpleados)).EndInit();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);

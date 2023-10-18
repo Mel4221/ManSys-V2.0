@@ -11,11 +11,11 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Runtime.InteropServices;
 
-namespace SISCANE
+namespace ManSys
 {
-    public partial class Form5 : Form
+    public partial class ConsultaDeEmpleados : Form
     {
-        public Form5()
+        public ConsultaDeEmpleados()
         {
             InitializeComponent();
         }
@@ -56,7 +56,7 @@ namespace SISCANE
             this.Close();
         }
 
-        private void Form5_Load(object sender, EventArgs e)
+        private void ConsultaDeEmpleados_Load(object sender, EventArgs e)
         {
 
         }
@@ -117,7 +117,7 @@ namespace SISCANE
             LLenarGridEmpleados();
         }
 
-        private void Form5_MouseDown(object sender, MouseEventArgs e)
+        private void ConsultaDeEmpleados_MouseDown(object sender, MouseEventArgs e)
         {
 
             ReleaseCapture();

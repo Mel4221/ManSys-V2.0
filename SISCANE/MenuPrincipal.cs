@@ -7,25 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
+using QuickTools.QCore;
 using System.Data.SqlClient; 
 //using Common.Cache;
 using QuickTools; 
 //using DataAccess; 
 
-namespace SISCANE
+namespace ManSys
 {
-    public partial class Form1 : Form
+    public partial class MenuPrincipal : Form
     {
-        //private object menuprincipal;
+        //private object MenuPrincipalpal;
 
-        public Form1()
+        public MenuPrincipal()
         {
-            Get.Green("InitializeComponent From MenuPrincipal");
+            Get.Green("InitializeComponent From MenuPrincipalpal");
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MenuPrincipal_Load(object sender, EventArgs e)
         {
             LoadUserData();
         }
@@ -71,13 +71,13 @@ namespace SISCANE
 
         private void mantenimientoDeNominaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formulario = new Form2();
+            Form formulario = new GenerarNomina();
             formulario.Show();
         }
 
         private void mantenimientoDeEmpleadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formulario = new Form3();
+            Form formulario = new MantenimientoDeEmpleados();
             formulario.Show();
         }
 
@@ -88,7 +88,7 @@ namespace SISCANE
 
         private void consultaDeEmpleadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formulario = new Form5();
+            Form formulario = new ConsultaDeEmpleados();
             formulario.Show();
         }
 
@@ -99,19 +99,19 @@ namespace SISCANE
 
         private void reporteDeNominaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formulario = new Form9();
+            Form formulario = new ReporteDeNomina();
             formulario.Show();
         }
 
         private void reporteDeEmpleadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formulario = new Form7();
+            Form formulario = new ReporteDeEmpleados();
             formulario.Show();
         }
 
         private void reporteDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formulario = new R();
+            Form formulario = new ReporteDeUsuarios();
             formulario.Show();
         }
 
@@ -124,7 +124,7 @@ namespace SISCANE
 
         private void consultaDeVolanteDePagoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formulario = new Form10();
+            Form formulario = new MenuPrincipal();
             formulario.Show();
         }
 
@@ -142,7 +142,7 @@ namespace SISCANE
 
         private void generarVolantedePagoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formulario = new Form10();
+            Form formulario = new GenerarVolanteDePago();
             formulario.Show();
         }
 
@@ -159,7 +159,7 @@ namespace SISCANE
 
         private void gENERARNOMINAToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formulario = new Form2();
+            Form formulario = new GenerarNomina();
             formulario.Show();
         }
 
@@ -238,6 +238,12 @@ namespace SISCANE
         {
             var app = new ProveedorDeAplicacion();
             app.Show(); 
+        }
+
+        private void reporteDeUsuariosToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var reporte = new ReporteDeUsuarios();
+            reporte.Show();
         }
     }
 }

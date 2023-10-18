@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-namespace SISCANE
+namespace ManSys
 {
     public partial class Consulta_de_Posiciones : Form
     {

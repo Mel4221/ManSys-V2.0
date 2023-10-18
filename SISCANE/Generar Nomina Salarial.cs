@@ -12,12 +12,12 @@ using System.Configuration;
 using System.Runtime.InteropServices;
 
 
-namespace SISCANE
+namespace ManSys
 {
-    public partial class Form2 : Form
+    public partial class GenerarNomina : Form
     {
-        string connectionString = @"Server=DESKTOP-802OK33;Database=SISCANE;Trusted_Connection=True;";
-        public Form2()
+        string connectionString = @"Server=DESKTOP-802OK33;Database=ManSys;Trusted_Connection=True;";
+        public GenerarNomina()
         {
             InitializeComponent();
         }
@@ -29,7 +29,7 @@ namespace SISCANE
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg,
 int wparam, int lparam);
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void GenerarNomina_Load(object sender, EventArgs e)
         {
             LLenarGridNomina();
         }
@@ -510,7 +510,7 @@ int wparam, int lparam);
             
         }
 
-        private void Form2_MouseDown(object sender, MouseEventArgs e)
+        private void GenerarNomina_MouseDown(object sender, MouseEventArgs e)
         {
 
             ReleaseCapture();

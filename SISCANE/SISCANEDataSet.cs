@@ -1,8 +1,8 @@
-﻿namespace SISCANE
+﻿namespace ManSys
 {
 
 
-    partial class SISCANEDataSet
+    partial class ManSysDataSet
     {
     }
 }

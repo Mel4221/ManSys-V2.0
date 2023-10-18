@@ -9,20 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-namespace SISCANE
+namespace ManSys
 {
-    public partial class R : Form
+    public partial class ReporteDeUsuarios : Form
     {
-        public R()
+        public ReporteDeUsuarios()
         {
             InitializeComponent();
         }
 
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg,
-int wparam, int lparam);
+     
 
         private void Form8_Load(object sender, EventArgs e)
         {
@@ -36,8 +32,7 @@ int wparam, int lparam);
 
         private void Form8_MouseDown(object sender, MouseEventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+
         }
     }
 }
