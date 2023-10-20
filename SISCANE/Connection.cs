@@ -12,6 +12,15 @@ using QuickTools.QCore;
 namespace ManSys
 {
 
+
+    public static class Connection
+    {
+        public static string ConnectionString = GetConnection();
+        private static string GetConnection()
+        {
+            return @"Server=HP\SQLEXPRESS;Database=ManSysDB;Trusted_Connection=True;";
+        }
+    }
     /// <summary>
     /// This Class give you asccess to the api that controls the connection string 
     /// </summary>

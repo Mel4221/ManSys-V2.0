@@ -175,7 +175,7 @@ int wparam, int lparam);
             txtcodigo.Text = ListadodeNominaRegistrada.CurrentRow.Cells["Codigo"].Value.ToString();
             txtnombre.Text = ListadodeNominaRegistrada.CurrentRow.Cells["Nombre"].Value.ToString();
             txtapellido.Text = ListadodeNominaRegistrada.CurrentRow.Cells["Apellido"].Value.ToString();
-            txtdni.Text = ListadodeNominaRegistrada.CurrentRow.Cells["DNI"].Value.ToString();
+            txtdni.Text = ListadodeNominaRegistrada.CurrentRow.Cells["CEDULA"].Value.ToString();
             txtsalariobase.Text = ListadodeNominaRegistrada.CurrentRow.Cells["Salario_Base"].Value.ToString();
             txtpuesto.Text = ListadodeNominaRegistrada.CurrentRow.Cells["Puesto_Ocupado"].Value.ToString();
             txtdepartamento.Text = ListadodeNominaRegistrada.CurrentRow.Cells["Departamento"].Value.ToString();

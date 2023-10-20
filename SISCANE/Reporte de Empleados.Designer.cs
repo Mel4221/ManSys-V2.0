@@ -165,8 +165,8 @@
             // 
             // dNIDataGridViewTextBoxColumn
             // 
-            this.dNIDataGridViewTextBoxColumn.DataPropertyName = "DNI";
-            this.dNIDataGridViewTextBoxColumn.HeaderText = "DNI";
+            this.dNIDataGridViewTextBoxColumn.DataPropertyName = "CEDULA";
+            this.dNIDataGridViewTextBoxColumn.HeaderText = "CEDULA";
             this.dNIDataGridViewTextBoxColumn.Name = "dNIDataGridViewTextBoxColumn";
             // 
             // salarioBaseDataGridViewTextBoxColumn

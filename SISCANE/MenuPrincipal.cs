@@ -245,5 +245,10 @@ namespace ManSys
             var reporte = new ReporteDeUsuarios();
             reporte.Show();
         }
+
+        private void administracionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

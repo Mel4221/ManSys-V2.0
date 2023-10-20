@@ -13,10 +13,11 @@ using System.Runtime.InteropServices;
 
 namespace ManSys
 {
+ 
     public partial class MantenimientoDeEmpleados : Form
     {
         // Realizo la Conexión a la Base de Datos
-        string connectionString = @"Server=HP\SQLEXPRESS;Database=ManSysDB;Trusted_Connection=True;";
+        string connectionString = Connection.ConnectionString;
         bool nuevo;
 
         public MantenimientoDeEmpleados()
@@ -24,66 +25,96 @@ namespace ManSys
             InitializeComponent();
         }
 
-    void AgregarUsuario(string nombre,string apellido , string edad)
-        {
 
+        private bool TodoEstaCompleto()
+        {
+            if (txtNombre.Text == "" ||
+                 txtApellido.Text == ""||
+                 txtdireccion.Text == ""||
+                 txttelefono.Text == ""||
+                 txtfechadeingreso.Text == "" ||
+                 txtdeparmento.Text == "" ||
+                 txtdni.Text == ""||
+                 txtsalariobase.Text == ""||
+                 txttipodecobro.Text == ""||
+                 txtturno.Text == ""
+               )
+            {
+                return false; 
+            }
+
+        
+  
+            return true;
         }
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            SqlConnection cn = new SqlConnection(ConfigurationSettings.AppSettings["conexion"].ToString());
-            SqlCommand cm = new SqlCommand();
-            cm.Connection = cn;
-            cm.CommandText = "SP_Insert_Mantenimiento_de_Empleados";
-            cm.CommandType = CommandType.StoredProcedure;
+            //try
+            //{
+            if (TodoEstaCompleto() == false)
+            {
+                MessageBox.Show("Pofavor completar todos los campos"); 
+                return; 
+            }
+            SqlConnection cn = new SqlConnection(connectionString);
+                SqlCommand cm = new SqlCommand();
+                cm.Connection = cn;
+                cm.CommandText = "SP_Insert_Mantenimiento_de_Empleados";
+                cm.CommandType = CommandType.StoredProcedure;
+                /*
+                cm.Parameters.Add(new SqlParameter("@Id", SqlDbType.Int));
+                cm.Parameters["@Id"].Value = txtId.Text;
+                */
+                cm.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
+                cm.Parameters["@Nombre"].Value = txtNombre.Text;
 
-            cm.Parameters.Add(new SqlParameter("@Id", SqlDbType.Int));
-            cm.Parameters["@Id"].Value = txtId.Text;
+                cm.Parameters.Add(new SqlParameter("@Apellido", SqlDbType.VarChar));
+                cm.Parameters["@Apellido"].Value = txtApellido.Text;
 
-            cm.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
-            cm.Parameters["@Nombre"].Value = txtNombre.Text;
+                cm.Parameters.Add(new SqlParameter("@Direccion", SqlDbType.VarChar));
+                cm.Parameters["@Direccion"].Value = txtdireccion.Text;
 
-            cm.Parameters.Add(new SqlParameter("@Apellido", SqlDbType.VarChar));
-            cm.Parameters["@Apellido"].Value = txtApellido.Text;
+                cm.Parameters.Add(new SqlParameter("@Telefono", SqlDbType.VarChar));
+                cm.Parameters["@Telefono"].Value = txttelefono.Text;
 
-            cm.Parameters.Add(new SqlParameter("@Dirección", SqlDbType.VarChar));
-            cm.Parameters["@Dirección"].Value = txtdireccion.Text;
+                cm.Parameters.Add(new SqlParameter("@Fecha_de_Ingreso", SqlDbType.VarChar));
+                cm.Parameters["@Fecha_de_Ingreso"].Value = txtfechadeingreso.Text;
 
-            cm.Parameters.Add(new SqlParameter("@Teléfono", SqlDbType.VarChar));
-            cm.Parameters["@Teléfono"].Value = txttelefono.Text;
+                cm.Parameters.Add(new SqlParameter("@Puesto_Ocupado", SqlDbType.VarChar));
+                cm.Parameters["@Puesto_Ocupado"].Value = txtpuestoocupado.Text;
 
-            cm.Parameters.Add(new SqlParameter("@Fecha_de_Ingreso", SqlDbType.VarChar));
-            cm.Parameters["@Fecha_de_Ingreso"].Value = txtfechadeingreso.Text;
+                cm.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar));
+                cm.Parameters["@Departamento"].Value = txtdeparmento.Text;
 
-            cm.Parameters.Add(new SqlParameter("@Puesto_Ocupado", SqlDbType.VarChar));
-            cm.Parameters["@Puesto_Ocupado"].Value = txtpuestoocupado.Text;
+                cm.Parameters.Add(new SqlParameter("@CEDULA", SqlDbType.VarChar));
+                cm.Parameters["@CEDULA"].Value = txtdni.Text;
 
-            cm.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar));
-            cm.Parameters["@Departamento"].Value = txtdeparmento.Text;
+                cm.Parameters.Add(new SqlParameter("@Salario_Base", SqlDbType.VarChar));
+                cm.Parameters["@Salario_Base"].Value = txtsalariobase.Text;
 
-            cm.Parameters.Add(new SqlParameter("@DNI", SqlDbType.VarChar));
-            cm.Parameters["@DNI"].Value = txtdni.Text;
+                cm.Parameters.Add(new SqlParameter("@Tipo_de_Cobro", SqlDbType.VarChar));
+                cm.Parameters["@Tipo_de_Cobro"].Value = txttipodecobro.Text;
 
-            cm.Parameters.Add(new SqlParameter("@Salario_Base", SqlDbType.VarChar));
-            cm.Parameters["@Salario_Base"].Value = txtsalariobase.Text;
+                cm.Parameters.Add(new SqlParameter("@Turno", SqlDbType.VarChar));
+                cm.Parameters["@Turno"].Value = txtturno.Text;
 
-            cm.Parameters.Add(new SqlParameter("@Tipo_de_Cobro", SqlDbType.VarChar));
-            cm.Parameters["@Tipo_de_Cobro"].Value = txttipodecobro.Text;
+                cn.Open();
+                cm.ExecuteNonQuery();
+                MessageBox.Show("Registro Guardado Satisfactoriamente");
 
-            cm.Parameters.Add(new SqlParameter("@Turno", SqlDbType.VarChar));
-            cm.Parameters["@Turno"].Value = txtturno.Text;
 
-            cn.Open();
-            cm.ExecuteNonQuery();
-            MessageBox.Show("Registro Guardado Satisfactoriamente");
-            
-
-            btnNuevo.Enabled = true;
-            btnRegistrar.Enabled = false;
-            btnModificar.Enabled = false;
-            btnCancelar.Enabled = true;
-            btnEliminar.Enabled = true;
-            btnBuscar.Enabled = true;
-            txtbusqueda.Enabled = true;
+                btnNuevo.Enabled = true;
+                btnRegistrar.Enabled = false;
+                btnModificar.Enabled = false;
+                btnCancelar.Enabled = true;
+                btnEliminar.Enabled = true;
+                btnBuscar.Enabled = true;
+                txtbusqueda.Enabled = true;
+                cn.Close();
+            //}catch(Exception ex)
+            //{
+            //    MessageBox.Show($"{ex}", "Algo Salio mal!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
 
         }
@@ -100,22 +131,23 @@ namespace ManSys
             txtdni.Clear();
             txtsalariobase.Clear();
             txttipodecobro.ResetText();
-            txtturno.Clear();
+            //txtturno.Clear();
         }
 
         private void MantenimientoDeEmpleados_Load(object sender, EventArgs e)
         {
-            LLenarGridEmpleados();
+            /*
+           LLenarGridEmpleados();
 
-            btnNuevo.Enabled = true;
-            btnRegistrar.Enabled = false;
-            btnModificar.Enabled = false;
-            btnCancelar.Enabled = true;
-            btnEliminar.Enabled = true;
-            btnBuscar.Enabled = true;
-            txtbusqueda.Enabled = true;
+           btnNuevo.Enabled = true;
+           btnRegistrar.Enabled = false;
+           btnModificar.Enabled = false;
+           btnCancelar.Enabled = true;
+           btnEliminar.Enabled = true;
+           btnBuscar.Enabled = true;
+           txtbusqueda.Enabled = true;
+           */
 
-            
         }
 
         private void LLenarGridEmpleados()
@@ -125,9 +157,7 @@ namespace ManSys
 
             DataTable dtempleados = new DataTable();
 
-            SqlConnection dataConnection = new SqlConnection(ConfigurationSettings.AppSettings["conexion"].ToString());
-            SqlCommand cm = new SqlCommand();
-            cm.Connection = dataConnection;
+            SqlConnection dataConnection = new SqlConnection(Connection.ConnectionString);
 
             SqlDataAdapter daempleados = new SqlDataAdapter("GetDB_Mantenimiento_de_Empleados", dataConnection);
 
@@ -262,15 +292,12 @@ namespace ManSys
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            SqlConnection cn = new SqlConnection(ConfigurationSettings.AppSettings["conexion"].ToString());
+            SqlConnection cn = new SqlConnection(Connection.ConnectionString);
             SqlCommand cm = new SqlCommand();
             cm.Connection = cn;
 
             cm.CommandText = "SP_Update_Mantenimiento_de_Empleados";
             cm.CommandType = CommandType.StoredProcedure;
-
-            cm.Parameters.Add(new SqlParameter("@Id", SqlDbType.Int));
-            cm.Parameters["@Id"].Value = txtId.Text;
 
             cm.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
             cm.Parameters["@Nombre"].Value = txtNombre.Text;
@@ -278,11 +305,11 @@ namespace ManSys
             cm.Parameters.Add(new SqlParameter("@Apellido", SqlDbType.VarChar));
             cm.Parameters["@Apellido"].Value = txtApellido.Text;
 
-            cm.Parameters.Add(new SqlParameter("@Dirección", SqlDbType.VarChar));
-            cm.Parameters["@Dirección"].Value = txtdireccion.Text;
+            cm.Parameters.Add(new SqlParameter("@Direccion", SqlDbType.VarChar));
+            cm.Parameters["@Direccion"].Value = txtdireccion.Text;
 
-            cm.Parameters.Add(new SqlParameter("@Teléfono", SqlDbType.VarChar));
-            cm.Parameters["@Teléfono"].Value = txttelefono.Text;
+            cm.Parameters.Add(new SqlParameter("@Telefono", SqlDbType.VarChar));
+            cm.Parameters["@Telefono"].Value = txttelefono.Text;
 
             cm.Parameters.Add(new SqlParameter("@Fecha_de_Ingreso", SqlDbType.VarChar));
             cm.Parameters["@Fecha_de_Ingreso"].Value = txtfechadeingreso.Text;
@@ -293,8 +320,8 @@ namespace ManSys
             cm.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar));
             cm.Parameters["@Departamento"].Value = txtdeparmento.Text;
 
-            cm.Parameters.Add(new SqlParameter("@DNI", SqlDbType.VarChar));
-            cm.Parameters["@DNI"].Value = txtdni.Text;
+            cm.Parameters.Add(new SqlParameter("@CEDULA", SqlDbType.VarChar));
+            cm.Parameters["@CEDULA"].Value = txtdni.Text;
 
             cm.Parameters.Add(new SqlParameter("@Salario_Base", SqlDbType.VarChar));
             cm.Parameters["@Salario_Base"].Value = txtsalariobase.Text;
@@ -338,7 +365,7 @@ namespace ManSys
             txtfechadeingreso.Text = ListadodeEmpleados.CurrentRow.Cells["Fecha_de_Ingreso"].Value.ToString();
             txtpuestoocupado.Text = ListadodeEmpleados.CurrentRow.Cells["Puesto_Ocupado"].Value.ToString();
             txtdeparmento.Text = ListadodeEmpleados.CurrentRow.Cells["Departamento"].Value.ToString();
-            txtdni.Text = ListadodeEmpleados.CurrentRow.Cells["DNI"].Value.ToString();
+            txtdni.Text = ListadodeEmpleados.CurrentRow.Cells["CEDULA"].Value.ToString();
             txtsalariobase.Text = ListadodeEmpleados.CurrentRow.Cells["Salario_Base"].Value.ToString();
             txttipodecobro.Text = ListadodeEmpleados.CurrentRow.Cells["Tipo_de_Cobro"].Value.ToString();
             btnNuevo.Enabled = true;
@@ -358,6 +385,11 @@ namespace ManSys
         {
 
            
+        }
+
+        private void gblistadovisitas_Enter(object sender, EventArgs e)
+        {
+
         }
     }
     }
