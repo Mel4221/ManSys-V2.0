@@ -50,5 +50,10 @@ namespace ManSys
         {
 
         }
+
+        private void ListadodeNominaRegistrada_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

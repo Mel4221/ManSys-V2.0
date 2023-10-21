@@ -36,9 +36,11 @@ namespace ManSys
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new MenuPrincipal());
+                //Application.Run(new MenuPrincipal());
+                Application.Run(new MantenimientoDeEmpleados());
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.Event("FatalError",e);
                 Color.Red("Something Really Bad just happened , more details : \n"+e);

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Runtime.InteropServices;
+using QuickTools.QCore;
 
 namespace ManSys
 {
@@ -47,16 +48,60 @@ namespace ManSys
   
             return true;
         }
+        private bool ExisteRegistro()
+        {
+               using(SqlConnection cn = new SqlConnection(Connection.ConnectionString))
+            {
+                SqlCommand cm = new SqlCommand();
+
+                cn.Open();
+                cm.Connection = cn;
+                cm.CommandText = "SP_Verificar";
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
+                cm.Parameters["@Nombre"].Value = txtNombre.Text;
+
+                cm.Parameters.Add(new SqlParameter("@Apellido", SqlDbType.VarChar));
+                cm.Parameters["@Apellido"].Value = txtApellido.Text;
+
+                cm.Parameters.Add(new SqlParameter("@CEDULA", SqlDbType.VarChar));
+                cm.Parameters["@CEDULA"].Value = txtdni.Text;
+                SqlDataReader reader = cm.ExecuteReader();
+
+
+                if (reader.Read())
+                {
+                    return true;
+                }
+                return false;
+            }
+           
+        }
+
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             //try
             //{
+            
+            bool cumpleCondiciones = true;
+            if (ExisteRegistro())
+            {
+                MessageBox.Show("El Usuario ya Existe");
+                cumpleCondiciones = false;
+                return;
+            }
+
             if (TodoEstaCompleto() == false)
             {
-                MessageBox.Show("Pofavor completar todos los campos"); 
+                MessageBox.Show("Pofavor completar todos los campos");
+                cumpleCondiciones = false;
                 return; 
             }
-            SqlConnection cn = new SqlConnection(connectionString);
+            if (cumpleCondiciones)
+            {
+
+
+                SqlConnection cn = new SqlConnection(connectionString);
                 SqlCommand cm = new SqlCommand();
                 cm.Connection = cn;
                 cm.CommandText = "SP_Insert_Mantenimiento_de_Empleados";
@@ -102,7 +147,7 @@ namespace ManSys
                 cm.ExecuteNonQuery();
                 MessageBox.Show("Registro Guardado Satisfactoriamente");
 
-
+                /*
                 btnNuevo.Enabled = true;
                 btnRegistrar.Enabled = false;
                 btnModificar.Enabled = false;
@@ -110,7 +155,9 @@ namespace ManSys
                 btnEliminar.Enabled = true;
                 btnBuscar.Enabled = true;
                 txtbusqueda.Enabled = true;
+                */
                 cn.Close();
+            }
             //}catch(Exception ex)
             //{
             //    MessageBox.Show($"{ex}", "Algo Salio mal!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -136,6 +183,8 @@ namespace ManSys
 
         private void MantenimientoDeEmpleados_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'manSysDBDataSet.GetDB_Mantenimiento_de_Empleados' table. You can move, or remove it, as needed.
+            //this.getDB_Mantenimiento_de_EmpleadosTableAdapter.Fill(this.manSysDBDataSet.GetDB_Mantenimiento_de_Empleados);
             /*
            LLenarGridEmpleados();
 
@@ -163,8 +212,9 @@ namespace ManSys
 
             daempleados.SelectCommand.CommandType = CommandType.StoredProcedure;
 
-           
+            daempleados.Fill(dtempleados);
             ListadodeEmpleados.DataSource = dtempleados;
+            this.CargaCompleta = true; 
         }
 
 
@@ -205,7 +255,7 @@ namespace ManSys
             try
             {
                 int i = cmd.ExecuteNonQuery();
-                if (1 > 0)
+                if (i > 0)
                     MessageBox.Show("Registro Eliminado Correctamente !");
             }
             catch (Exception ex)
@@ -251,6 +301,7 @@ namespace ManSys
                 reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
+                    /*
                     btnNuevo.Enabled = false;
                     btnRegistrar.Enabled = true;
                     btnModificar.Enabled = true;
@@ -259,6 +310,7 @@ namespace ManSys
                     btnBuscar.Enabled = true;
                     txtbusqueda.Enabled = true;
                     txtNombre.Focus();
+                    */
                     txtId.Text = reader[0].ToString();
                     txtNombre.Text = reader[1].ToString();
                     txtApellido.Text = reader[2].ToString();
@@ -292,6 +344,9 @@ namespace ManSys
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            ListadodeEmpleados.EndEdit();
+            ListadodeEmpleados.Update();
+            /*
             SqlConnection cn = new SqlConnection(Connection.ConnectionString);
             SqlCommand cm = new SqlCommand();
             cm.Connection = cn;
@@ -347,33 +402,12 @@ namespace ManSys
             btnEliminar.Enabled = false;
             btnBuscar.Enabled = true;
             txtbusqueda.Enabled = true;
-
+            */
         }
 
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
             LLenarGridEmpleados();
-        }
-
-        private void ListadodeEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtId.Text = ListadodeEmpleados.CurrentRow.Cells["Codigo"].Value.ToString();
-            txtNombre.Text = ListadodeEmpleados.CurrentRow.Cells["Nombre"].Value.ToString();
-            txtApellido.Text = ListadodeEmpleados.CurrentRow.Cells["Apellido"].Value.ToString();
-            txtdireccion.Text = ListadodeEmpleados.CurrentRow.Cells["Dirección"].Value.ToString();
-            txttelefono.Text = ListadodeEmpleados.CurrentRow.Cells["Teléfono"].Value.ToString();
-            txtfechadeingreso.Text = ListadodeEmpleados.CurrentRow.Cells["Fecha_de_Ingreso"].Value.ToString();
-            txtpuestoocupado.Text = ListadodeEmpleados.CurrentRow.Cells["Puesto_Ocupado"].Value.ToString();
-            txtdeparmento.Text = ListadodeEmpleados.CurrentRow.Cells["Departamento"].Value.ToString();
-            txtdni.Text = ListadodeEmpleados.CurrentRow.Cells["CEDULA"].Value.ToString();
-            txtsalariobase.Text = ListadodeEmpleados.CurrentRow.Cells["Salario_Base"].Value.ToString();
-            txttipodecobro.Text = ListadodeEmpleados.CurrentRow.Cells["Tipo_de_Cobro"].Value.ToString();
-            btnNuevo.Enabled = true;
-            btnRegistrar.Enabled = true;
-            btnModificar.Enabled = true;
-            btnCancelar.Enabled = true;
-            btnEliminar.Enabled = true;
-
         }
 
         private void bntlimpiar_Click(object sender, EventArgs e)
@@ -388,6 +422,11 @@ namespace ManSys
         }
 
         private void gblistadovisitas_Enter(object sender, EventArgs e)
+        {
+
+        }
+        private bool CargaCompleta = false;
+        private void ListadodeEmpleados_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
 
         }

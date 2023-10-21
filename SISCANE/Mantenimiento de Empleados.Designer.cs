@@ -28,11 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MantenimientoDeEmpleados));
             this.label14 = new System.Windows.Forms.Label();
             this.gblistadovisitas = new System.Windows.Forms.GroupBox();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.ListadodeEmpleados = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha_de_Ingreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Puesto_Ocupado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CEDULA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Salario_Base = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo_de_Cobro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Turno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.txtbusqueda = new System.Windows.Forms.TextBox();
@@ -40,7 +52,6 @@
             this.bntlimpiar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -69,10 +80,15 @@
             this.txtdeparmento = new System.Windows.Forms.ComboBox();
             this.txtpuestoocupado = new System.Windows.Forms.ComboBox();
             this.txtturno = new System.Windows.Forms.ComboBox();
+            this.getDBMantenimientodeEmpleadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.manSysDBDataSet = new ManSys.ManSysDBDataSet();
+            this.getDB_Mantenimiento_de_EmpleadosTableAdapter = new ManSys.ManSysDBDataSetTableAdapters.GetDB_Mantenimiento_de_EmpleadosTableAdapter();
             this.gblistadovisitas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListadodeEmpleados)).BeginInit();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.getDBMantenimientodeEmpleadosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.manSysDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label14
@@ -94,13 +110,13 @@
             this.gblistadovisitas.Controls.Add(this.btnBuscar);
             this.gblistadovisitas.Controls.Add(this.label15);
             this.gblistadovisitas.Controls.Add(this.txtbusqueda);
-            this.gblistadovisitas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gblistadovisitas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gblistadovisitas.ForeColor = System.Drawing.Color.DarkCyan;
-            this.gblistadovisitas.Location = new System.Drawing.Point(6, 429);
+            this.gblistadovisitas.Location = new System.Drawing.Point(35, 429);
             this.gblistadovisitas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gblistadovisitas.Name = "gblistadovisitas";
             this.gblistadovisitas.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gblistadovisitas.Size = new System.Drawing.Size(888, 374);
+            this.gblistadovisitas.Size = new System.Drawing.Size(1771, 512);
             this.gblistadovisitas.TabIndex = 137;
             this.gblistadovisitas.TabStop = false;
             this.gblistadovisitas.Text = "Empleados Registrados";
@@ -109,7 +125,7 @@
             // btnRefrescar
             // 
             this.btnRefrescar.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnRefrescar.Location = new System.Drawing.Point(724, 69);
+            this.btnRefrescar.Location = new System.Drawing.Point(497, 69);
             this.btnRefrescar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRefrescar.Name = "btnRefrescar";
             this.btnRefrescar.Size = new System.Drawing.Size(154, 35);
@@ -122,14 +138,112 @@
             // 
             this.ListadodeEmpleados.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.ListadodeEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListadodeEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nombre,
+            this.Apellido,
+            this.Direccion,
+            this.Telefono,
+            this.Fecha_de_Ingreso,
+            this.Puesto_Ocupado,
+            this.Departamento,
+            this.CEDULA,
+            this.Salario_Base,
+            this.Tipo_de_Cobro,
+            this.Turno});
             this.ListadodeEmpleados.Location = new System.Drawing.Point(10, 112);
             this.ListadodeEmpleados.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ListadodeEmpleados.Name = "ListadodeEmpleados";
-            this.ListadodeEmpleados.ReadOnly = true;
             this.ListadodeEmpleados.RowHeadersWidth = 62;
-            this.ListadodeEmpleados.Size = new System.Drawing.Size(868, 252);
+            this.ListadodeEmpleados.Size = new System.Drawing.Size(1688, 371);
             this.ListadodeEmpleados.TabIndex = 8;
-            this.ListadodeEmpleados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadodeEmpleados_CellContentClick);
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.MinimumWidth = 8;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Width = 150;
+            // 
+            // Apellido
+            // 
+            this.Apellido.DataPropertyName = "Apellido";
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.MinimumWidth = 8;
+            this.Apellido.Name = "Apellido";
+            this.Apellido.Width = 150;
+            // 
+            // Direccion
+            // 
+            this.Direccion.DataPropertyName = "Direccion";
+            this.Direccion.HeaderText = "Direccion";
+            this.Direccion.MinimumWidth = 8;
+            this.Direccion.Name = "Direccion";
+            this.Direccion.Width = 150;
+            // 
+            // Telefono
+            // 
+            this.Telefono.DataPropertyName = "Telefono";
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.MinimumWidth = 8;
+            this.Telefono.Name = "Telefono";
+            this.Telefono.Width = 150;
+            // 
+            // Fecha_de_Ingreso
+            // 
+            this.Fecha_de_Ingreso.DataPropertyName = "Fecha_de_Ingreso";
+            this.Fecha_de_Ingreso.HeaderText = "Fecha_de_Ingreso";
+            this.Fecha_de_Ingreso.MinimumWidth = 8;
+            this.Fecha_de_Ingreso.Name = "Fecha_de_Ingreso";
+            this.Fecha_de_Ingreso.Width = 150;
+            // 
+            // Puesto_Ocupado
+            // 
+            this.Puesto_Ocupado.DataPropertyName = "Puesto_Ocupado";
+            this.Puesto_Ocupado.HeaderText = "Puesto_Ocupado";
+            this.Puesto_Ocupado.MinimumWidth = 8;
+            this.Puesto_Ocupado.Name = "Puesto_Ocupado";
+            this.Puesto_Ocupado.Width = 150;
+            // 
+            // Departamento
+            // 
+            this.Departamento.DataPropertyName = "Departamento";
+            this.Departamento.HeaderText = "Departamento";
+            this.Departamento.MinimumWidth = 8;
+            this.Departamento.Name = "Departamento";
+            this.Departamento.Width = 150;
+            // 
+            // CEDULA
+            // 
+            this.CEDULA.DataPropertyName = "CEDULA";
+            this.CEDULA.HeaderText = "CEDULA";
+            this.CEDULA.MinimumWidth = 8;
+            this.CEDULA.Name = "CEDULA";
+            this.CEDULA.Width = 150;
+            // 
+            // Salario_Base
+            // 
+            this.Salario_Base.DataPropertyName = "Salario_Base";
+            this.Salario_Base.HeaderText = "Salario_Base";
+            this.Salario_Base.MinimumWidth = 8;
+            this.Salario_Base.Name = "Salario_Base";
+            this.Salario_Base.Width = 150;
+            // 
+            // Tipo_de_Cobro
+            // 
+            this.Tipo_de_Cobro.DataPropertyName = "Tipo_de_Cobro";
+            this.Tipo_de_Cobro.HeaderText = "Tipo_de_Cobro";
+            this.Tipo_de_Cobro.MinimumWidth = 8;
+            this.Tipo_de_Cobro.Name = "Tipo_de_Cobro";
+            this.Tipo_de_Cobro.Width = 150;
+            // 
+            // Turno
+            // 
+            this.Turno.DataPropertyName = "Turno";
+            this.Turno.HeaderText = "Turno";
+            this.Turno.MinimumWidth = 8;
+            this.Turno.Name = "Turno";
+            this.Turno.Width = 150;
             // 
             // btnBuscar
             // 
@@ -150,7 +264,7 @@
             this.label15.Location = new System.Drawing.Point(15, 34);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(215, 25);
+            this.label15.Size = new System.Drawing.Size(199, 22);
             this.label15.TabIndex = 1;
             this.label15.Text = "Criterio de Búsqueda";
             // 
@@ -159,7 +273,7 @@
             this.txtbusqueda.Location = new System.Drawing.Point(15, 69);
             this.txtbusqueda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtbusqueda.Name = "txtbusqueda";
-            this.txtbusqueda.Size = new System.Drawing.Size(301, 30);
+            this.txtbusqueda.Size = new System.Drawing.Size(301, 28);
             this.txtbusqueda.TabIndex = 0;
             // 
             // toolStripContainer1
@@ -171,7 +285,6 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.bntlimpiar);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.btnCancelar);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.btnNuevo);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.label13);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.btnCerrar);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.btnModificar);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.btnEliminar);
@@ -179,7 +292,7 @@
             this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(222, 486);
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
-            this.toolStripContainer1.Location = new System.Drawing.Point(903, 317);
+            this.toolStripContainer1.Location = new System.Drawing.Point(1363, 23);
             this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.RightToolStripPanelVisible = false;
@@ -230,18 +343,6 @@
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(54, 392);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(140, 29);
-            this.label13.TabIndex = 107;
-            this.label13.Text = "BOTONES";
             // 
             // btnCerrar
             // 
@@ -298,7 +399,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(573, 263);
+            this.label12.Location = new System.Drawing.Point(671, 264);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(217, 29);
@@ -317,7 +418,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(596, 226);
+            this.label11.Location = new System.Drawing.Point(694, 227);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(183, 29);
@@ -328,7 +429,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(596, 194);
+            this.label10.Location = new System.Drawing.Point(694, 195);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(82, 29);
@@ -359,7 +460,7 @@
             // 
             // txtdni
             // 
-            this.txtdni.Location = new System.Drawing.Point(716, 154);
+            this.txtdni.Location = new System.Drawing.Point(814, 155);
             this.txtdni.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtdni.Name = "txtdni";
             this.txtdni.Size = new System.Drawing.Size(296, 26);
@@ -369,7 +470,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(596, 158);
+            this.label7.Location = new System.Drawing.Point(694, 159);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(96, 29);
@@ -378,7 +479,7 @@
             // 
             // txttelefono
             // 
-            this.txttelefono.Location = new System.Drawing.Point(716, 115);
+            this.txttelefono.Location = new System.Drawing.Point(814, 116);
             this.txttelefono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txttelefono.Name = "txttelefono";
             this.txttelefono.Size = new System.Drawing.Size(296, 26);
@@ -388,7 +489,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(596, 118);
+            this.label6.Location = new System.Drawing.Point(694, 119);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 29);
@@ -466,7 +567,6 @@
             this.label1.Size = new System.Drawing.Size(38, 29);
             this.label1.TabIndex = 113;
             this.label1.Text = "ID";
-            this.label1.Visible = false;
             // 
             // txtNombre
             // 
@@ -481,13 +581,13 @@
             this.txtId.Location = new System.Drawing.Point(170, 75);
             this.txtId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(134, 26);
             this.txtId.TabIndex = 141;
-            this.txtId.Visible = false;
             // 
             // txtfechadeingreso
             // 
-            this.txtfechadeingreso.Location = new System.Drawing.Point(778, 263);
+            this.txtfechadeingreso.Location = new System.Drawing.Point(876, 264);
             this.txtfechadeingreso.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtfechadeingreso.Name = "txtfechadeingreso";
             this.txtfechadeingreso.Size = new System.Drawing.Size(298, 26);
@@ -501,7 +601,7 @@
             "Checke",
             "Deposito",
             "Paypal"});
-            this.txttipodecobro.Location = new System.Drawing.Point(778, 226);
+            this.txttipodecobro.Location = new System.Drawing.Point(876, 227);
             this.txttipodecobro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txttipodecobro.Name = "txttipodecobro";
             this.txttipodecobro.Size = new System.Drawing.Size(298, 28);
@@ -636,18 +736,32 @@
             "Vespertino",
             "Nocturno",
             "Rotativo"});
-            this.txtturno.Location = new System.Drawing.Point(714, 195);
+            this.txtturno.Location = new System.Drawing.Point(812, 196);
             this.txtturno.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtturno.Name = "txtturno";
             this.txtturno.Size = new System.Drawing.Size(298, 28);
             this.txtturno.TabIndex = 146;
+            // 
+            // getDBMantenimientodeEmpleadosBindingSource
+            // 
+            this.getDBMantenimientodeEmpleadosBindingSource.DataMember = "GetDB_Mantenimiento_de_Empleados";
+            this.getDBMantenimientodeEmpleadosBindingSource.DataSource = this.manSysDBDataSet;
+            // 
+            // manSysDBDataSet
+            // 
+            this.manSysDBDataSet.DataSetName = "ManSysDBDataSet";
+            this.manSysDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // getDB_Mantenimiento_de_EmpleadosTableAdapter
+            // 
+            this.getDB_Mantenimiento_de_EmpleadosTableAdapter.ClearBeforeFill = true;
             // 
             // MantenimientoDeEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1131, 818);
+            this.ClientSize = new System.Drawing.Size(1834, 955);
             this.Controls.Add(this.txtturno);
             this.Controls.Add(this.txtpuestoocupado);
             this.Controls.Add(this.txtdeparmento);
@@ -681,15 +795,17 @@
             this.Name = "MantenimientoDeEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento_de_Empleado";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MantenimientoDeEmpleados_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MantenimientoDeEmpleados_MouseDown);
             this.gblistadovisitas.ResumeLayout(false);
             this.gblistadovisitas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListadodeEmpleados)).EndInit();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
-            this.toolStripContainer1.ContentPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.getDBMantenimientodeEmpleadosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.manSysDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -704,7 +820,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtbusqueda;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
@@ -736,5 +851,19 @@
         private System.Windows.Forms.ComboBox txtdeparmento;
         private System.Windows.Forms.ComboBox txtpuestoocupado;
         private System.Windows.Forms.ComboBox txtturno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_de_Ingreso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Puesto_Ocupado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Departamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CEDULA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Salario_Base;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo_de_Cobro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Turno;
+        private ManSysDBDataSet manSysDBDataSet;
+        private System.Windows.Forms.BindingSource getDBMantenimientodeEmpleadosBindingSource;
+        private ManSysDBDataSetTableAdapters.GetDB_Mantenimiento_de_EmpleadosTableAdapter getDB_Mantenimiento_de_EmpleadosTableAdapter;
     }
 }

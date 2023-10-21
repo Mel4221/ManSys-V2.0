@@ -288,6 +288,7 @@
             this.ListadodeNominaRegistrada.RowHeadersWidth = 62;
             this.ListadodeNominaRegistrada.Size = new System.Drawing.Size(829, 358);
             this.ListadodeNominaRegistrada.TabIndex = 273;
+            this.ListadodeNominaRegistrada.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadodeNominaRegistrada_CellContentClick);
             // 
             // ConsultadeNominaSalarial
             // 
