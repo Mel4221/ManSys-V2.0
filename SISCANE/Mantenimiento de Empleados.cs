@@ -183,6 +183,7 @@ namespace ManSys
 
         private void MantenimientoDeEmpleados_Load(object sender, EventArgs e)
         {
+            //
             // TODO: This line of code loads data into the 'manSysDBDataSet.GetDB_Mantenimiento_de_Empleados' table. You can move, or remove it, as needed.
             //this.getDB_Mantenimiento_de_EmpleadosTableAdapter.Fill(this.manSysDBDataSet.GetDB_Mantenimiento_de_Empleados);
             /*
