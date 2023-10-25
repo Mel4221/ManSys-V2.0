@@ -250,5 +250,10 @@ namespace ManSys
         {
 
         }
+
+        private void consultasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

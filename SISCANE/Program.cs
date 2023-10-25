@@ -37,8 +37,8 @@ namespace ManSys
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 //Application.Run(new MenuPrincipal());
-                Application.Run(new MantenimientoDeEmpleados());
-
+                //Application.Run(new MantenimientoDeEmpleados());
+                Application.Run(new GenerarNomina()); 
             }
             catch (Exception e)
             {

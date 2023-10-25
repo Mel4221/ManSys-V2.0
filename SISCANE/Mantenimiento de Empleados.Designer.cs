@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MantenimientoDeEmpleados));
             this.label14 = new System.Windows.Forms.Label();
             this.gblistadovisitas = new System.Windows.Forms.GroupBox();
+            this.btnGuardarCambios = new System.Windows.Forms.Button();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.ListadodeEmpleados = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +49,8 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.txtbusqueda = new System.Windows.Forms.TextBox();
+            this.empleadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.empleadosDataSet = new ManSys.EmpleadosDataSet();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.bntlimpiar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -80,15 +83,14 @@
             this.txtdeparmento = new System.Windows.Forms.ComboBox();
             this.txtpuestoocupado = new System.Windows.Forms.ComboBox();
             this.txtturno = new System.Windows.Forms.ComboBox();
-            this.getDBMantenimientodeEmpleadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.manSysDBDataSet = new ManSys.ManSysDBDataSet();
-            this.getDB_Mantenimiento_de_EmpleadosTableAdapter = new ManSys.ManSysDBDataSetTableAdapters.GetDB_Mantenimiento_de_EmpleadosTableAdapter();
+            this.empleadosTableAdapter = new ManSys.EmpleadosDataSetTableAdapters.EmpleadosTableAdapter();
+            this.CriterioDeBusqueda = new System.Windows.Forms.ComboBox();
             this.gblistadovisitas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListadodeEmpleados)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empleadosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empleadosDataSet)).BeginInit();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.getDBMantenimientodeEmpleadosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.manSysDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label14
@@ -105,6 +107,8 @@
             // 
             // gblistadovisitas
             // 
+            this.gblistadovisitas.Controls.Add(this.CriterioDeBusqueda);
+            this.gblistadovisitas.Controls.Add(this.btnGuardarCambios);
             this.gblistadovisitas.Controls.Add(this.btnRefrescar);
             this.gblistadovisitas.Controls.Add(this.ListadodeEmpleados);
             this.gblistadovisitas.Controls.Add(this.btnBuscar);
@@ -122,6 +126,18 @@
             this.gblistadovisitas.Text = "Empleados Registrados";
             this.gblistadovisitas.Enter += new System.EventHandler(this.gblistadovisitas_Enter);
             // 
+            // btnGuardarCambios
+            // 
+            this.btnGuardarCambios.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btnGuardarCambios.Location = new System.Drawing.Point(699, 69);
+            this.btnGuardarCambios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnGuardarCambios.Name = "btnGuardarCambios";
+            this.btnGuardarCambios.Size = new System.Drawing.Size(154, 35);
+            this.btnGuardarCambios.TabIndex = 9;
+            this.btnGuardarCambios.Text = "Guardar";
+            this.btnGuardarCambios.UseVisualStyleBackColor = true;
+            this.btnGuardarCambios.Click += new System.EventHandler(this.btnGuardarCambios_Click);
+            // 
             // btnRefrescar
             // 
             this.btnRefrescar.ForeColor = System.Drawing.Color.DodgerBlue;
@@ -136,6 +152,7 @@
             // 
             // ListadodeEmpleados
             // 
+            this.ListadodeEmpleados.AllowUserToAddRows = false;
             this.ListadodeEmpleados.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.ListadodeEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ListadodeEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -248,7 +265,7 @@
             // btnBuscar
             // 
             this.btnBuscar.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnBuscar.Location = new System.Drawing.Point(327, 69);
+            this.btnBuscar.Location = new System.Drawing.Point(345, 66);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(112, 35);
@@ -264,9 +281,9 @@
             this.label15.Location = new System.Drawing.Point(15, 34);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(199, 22);
+            this.label15.Size = new System.Drawing.Size(234, 22);
             this.label15.TabIndex = 1;
-            this.label15.Text = "Criterio de Búsqueda";
+            this.label15.Text = "Criterio de Búsqueda por";
             // 
             // txtbusqueda
             // 
@@ -275,6 +292,16 @@
             this.txtbusqueda.Name = "txtbusqueda";
             this.txtbusqueda.Size = new System.Drawing.Size(301, 28);
             this.txtbusqueda.TabIndex = 0;
+            // 
+            // empleadosBindingSource
+            // 
+            this.empleadosBindingSource.DataMember = "Empleados";
+            this.empleadosBindingSource.DataSource = this.empleadosDataSet;
+            // 
+            // empleadosDataSet
+            // 
+            this.empleadosDataSet.DataSetName = "EmpleadosDataSet";
+            this.empleadosDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // toolStripContainer1
             // 
@@ -742,19 +769,22 @@
             this.txtturno.Size = new System.Drawing.Size(298, 28);
             this.txtturno.TabIndex = 146;
             // 
-            // getDBMantenimientodeEmpleadosBindingSource
+            // empleadosTableAdapter
             // 
-            this.getDBMantenimientodeEmpleadosBindingSource.DataMember = "GetDB_Mantenimiento_de_Empleados";
-            this.getDBMantenimientodeEmpleadosBindingSource.DataSource = this.manSysDBDataSet;
+            this.empleadosTableAdapter.ClearBeforeFill = true;
             // 
-            // manSysDBDataSet
+            // CriterioDeBusqueda
             // 
-            this.manSysDBDataSet.DataSetName = "ManSysDBDataSet";
-            this.manSysDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // getDB_Mantenimiento_de_EmpleadosTableAdapter
-            // 
-            this.getDB_Mantenimiento_de_EmpleadosTableAdapter.ClearBeforeFill = true;
+            this.CriterioDeBusqueda.FormattingEnabled = true;
+            this.CriterioDeBusqueda.Items.AddRange(new object[] {
+            "Id",
+            "Nombre y Apellido",
+            "Numero"});
+            this.CriterioDeBusqueda.Location = new System.Drawing.Point(271, 29);
+            this.CriterioDeBusqueda.Name = "CriterioDeBusqueda";
+            this.CriterioDeBusqueda.Size = new System.Drawing.Size(133, 30);
+            this.CriterioDeBusqueda.TabIndex = 10;
+            this.CriterioDeBusqueda.Text = "CEDULA";
             // 
             // MantenimientoDeEmpleados
             // 
@@ -801,11 +831,11 @@
             this.gblistadovisitas.ResumeLayout(false);
             this.gblistadovisitas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListadodeEmpleados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empleadosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empleadosDataSet)).EndInit();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.getDBMantenimientodeEmpleadosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.manSysDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -862,8 +892,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Salario_Base;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo_de_Cobro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Turno;
-        private ManSysDBDataSet manSysDBDataSet;
-        private System.Windows.Forms.BindingSource getDBMantenimientodeEmpleadosBindingSource;
-        private ManSysDBDataSetTableAdapters.GetDB_Mantenimiento_de_EmpleadosTableAdapter getDB_Mantenimiento_de_EmpleadosTableAdapter;
+        private EmpleadosDataSet empleadosDataSet;
+        private System.Windows.Forms.BindingSource empleadosBindingSource;
+        private EmpleadosDataSetTableAdapters.EmpleadosTableAdapter empleadosTableAdapter;
+        private System.Windows.Forms.Button btnGuardarCambios;
+        private System.Windows.Forms.ComboBox CriterioDeBusqueda;
     }
 }

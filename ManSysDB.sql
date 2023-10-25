@@ -151,3 +151,24 @@
 --begin
 --select * from dbo.Empleados
 --end
+ 
+/*
+	Corrige el sueldo base y los lleva al siguiente salario base 
+	Agente = 50000
+	Supervisor = 75000
+	Calidad = 80000
+	Manager = 100000
+*/
+--update dbo.Empleados
+--set Salario_Base = 100000
+--where Puesto_Ocupado = 'Manager'
+--update dbo.Empleados
+--set Salario_Base = 80000
+--where Puesto_Ocupado = 'Calidad'
+--update dbo.Empleados
+--set Salario_Base = 75000
+--where Puesto_Ocupado = 'Supervisor'
+--update dbo.Empleados
+--set Salario_Base = 50000
+--where Puesto_Ocupado = 'Agente'
+--select * from dbo.Empleados

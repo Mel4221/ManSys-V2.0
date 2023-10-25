@@ -327,7 +327,7 @@ int wparam, int lparam);
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            SqlConnection cn = new SqlConnection(ConfigurationSettings.AppSettings["conexion"].ToString());
+            SqlConnection cn = new SqlConnection(Connection.ConnectionString);
             SqlCommand cm = new SqlCommand();
             cm.Connection = cn;
             cm.CommandText = "SP_Insert_Mantenimiento_de_Nomina";

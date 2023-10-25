@@ -92,6 +92,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
+    <Compile Include="EmpleadosDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmpleadosDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Generar Bonificaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +327,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="EmpleadosDataSet.xsc">
+      <DependentUpon>EmpleadosDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EmpleadosDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EmpleadosDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EmpleadosDataSet.xss">
+      <DependentUpon>EmpleadosDataSet.xsd</DependentUpon>
+    </None>
     <None Include="ManSysDBDataSet.xsc">
       <DependentUpon>ManSysDBDataSet.xsd</DependentUpon>
     </None>
