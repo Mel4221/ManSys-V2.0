@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using QuickTools.QCore;
 using System.Linq.Expressions;
 using QuickTools.QIO;
+using System.Globalization;
 
 namespace ManSys
 {
@@ -79,9 +80,11 @@ namespace ManSys
             }
            
         }
-
+        
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            SqlConnection cn = new SqlConnection(connectionString);
+
             try
             {
 
@@ -103,7 +106,6 @@ namespace ManSys
             {
 
 
-                SqlConnection cn = new SqlConnection(connectionString);
                 SqlCommand cm = new SqlCommand();
                 cm.Connection = cn;
                 cm.CommandText = "SP_Insert_Mantenimiento_de_Empleados";
@@ -160,10 +162,13 @@ namespace ManSys
                 txtbusqueda.Enabled = true;
                 */
                 cn.Close();
-            }
+               btnRegistrar.Enabled = false;
+
+			}
         }catch(Exception ex)
             {
-                ShowError("No se pudo hacer el registro porque: ", ex); 
+                ShowError("No se pudo hacer el registro porque: ", ex);
+                cn.Close(); 
             }
 
 
@@ -215,27 +220,30 @@ namespace ManSys
         {
             //Codigo para llenar grid de empleados
 
+            //new Task(() =>
+            //{
 
-            DataTable dtempleados = new DataTable();
 
-            SqlConnection dataConnection = new SqlConnection(Connection.ConnectionString);
-
-            SqlDataAdapter daempleados = new SqlDataAdapter("GetDB_Mantenimiento_de_Empleados", dataConnection);
-
-            daempleados.SelectCommand.CommandType = CommandType.StoredProcedure;
-
-            daempleados.Fill(dtempleados);
-            ListadodeEmpleados.DataSource = dtempleados;
-            //ListadodeEmpleados.Update();
-            //ListadodeEmpleados.DataSource = daempleados;
-            //ListadodeEmpleados.Refresh(); 
-        }
+            using (SqlConnection dataConnection = new SqlConnection(Connection.ConnectionString))
+            {
+                dataConnection.Open();
+                DataTable dtempleados = new DataTable();
+                SqlDataAdapter daempleados = new SqlDataAdapter("GetDB_Mantenimiento_de_Empleados", dataConnection);
+                daempleados.SelectCommand.CommandType = CommandType.StoredProcedure;
+                daempleados.Fill(dtempleados);
+                ListadodeEmpleados.DataSource = dtempleados;
+            }
+			//}).RunSynchronously();
+			//ListadodeEmpleados.Update();/
+			//ListadodeEmpleados.DataSource = daempleados;
+			//ListadodeEmpleados.Refresh(); 
+		}
 
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             // Cargo el estado para el botón Nuevo y los demás elementos.
-            btnNuevo.Enabled = false;
+            //btnNuevo.Enabled = false;
             btnRegistrar.Enabled = true;
             btnModificar.Enabled = true;
             btnCancelar.Enabled = true;
@@ -247,7 +255,7 @@ namespace ManSys
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            btnNuevo.Enabled = true;
+            //btnNuevo.Enabled = true;
             btnRegistrar.Enabled = false;
             btnModificar.Enabled = false;
             btnCancelar.Enabled = true;
@@ -259,7 +267,7 @@ namespace ManSys
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            string sql = "DELETE FROM Mantenimiento_de_Empleados WHERE Id=" + txtId.Text;
+            string sql = "DELETE FROM dbo.Empleados WHERE Id=" + txtId.Text;
 
             SqlConnection con = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand(sql, con);
@@ -281,7 +289,7 @@ namespace ManSys
                 con.Close();
             }
 
-            btnNuevo.Enabled = true;
+            //btnNuevo.Enabled = true;
             btnRegistrar.Enabled = false;
             btnModificar.Enabled = false;
             btnCancelar.Enabled = true;
@@ -301,15 +309,34 @@ namespace ManSys
 
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void TomarDatos(DataRow datos)
         {
-            string sql = $"SELECT * FROM dbo.Empleados WHERE {CriterioDeBusqueda.Text} = {txtbusqueda.Text}";
+            //  DateTime.ParseExact(datos["Fecha_de_Ingreso"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            //try
-            //{
-            //if (reader.Read())
-            //{
-            /*
+            //MessageBox.Show(DateTime.ParseExact(datos["Fecha_de_Ingreso"].ToString(), "dd/MM/yyyy"));
+            //return;
+			txtId.Text = datos["Id"].ToString();
+			txtNombre.Text = datos["Nombre"].ToString();
+			txtApellido.Text = datos["Apellido"].ToString();
+			txtdireccion.Text = datos["Direccion"].ToString();
+			txttelefono.Text = datos["Telefono"].ToString();
+            Fecha_de_Ingreso_Label.Text = datos["Fecha_de_Ingreso"].ToString();
+			txtpuestoocupado.Text =datos["Puesto_Ocupado"].ToString();
+			txtdeparmento.Text = datos["Departamento"].ToString();
+			txtdni.Text = datos["CEDULA"].ToString();
+			txtsalariobase.Text = datos["Salario_Base"].ToString();
+			txttipodecobro.Text = datos["Tipo_de_Cobro"].ToString();
+			txtturno.Text = datos["Turno"].ToString();
+		}
+
+
+        private void BuscarEmpleado()
+        {
+			//try
+			//{
+			//if (reader.Read())
+			//{
+			/*
             btnNuevo.Enabled = false;
             btnRegistrar.Enabled = true;
             btnModificar.Enabled = true;
@@ -319,63 +346,101 @@ namespace ManSys
             txtbusqueda.Enabled = true;
             txtNombre.Focus();
             */
-            using (SqlConnection connection = new SqlConnection(Connection.ConnectionString))
-            {
-                connection.Open(); 
-               using(SqlCommand cmd = new SqlCommand(sql, connection))
-                {
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    string text = null;
-                    foreach (var item in reader)
-                    {
-                        text += $"{item.ToString()}\n"; 
-                    }
-                    Writer.Write("request.txt", text);
+			using (SqlConnection connection = new SqlConnection(Connection.ConnectionString))
+			{
 
-                    /*
-                    txtId.Text = reader[0].ToString();
-                    txtNombre.Text = reader[1].ToString();
-                    txtApellido.Text = reader[2].ToString();
-                    txtdireccion.Text = reader[3].ToString();
-                    txttelefono.Text = reader[4].ToString();
-                    txtfechadeingreso.Text = reader[5].ToString();
-                    txtpuestoocupado.Text = reader[6].ToString();
-                    txtdeparmento.Text = reader[7].ToString();
-                    txtdni.Text = reader[8].ToString();
-                    txtsalariobase.Text = reader[9].ToString();
-                    txttipodecobro.Text = reader[10].ToString();
-                    txtturno.Text = reader[11].ToString();
-                    */
-                    //nuevo = false;
-                }
-            }
-                //}
-                //else
-                //    MessageBox.Show("Ningun Registro Encontrado con el Dato de Busqueda Ingresado !");
+				//string query = $"SELECT * FROM dbo.Empleados WHERE {ConvertirACriterioDeBusqueda(this.CriterioDeBusqueda.Text)}";
+				//MessageBox.Show(query);
+				//return;
+				connection.Open();
 
+				SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM dbo.Empleados", connection);
+
+
+				DataTable data = new DataTable();
+				adapter.Fill(data);
+
+				/*his.ListadodeEmpleados.DataSource = data;*/
+				foreach (DataRow row in data.Rows)
+				{
+					//  Get.Green("[" + row["ID"] + "]" + "[" + row["created"] + "]" + " " + "[" + row["uname"] + "]" + " " + "[" + row["msg"] + "]");
+					if (row["CEDULA"].ToString() == this.txtbusqueda.Text)
+					{
+						this.TomarDatos(row);
+						return;
+					}
+					if (row["Id"].ToString()  == this.txtbusqueda.Text)
+					{
+						this.TomarDatos(row);
+						return;
+					}
+					if (row["Nombre"].ToString().ToLower() +" "+row["Apellido"].ToString().ToLower()  ==  this.txtbusqueda.Text.ToLower())
+					{
+						this.TomarDatos(row);
+						return;
+					}
+					if (row["Telefono"].ToString()  == this.txtbusqueda.Text)
+					{
+						this.TomarDatos(row);
+						return;
+					}
+				}
+
+
+
+				/*
+				txtId.Text = reader[0].ToString();
+				txtNombre.Text = reader[1].ToString();
+				txtApellido.Text = reader[2].ToString();
+				txtdireccion.Text = reader[3].ToString();
+				txttelefono.Text = reader[4].ToString();
+				txtfechadeingreso.Text = reader[5].ToString();
+				txtpuestoocupado.Text = reader[6].ToString();
+				txtdeparmento.Text = reader[7].ToString();
+				txtdni.Text = reader[8].ToString();
+				txtsalariobase.Text = reader[9].ToString();
+				txttipodecobro.Text = reader[10].ToString();
+				txtturno.Text = reader[11].ToString();
+				*/
+				//nuevo = false;
+
+			}
+
+
+			//}
+			//else
+			MessageBox.Show("Ningun Registro Encontrado con el Dato de Busqueda Ingresado");
+
+		}
+		private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            this.BuscarEmpleado();
+       
             //    }
             //catch (Exception ex)
             //{
             //    MessageBox.Show("Error: " + ex.ToString());
             //}
-          
+
 
             //txtbusqueda.Text = "";
 
-            }
+        }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
         
-            /*
+            
             SqlConnection cn = new SqlConnection(Connection.ConnectionString);
             SqlCommand cm = new SqlCommand();
             cm.Connection = cn;
-
+             
             cm.CommandText = "SP_Update_Mantenimiento_de_Empleados";
             cm.CommandType = CommandType.StoredProcedure;
+			cm.Parameters.Add(new SqlParameter("@Id", SqlDbType.Int));
+            cm.Parameters["@Id"].Value = this.txtId.Text;
 
-            cm.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
+			cm.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
             cm.Parameters["@Nombre"].Value = txtNombre.Text;
 
             cm.Parameters.Add(new SqlParameter("@Apellido", SqlDbType.VarChar));
@@ -388,9 +453,9 @@ namespace ManSys
             cm.Parameters["@Telefono"].Value = txttelefono.Text;
 
             cm.Parameters.Add(new SqlParameter("@Fecha_de_Ingreso", SqlDbType.VarChar));
-            cm.Parameters["@Fecha_de_Ingreso"].Value = txtfechadeingreso.Text;
+            cm.Parameters["@Fecha_de_Ingreso"].Value = DateTime.Parse(txtfechadeingreso.Text).ToString("dd/M/yyyy") ==  DateTime.Now.ToString("dd/M/yyyy") ? this.Fecha_de_Ingreso_Label.Text : DateTime.Parse(txtfechadeingreso.Text).ToString("dd/M/yyyy");
 
-            cm.Parameters.Add(new SqlParameter("@Puesto_Ocupado", SqlDbType.VarChar));
+			cm.Parameters.Add(new SqlParameter("@Puesto_Ocupado", SqlDbType.VarChar));
             cm.Parameters["@Puesto_Ocupado"].Value = txtpuestoocupado.Text;
 
             cm.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar));
@@ -416,14 +481,14 @@ namespace ManSys
             LLenarGridEmpleados();
             cn.Close();
 
-            btnNuevo.Enabled = true;
-            btnRegistrar.Enabled = false;
-            btnModificar.Enabled = false;
-            btnCancelar.Enabled = true;
-            btnEliminar.Enabled = false;
-            btnBuscar.Enabled = true;
-            txtbusqueda.Enabled = true;
-            */
+            //btnNuevo.Enabled = true;
+            //btnRegistrar.Enabled = false;
+            //btnModificar.Enabled = false;
+            //btnCancelar.Enabled = true;
+            //btnEliminar.Enabled = false;
+            //btnBuscar.Enabled = true;
+            //txtbusqueda.Enabled = true;
+            
         }
 
         private void btnRefrescar_Click(object sender, EventArgs e)
@@ -453,18 +518,18 @@ namespace ManSys
 
         private void btnGuardarCambios_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Cursor.Current = Cursors.WaitCursor;
-                ListadodeEmpleados.EndEdit();
-                ListadodeEmpleados.Update();
-                Cursor.Current = Cursors.Default;
-                MessageBox.Show("Actualizado Correctamente");
-            }catch(Exception ex)
-            {
-                ShowError("No se pudo actualizar el registro por que: ", ex);
-            }
+    
         }
-    }
+
+		private void txtbusqueda_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+                this.BuscarEmpleado();
+				e.SuppressKeyPress = false;
+			}
+
+		}
+	}
     }
 

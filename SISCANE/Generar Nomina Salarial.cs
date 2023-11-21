@@ -10,34 +10,111 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Runtime.InteropServices;
+using QuickTools.QCore;
 
 
 namespace ManSys
 {
     public partial class GenerarNomina : Form
     {
-        string connectionString = @"Server=DESKTOP-802OK33;Database=ManSys;Trusted_Connection=True;";
         public GenerarNomina()
         {
             InitializeComponent();
         }
 
-
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg,
-int wparam, int lparam);
+ 
 
         private void GenerarNomina_Load(object sender, EventArgs e)
         {
-            LLenarGridNomina();
+            this.CargarDatos(); 
         }
+        private void CargarDatos()
+        {
+            this.LLenarGridNomina();
+            this.ActualizarPagoPorHoraNormales();
+            this.ActualizarPagoPorHoraExtra();
+            this.ActualizarSalarioNeto();
+            this.ActualizarDiasTrabajados();
+            this.ActualizarDescuentos();
+            this.ActualizarMontoTotal();
+         }
+        private void ActualizarMontoTotal()
+        {   
+            double neto, descuento, total;
+            neto = double.Parse(SueldoNeto.Text);
+            descuento = double.Parse(Descuentos.Text);
+            total =  neto - descuento;
+            PagoTotal.Text = total.ToString();
+        }
+        private void ActualizarDescuentos()
+        {
+            double ars, afp, descuento, pago;  
+            ars = double.Parse(DescuentoArs.Text);
+            afp = double.Parse(DescuentoAfp.Text);
+            pago = double.Parse(SueldoNeto.Text);
+            descuento = (((ars+afp) / 100) * pago);
+            Descuentos.Text = $"{descuento}"; 
+        }
+        private bool ValidarDatos()
+        {
+            if (!Get.IsNumber(txthorasn.Text))
+            {
+                return false;
+            }
+            if (!Get.IsNumber(txthorase.Text))
+            {
+                return false;
+            }
+            if (!Get.IsNumber(PrecioHoraNormal.Text))
+            {
+                return false;
+            }
+            if (!Get.IsNumber(PrecioHoraExtra.Text))
+            {
+                return false;
+            }
+            return true; 
+        }
+        private void ActualizarDiasTrabajados()
+        {
+            if (!ValidarDatos())
+            {
+                MessageBox.Show("Ahi Datos incorrectos en los formularios numericos");
+                return; 
+            }
+            
+            //string dia = $"{DateTime.Parse(InicioDeNomina.Text).ToString("dd")} {DateTime.Parse(CierreDeNomina.Text).ToString("dd")}";
+            int inicio, final, dias; 
+           
+            inicio = int.Parse(DateTime.Parse(InicioDeNomina.Text).ToString("dd"));
+            final = int.Parse(DateTime.Parse(CierreDeNomina.Text).ToString("dd"));
+            dias =1; 
+            for(int d = inicio; d < final; d++)
+            {
+                dias++; 
+            }
+            DiasTrabajados.Text = $"{dias}";
+            SueldoNeto.Text = $"{dias * int.Parse(SueldoNeto.Text)}"; 
+            //MessageBox.Show($"{dias}"); 
+            // 5 6 7 8 9
+            // 1 2 3 4 5
 
+        }
+        private void ActualizarSalarioNeto()
+        {
+            if (!ValidarDatos())
+            {
+                MessageBox.Show("Ahi Datos incorrectos en los formularios numericos");
+                return;
+            }
+            //horas trabajadas * pago de hora + horas extras * horas trabajadas extra
+            int pago = (int.Parse(txthorasn.Text) * int.Parse(PrecioHoraNormal.Text)) + (int.Parse(txthorase.Text) * int.Parse(PrecioHoraExtra.Text));
+            SueldoNeto.Text = $"{pago}"; 
+        }
         private void LLenarGridNomina()
         {
             //Codigo para llenar grid de empleados
-
+            /*
 
             DataTable dtempleados = new DataTable();
 
@@ -51,88 +128,10 @@ int wparam, int lparam);
 
 
             ListadodeNominaRegistrada.DataSource = dtempleados;
+            */
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void label22_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label31_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bntbuscar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label30_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox27_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label29_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox26_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label28_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox25_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label24_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox21_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
 
         private void bntlimpiar_Click(object sender, EventArgs e)
         {
@@ -140,28 +139,28 @@ int wparam, int lparam);
         }
         private void Limpiar()
         {
-            txtcodigo.Clear();
-            txtnombre.Clear();
-            txtapellido.Clear();
-            txtdni.Clear();
-            txtsalariobase.Clear();
-            txtdepartamento.ResetText();
-            txtpuesto.ResetText();
-            txtturno.Clear();
-            txttipodecobro.ResetText();
-            txtfechadepagoinicio.ResetText();
-            txtfechadepagocierre.ResetText();
-            txthorasn.Clear();
-            txtpreciohn.ResetText();
-            txthorase.Clear();
-            txtpreciohe.ResetText();
-            txtmontohn.ResetText();
-            txtmontohe.ResetText();
-            txtmontoapagar.ResetText();
-            txttotalasig.ResetText();
-            txtdescuentoars.ResetText();
-            txtdescuentoafp.ResetText();
-            txtsueldoneto.ResetText();
+            //txtcodigo.Clear();
+            //txtnombre.Clear();
+            //txtapellido.Clear();
+            //txtdni.Clear();
+            //txtsalariobase.Clear();
+            //txtdepartamento.ResetText();
+            //txtpuesto.ResetText();
+            //txtturno.Clear();
+            //txttipodecobro.ResetText();
+            //txtfechadepagoinicio.ResetText();
+            //txtfechadepagocierre.ResetText();
+            //txthorasn.Clear();
+            //txtpreciohn.ResetText();
+            //txthorase.Clear();
+            //txtpreciohe.ResetText();
+            //txtmontohn.ResetText();
+            //txtmontohe.ResetText();
+            //txtmontoapagar.ResetText();
+            //txttotalasig.ResetText();
+            //txtdescuentoars.ResetText();
+            //txtdescuentoafp.ResetText();
+            //txtsueldoneto.ResetText();
            
 
         }
@@ -172,6 +171,7 @@ int wparam, int lparam);
 
         private void ListadodeNominaRegistrada_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            /*
             txtcodigo.Text = ListadodeNominaRegistrada.CurrentRow.Cells["Codigo"].Value.ToString();
             txtnombre.Text = ListadodeNominaRegistrada.CurrentRow.Cells["Nombre"].Value.ToString();
             txtapellido.Text = ListadodeNominaRegistrada.CurrentRow.Cells["Apellido"].Value.ToString();
@@ -193,7 +193,7 @@ int wparam, int lparam);
             txtdescuentoars.Text = ListadodeNominaRegistrada.CurrentRow.Cells["Seguro_Médico_ARS"].Value.ToString();
             txtdescuentoafp.Text = ListadodeNominaRegistrada.CurrentRow.Cells["Seguro_de_Pensión_AFP"].Value.ToString();
             txtsueldoneto.Text = ListadodeNominaRegistrada.CurrentRow.Cells["Sueldo_Neto"].Value.ToString();
-
+            */
         }
 
 
@@ -210,29 +210,30 @@ int wparam, int lparam);
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             // Cargo el estado para el botón Nuevo y los demás elementos.
-            btnNuevo.Enabled = false;
-            btnRegistrar.Enabled = true;
-            btnModificar.Enabled = true;
-            btnCancelar.Enabled = true;
-            btnEliminar.Enabled = true;
-            bntbuscar.Enabled = true;
-            Limpiar();
+            //btnNuevo.Enabled = false;
+            //btnRegistrar.Enabled = true;
+            //btnModificar.Enabled = true;
+            //btnCancelar.Enabled = true;
+            //btnEliminar.Enabled = true;
+            //bntbuscar.Enabled = true;
+            //Limpiar();
 
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            btnNuevo.Enabled = true;
-            btnRegistrar.Enabled = false;
-            btnModificar.Enabled = false;
-            btnCancelar.Enabled = true;
-            btnEliminar.Enabled = true;
-            bntbuscar.Enabled = true;
-            Limpiar();
+            //btnNuevo.Enabled = true;
+            //btnRegistrar.Enabled = false;
+            //btnModificar.Enabled = false;
+            //btnCancelar.Enabled = true;
+            //btnEliminar.Enabled = true;
+            //bntbuscar.Enabled = true;
+            //Limpiar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            /*
              string sql = "DELETE FROM Mantenimiento_de_Nomina WHERE Id=" + txtcodigo.Text;
 
             SqlConnection con = new SqlConnection(connectionString);
@@ -262,11 +263,13 @@ int wparam, int lparam);
             btnEliminar.Enabled = false;
             bntbuscar.Enabled = true;
             Limpiar();
+            */
         }
 
         private void bntbuscar_Click_1(object sender, EventArgs e)
         {
-            {
+            /*
+            
                 string sql = "SELECT * FROM Mantenimiento_de_Nomina WHERE Id=" + txtcodigo.Text;
 
                 SqlConnection con = new SqlConnection(connectionString);
@@ -320,13 +323,15 @@ int wparam, int lparam);
                 {
                     con.Close();
                 }
+            */
 
 
-            }
+            
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            /*
             SqlConnection cn = new SqlConnection(Connection.ConnectionString);
             SqlCommand cm = new SqlCommand();
             cm.Connection = cn;
@@ -408,11 +413,13 @@ int wparam, int lparam);
             btnEliminar.Enabled = true;
             bntbuscar.Enabled = true;
             Limpiar();
+            */
 
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            /*
             SqlConnection cn = new SqlConnection(ConfigurationSettings.AppSettings["conexion"].ToString());
             SqlCommand cm = new SqlCommand();
             cm.Connection = cn;
@@ -494,32 +501,83 @@ int wparam, int lparam);
             btnEliminar.Enabled = true;
             bntbuscar.Enabled = true;
             Limpiar();
+            */
+        }
+  
 
-        }
-        private void horasnormales()
-            {
-            txthorasn.Text.Trim();
-            }
-        private void preciohorasnormales()
-        {
-            txtpreciohn.Text.Trim();
-        }
-
-        private void txtmontohn_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+     
 
         private void GenerarNomina_MouseDown(object sender, MouseEventArgs e)
         {
-
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+ 
         }
 
         private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+       
+        private void ActualizarPagoPorHoraNormales()
+        {
+            switch (this.PrecioHoraNormalesOpcion.Text)
+            {
+                case "Agente":
+                    this.PrecioHoraNormal.Text = "210";
+                    break;
+                case "Supervisor":
+                    this.PrecioHoraNormal.Text = "315";
+
+                    break;
+                case "Calidad":
+                    this.PrecioHoraNormal.Text = "335";
+                    break;
+                case "Manager":
+                    this.PrecioHoraNormal.Text = "415";
+                    break;
+            }
+        }
+        private void ActualizarPagoPorHoraExtra()
+        {
+            switch (this.PrecioHorasExtraOpcion.Text)
+            {
+                case "Agente":
+                    this.PrecioHoraExtra.Text = "285";
+                    break;
+                case "Supervisor":
+                    this.PrecioHoraExtra.Text = "425";
+
+                    break;
+                case "Calidad":
+                    this.PrecioHoraExtra.Text = "452";
+                    break;
+                case "Manager":
+                    this.PrecioHoraExtra.Text = "560";
+                    break;
+            }
+        }
+        private void PrecioHoraNormalesOpcion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.CargarDatos();           
+        }
+
+        private void PrecioHorasExtraOpcion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.CargarDatos();
+        }
+
+        private void InicioDeNomina_ValueChanged(object sender, EventArgs e)
+        {
+            this.CargarDatos();
+        }
+
+        private void CierreDeNomina_ValueChanged(object sender, EventArgs e)
+        {
+            this.CargarDatos();
+        }
+
+        private void txthorasn_TextChanged(object sender, EventArgs e)
+        {
+            this.CargarDatos();
         }
     }
 }

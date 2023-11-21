@@ -172,3 +172,140 @@
 --set Salario_Base = 50000
 --where Puesto_Ocupado = 'Agente'
 --select * from dbo.Empleados
+
+--USE [ManSysDB]
+--GO
+
+--/****** Object:  Table [dbo].[Bonificaciones]    Script Date: 10/25/2023 1:28:51 PM ******/
+--SET ANSI_NULLS ON
+--GO
+
+--SET QUOTED_IDENTIFIER ON
+--GO
+
+--CREATE TABLE [dbo].[Bonificaciones](
+--	[Id] [int] IDENTITY(1,1) NOT NULL,
+--	[Nombre] [varchar](max) NULL,
+--	[Tipo] [varchar](max) NULL,
+--	[Fecha] [varchar](max) NULL,
+--	[AplicacionDeBonificacion] [varchar](max) NULL
+--) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+--GO
+
+--USE [ManSysDB]
+--GO
+
+--/****** Object:  Table [dbo].[Deducciones]    Script Date: 10/25/2023 1:29:16 PM ******/
+--SET ANSI_NULLS ON
+--GO
+
+--SET QUOTED_IDENTIFIER ON
+--GO
+
+--CREATE TABLE [dbo].[Deducciones](
+--	[Id] [int] IDENTITY(1,1) NOT NULL,
+--	[Nombre] [varchar](1) NULL,
+--	[Cantidad] [float] NULL
+--) ON [PRIMARY]
+--GO
+
+--USE [ManSysDB]
+--GO
+
+--/****** Object:  Table [dbo].[Departamentos]    Script Date: 10/25/2023 1:29:34 PM ******/
+--SET ANSI_NULLS ON
+--GO
+
+--SET QUOTED_IDENTIFIER ON
+--GO
+
+--CREATE TABLE [dbo].[Departamentos](
+--	[Id] [int] IDENTITY(1,1) NOT NULL,
+--	[Departamento] [varchar](50) NOT NULL,
+-- CONSTRAINT [PK_Departamentos] PRIMARY KEY CLUSTERED 
+--(
+--	[Departamento] ASC
+--)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+--) ON [PRIMARY]
+--GO
+
+
+--SELECT TOP (1000) [Id]
+--      ,[Impuesto]
+--      ,[Porcentage]
+--  FROM [ManSysDB].[dbo].[Impuestos]
+
+--  USE [ManSysDB]
+--GO
+
+--/****** Object:  Table [dbo].[Impuestos]    Script Date: 10/25/2023 1:29:56 PM ******/
+--SET ANSI_NULLS ON
+--GO
+
+--SET QUOTED_IDENTIFIER ON
+--GO
+
+--CREATE TABLE [dbo].[Impuestos](
+--	[Id] [int] IDENTITY(1,1) NOT NULL,
+--	[Impuesto] [varchar](1) NULL,
+--	[Porcentage] [float] NULL
+--) ON [PRIMARY]
+--GO
+
+
+--USE [ManSysDB]
+--GO
+
+--/****** Object:  Table [dbo].[Incidencias]    Script Date: 10/25/2023 1:30:23 PM ******/
+--SET ANSI_NULLS ON
+--GO
+
+--SET QUOTED_IDENTIFIER ON
+--GO
+
+--CREATE TABLE [dbo].[Incidencias](
+--	[Id] [int] IDENTITY(1,1) NOT NULL,
+--	[Nombre] [varchar](max) NULL,
+--	[Duracion] [varchar](max) NULL,
+--	[Observacion] [varchar](max) NULL,
+--	[EmpleadoId] [int] NULL,
+--	[NombreDeEmpleado] [varchar](max) NULL,
+--	[Posicion] [varchar](max) NULL,
+--	[Departamento] [varchar](max) NULL
+--) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+--GO
+
+--USE [ManSysDB]
+--GO
+
+--/****** Object:  Table [dbo].[Posiciones]    Script Date: 10/25/2023 1:30:49 PM ******/
+--SET ANSI_NULLS ON
+--GO
+
+--SET QUOTED_IDENTIFIER ON
+--GO
+
+--CREATE TABLE [dbo].[Posiciones](
+--	[Id] [int] IDENTITY(1,1) NOT NULL,
+--	[Posiciones] [varchar](50) NULL
+--) ON [PRIMARY]
+--GO
+ 
+
+
+
+
+
+
+use ManSysDB
+select * from  [dbo].[Empleados]
+select * from  [dbo].[Incidencias]
+select * from  [dbo].[Bonificaciones]
+select * from  [dbo].[Deducciones]
+select * from  [dbo].[Departamentos]
+select * from  [dbo].[Impuestos]
+select * from  [dbo].[Posiciones]
+
+
+
+

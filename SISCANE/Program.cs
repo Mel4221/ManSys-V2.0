@@ -32,23 +32,25 @@ namespace ManSys
             
               Color.Green("Starting ManSys...");
             Log.Event("ProgramFlow",$"Program Started: {DateTime.Now}");
-            try
-            {
+            //try
+            //{
                 Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                //Application.Run(new MenuPrincipal());
-                //Application.Run(new MantenimientoDeEmpleados());
-                Application.Run(new GenerarNomina()); 
-            }
-            catch (Exception e)
-            {
-                Log.Event("FatalError",e);
-                Color.Red("Something Really Bad just happened , more details : \n"+e);
-            }
-      
-            
-            
+			//Application.SetCompatibleTextRenderingDefault(false);
+			//Application.Run(new MenuPrincipal());
+			//Application.Run(new MantenimientoDeEmpleados());
+			//Application.Run(new GenerarNomina()); 
+			//Application.Run(new mantenimientoDept());
+            Application.Run(new mantenimientoPosc());
+			//}
+			//catch (Exception e)
+			//{
+			//    Log.Event("FatalError",e);
+			//    Color.Red("Something Really Bad just happened , more details : \n"+e);
+			//}
 
-        }
-    }
+
+
+
+		}
+	}
 }
