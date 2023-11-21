@@ -40,7 +40,9 @@ namespace ManSys
 			//Application.Run(new MantenimientoDeEmpleados());
 			//Application.Run(new GenerarNomina()); 
 			//Application.Run(new mantenimientoDept());
-            Application.Run(new mantenimientoPosc());
+			//Application.Run(new mantenimientoPosc());
+			//Application.Run(new mantenimientoImp
+			Application.Run(new mantenimientoDeducciones()); 
 			//}
 			//catch (Exception e)
 			//{

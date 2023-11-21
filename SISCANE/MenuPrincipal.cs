@@ -183,7 +183,7 @@ namespace ManSys
 
         private void mANTENIMIENTODEDEDUCCIONESToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formulario = new mantenimientoDeducciones();
+            Form formulario = new  Form ();
             formulario.Show();
         }
 
