@@ -34,15 +34,15 @@ namespace ManSys
             Log.Event("ProgramFlow",$"Program Started: {DateTime.Now}");
             //try
             //{
-                Application.EnableVisualStyles();
+            Application.EnableVisualStyles();
 			//Application.SetCompatibleTextRenderingDefault(false);
-			//Application.Run(new MenuPrincipal());
+			Application.Run(new MenuPrincipal());
 			//Application.Run(new MantenimientoDeEmpleados());
 			//Application.Run(new GenerarNomina()); 
 			//Application.Run(new mantenimientoDept());
 			//Application.Run(new mantenimientoPosc());
 			//Application.Run(new mantenimientoImp
-			Application.Run(new mantenimientoDeducciones()); 
+			//Application.Run(new mantenimientoDeducciones()); 
 			//}
 			//catch (Exception e)
 			//{

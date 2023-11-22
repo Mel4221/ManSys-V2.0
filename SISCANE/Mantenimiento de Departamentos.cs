@@ -77,7 +77,7 @@ namespace ManSys
 				return false;
 			}
 		}
-
+		
 		private bool Existe(string departamento)
         {
             using (SqlConnection con = new SqlConnection(Connection.ConnectionString))

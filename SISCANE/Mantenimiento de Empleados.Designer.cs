@@ -84,6 +84,7 @@
 			this.txtturno = new System.Windows.Forms.ComboBox();
 			this.empleadosTableAdapter = new ManSys.EmpleadosDataSetTableAdapters.EmpleadosTableAdapter();
 			this.Fecha_de_Ingreso_Label = new System.Windows.Forms.Label();
+			this.BusquedaAvanzadaCheck = new System.Windows.Forms.CheckBox();
 			this.gblistadovisitas.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ListadodeEmpleados)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.empleadosBindingSource)).BeginInit();
@@ -106,6 +107,7 @@
 			// 
 			// gblistadovisitas
 			// 
+			this.gblistadovisitas.Controls.Add(this.BusquedaAvanzadaCheck);
 			this.gblistadovisitas.Controls.Add(this.btnRefrescar);
 			this.gblistadovisitas.Controls.Add(this.ListadodeEmpleados);
 			this.gblistadovisitas.Controls.Add(this.btnBuscar);
@@ -121,12 +123,11 @@
 			this.gblistadovisitas.TabIndex = 137;
 			this.gblistadovisitas.TabStop = false;
 			this.gblistadovisitas.Text = "Empleados Registrados";
-			this.gblistadovisitas.Enter += new System.EventHandler(this.gblistadovisitas_Enter);
 			// 
 			// btnRefrescar
 			// 
 			this.btnRefrescar.ForeColor = System.Drawing.Color.DodgerBlue;
-			this.btnRefrescar.Location = new System.Drawing.Point(1540, 58);
+			this.btnRefrescar.Location = new System.Drawing.Point(1531, 42);
 			this.btnRefrescar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnRefrescar.Name = "btnRefrescar";
 			this.btnRefrescar.Size = new System.Drawing.Size(154, 35);
@@ -259,7 +260,7 @@
 			// btnBuscar
 			// 
 			this.btnBuscar.ForeColor = System.Drawing.Color.DodgerBlue;
-			this.btnBuscar.Location = new System.Drawing.Point(1388, 55);
+			this.btnBuscar.Location = new System.Drawing.Point(1379, 39);
 			this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnBuscar.Name = "btnBuscar";
 			this.btnBuscar.Size = new System.Drawing.Size(112, 35);
@@ -272,7 +273,7 @@
 			// 
 			this.label15.AutoSize = true;
 			this.label15.ForeColor = System.Drawing.Color.Black;
-			this.label15.Location = new System.Drawing.Point(1054, 31);
+			this.label15.Location = new System.Drawing.Point(1055, 15);
 			this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(234, 22);
@@ -281,7 +282,7 @@
 			// 
 			// txtbusqueda
 			// 
-			this.txtbusqueda.Location = new System.Drawing.Point(1058, 58);
+			this.txtbusqueda.Location = new System.Drawing.Point(1059, 42);
 			this.txtbusqueda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.txtbusqueda.Name = "txtbusqueda";
 			this.txtbusqueda.Size = new System.Drawing.Size(301, 28);
@@ -764,6 +765,16 @@
 			this.Fecha_de_Ingreso_Label.Size = new System.Drawing.Size(0, 29);
 			this.Fecha_de_Ingreso_Label.TabIndex = 147;
 			// 
+			// BusquedaAvanzadaCheck
+			// 
+			this.BusquedaAvanzadaCheck.AutoSize = true;
+			this.BusquedaAvanzadaCheck.Location = new System.Drawing.Point(1059, 78);
+			this.BusquedaAvanzadaCheck.Name = "BusquedaAvanzadaCheck";
+			this.BusquedaAvanzadaCheck.Size = new System.Drawing.Size(218, 26);
+			this.BusquedaAvanzadaCheck.TabIndex = 9;
+			this.BusquedaAvanzadaCheck.Text = "Busqueda Avanzada";
+			this.BusquedaAvanzadaCheck.UseVisualStyleBackColor = true;
+			// 
 			// MantenimientoDeEmpleados
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -806,7 +817,6 @@
 			this.Text = "Mantenimiento_de_Empleado";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.Load += new System.EventHandler(this.MantenimientoDeEmpleados_Load);
-			this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MantenimientoDeEmpleados_MouseDown);
 			this.gblistadovisitas.ResumeLayout(false);
 			this.gblistadovisitas.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ListadodeEmpleados)).EndInit();
@@ -875,5 +885,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Tipo_de_Cobro;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Turno;
 		private System.Windows.Forms.Label Fecha_de_Ingreso_Label;
+		private System.Windows.Forms.CheckBox BusquedaAvanzadaCheck;
 	}
 }

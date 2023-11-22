@@ -80,7 +80,62 @@ namespace ManSys
             }
            
         }
-        
+
+        private void CargarPosiciones()
+        {
+			try
+			{
+
+				using (SqlConnection dataConnection = new SqlConnection(Connection.ConnectionString))
+				{
+					dataConnection.Open();
+					DataTable departamentos = new DataTable();
+
+
+					SqlDataAdapter daempleados = new SqlDataAdapter("SELECT * FROM dbo.Posiciones", dataConnection);
+
+
+					daempleados.Fill(departamentos);
+					this.txtpuestoocupado.Items.Clear();
+					foreach (DataRow row in departamentos.Rows)
+					{
+						this.txtpuestoocupado.Items.Add(row["Nombre"].ToString());
+					}
+
+				}
+			}
+			catch (Exception ex)
+			{
+				ShowError($"Hubo un error al Cargar las Posiciones", ex);
+			}
+		}
+        private void CargarDepartamentos()
+        {
+			try
+			{
+
+				using (SqlConnection dataConnection = new SqlConnection(Connection.ConnectionString))
+				{
+					dataConnection.Open();
+					DataTable departamentos = new DataTable();
+
+
+					SqlDataAdapter daempleados = new SqlDataAdapter("SELECT * FROM dbo.Departamentos", dataConnection);
+					daempleados.Fill(departamentos);
+                    this.txtdeparmento.Items.Clear(); 
+                    foreach(DataRow row in  departamentos.Rows)
+                    {
+						this.txtdeparmento.Items.Add(row["Nombre"].ToString());
+					}
+
+
+				}
+			}
+			catch (Exception ex)
+			{
+				ShowError($"Hubo un error al Cargar los Departamentos", ex);
+			}
+		}
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             SqlConnection cn = new SqlConnection(connectionString);
@@ -191,18 +246,21 @@ namespace ManSys
             txtdni.Clear();
             txtsalariobase.Clear();
             txttipodecobro.ResetText();
+            BusquedaAvanzadaCheck.Checked = false; 
             //txtturno.Clear();
         }
 
         private void MantenimientoDeEmpleados_Load(object sender, EventArgs e)
         {
             LLenarGridEmpleados();
-            // TODO: This line of code loads data into the 'empleadosDataSet.Empleados' table. You can move, or remove it, as needed.
-            //this.empleadosTableAdapter.Fill(this.empleadosDataSet.Empleados);
-            //
-            // TODO: This line of code loads data into the 'manSysDBDataSet.GetDB_Mantenimiento_de_Empleados' table. You can move, or remove it, as needed.
-            //this.getDB_Mantenimiento_de_EmpleadosTableAdapter.Fill(this.manSysDBDataSet.GetDB_Mantenimiento_de_Empleados);
-            /*
+            CargarDepartamentos();
+            CargarPosiciones();
+			// TODO: This line of code loads data into the 'empleadosDataSet.Empleados' table. You can move, or remove it, as needed.
+			//this.empleadosTableAdapter.Fill(this.empleadosDataSet.Empleados);
+			//
+			// TODO: This line of code loads data into the 'manSysDBDataSet.GetDB_Mantenimiento_de_Empleados' table. You can move, or remove it, as needed.
+			//this.getDB_Mantenimiento_de_EmpleadosTableAdapter.Fill(this.manSysDBDataSet.GetDB_Mantenimiento_de_Empleados);
+			/*
            LLenarGridEmpleados();
 
            btnNuevo.Enabled = true;
@@ -214,7 +272,7 @@ namespace ManSys
            txtbusqueda.Enabled = true;
            */
 
-        }
+		}
 
         private void LLenarGridEmpleados()
         {
@@ -329,9 +387,129 @@ namespace ManSys
 			txtturno.Text = datos["Turno"].ToString();
 		}
 
+		private bool IsLike(string valueA, string valueB)
+		{
+			int b = 0;
+			try
+			{
+				if (valueB.Length == 1)
+				{
+					if (valueA[0] == valueB[0])
+					{
+						return true;
+					}
+					else
+					{
+						return false;
+					}
+				}
+				for (int ch = 0; ch < valueA.Length; ch++)
+				{
 
+					if (valueA[ch] != valueB[b])
+					{
+						return false;
+					}
+					if (b < valueB.Length)
+					{
+						b++;
+					}
+					if (b == valueB.Length -1)
+					{
+						return true;
+					}
+
+				}
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
+		}
+
+
+		private void BusquedaAvanzada()
+        {
+			try
+			{
+				if (txtbusqueda.Text == "")
+				{
+                    this.LLenarGridEmpleados();
+					return;
+				}
+				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+				{
+					con.Open();//SELECT * FROM ask WHERE name LIKE 'ali'
+					SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.Empleados", con);
+
+					SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+					DataTable filled = new DataTable();
+					DataTable departamentos = new DataTable();
+					adapter.Fill(departamentos);
+
+					filled.Columns.Add("Id", typeof(int));
+					filled.Columns.Add("Nombre", typeof(string));
+                    filled.Columns.Add("Apellido", typeof(string));
+                    filled.Columns.Add("Direccion", typeof(string));
+                    filled.Columns.Add("Telefono", typeof(string));
+                    filled.Columns.Add("Fecha_de_Ingreso", typeof(string));
+                    filled.Columns.Add("Puesto_Ocupado", typeof(string));
+                    filled.Columns.Add("Departamento", typeof(string));
+                    filled.Columns.Add("CEDULA", typeof(string));
+                    filled.Columns.Add("Salario_Base", typeof(string));
+                    filled.Columns.Add("Tipo_de_Cobro", typeof(string));
+                    filled.Columns.Add("Turno", typeof(string)); 
+
+					foreach (DataRow row in departamentos.Rows)
+					{
+						if (this.IsLike(row["Nombre"].ToString().ToLower(), this.txtbusqueda.Text.ToLower()))
+						{
+							DataRow r = filled.NewRow();
+							r["Id"]  = row["Id"];
+							r["Nombre"] = row["Nombre"];
+                            r["Apellido"] = row["Apellido"]; 
+                            r["Direccion"] = row["Direccion"];
+							r["Telefono"] = row["Telefono"];
+							r["Fecha_de_Ingreso"] = row["Fecha_de_Ingreso"];
+							r["Puesto_Ocupado"] = row["Puesto_Ocupado"];
+							r["Departamento"] = row["Departamento"];
+							r["CEDULA"] = row["CEDULA"];
+							r["Salario_Base"] = row["Salario_Base"];
+							r["Tipo_de_Cobro"] = row["Tipo_de_Cobro"];
+							r["Turno"] = row["Turno"];
+
+							filled.Rows.Add(r);
+
+							//MessageBox.Show($"Row: {row["Nombre"].ToString()} Match: {this.Match(row["Nombre"].ToString(), this.txtbusqueda.Text)}");
+							//if (!this.txtbusqueda.Items.Contains(row["Nombre"].ToString()))
+							//{
+							//	//this.txtbusqueda.Items.Add(row["Nombre"].ToString());
+							//	}
+							//this.txtbusqueda.Focus();
+						}
+
+					}
+					this.ListadodeEmpleados.DataSource = filled;
+
+				}
+				//this.txtbusqueda.CausesValidation = true;
+				//this.txtbusqueda.DropDownStyle = ComboBoxStyle.DropDown;
+				//this.txtbusqueda.DropDownStyle = ComboBoxStyle.DropDown;
+
+			}
+			catch (Exception ex)
+			{
+				ShowError($"Hubo un error al Buscar el Departamento: '{this.txtbusqueda.Text}'", ex);
+			}
+		}
         private void BuscarEmpleado()
         {
+
+                if(this.BusquedaAvanzadaCheck.Checked){
+                    this.BusquedaAvanzada();
+                return;
+                }
 			//try
 			//{
 			//if (reader.Read())
@@ -501,33 +679,21 @@ namespace ManSys
             Limpiar();
         }
 
-        private void MantenimientoDeEmpleados_MouseDown(object sender, MouseEventArgs e)
-        {
 
-           
-        }
-
-        private void gblistadovisitas_Enter(object sender, EventArgs e)
-        {
-
-        }
-        private void ListadodeEmpleados_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void btnGuardarCambios_Click(object sender, EventArgs e)
-        {
-    
-        }
 
 		private void txtbusqueda_KeyDown(object sender, KeyEventArgs e)
 		{
+            if(this.BusquedaAvanzadaCheck.Checked)
+            {
+                this.BusquedaAvanzada();
+                return;
+            }
 			if (e.KeyCode == Keys.Enter)
 			{
                 this.BuscarEmpleado();
 				e.SuppressKeyPress = false;
 			}
+
 
 		}
 	}
