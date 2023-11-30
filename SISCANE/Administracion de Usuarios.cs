@@ -568,14 +568,14 @@ namespace ManSys
 		{
             this.BuscarEmpleado(this.txtid.Text);
 		}
-		private void BuscarEmpleado(string id)
-		{
-         
-			//try
-			//{
-			//if (reader.Read())
-			//{
-			/*
+        private void BuscarEmpleado(string id)
+        {
+
+            //try
+            //{
+            //if (reader.Read())
+            //{
+            /*
             btnNuevo.Enabled = false;
             btnRegistrar.Enabled = true;
             btnModificar.Enabled = true;
@@ -585,23 +585,23 @@ namespace ManSys
             txtbusqueda.Enabled = true;
             txtNombre.Focus();
             */
-			using (SqlConnection connection = new SqlConnection(Connection.ConnectionString))
-			{
+            using (SqlConnection connection = new SqlConnection(Connection.ConnectionString))
+            {
 
-				//string query = $"SELECT * FROM dbo.Empleados WHERE {ConvertirACriterioDeBusqueda(this.CriterioDeBusqueda.Text)}";
-				//MessageBox.Show(query);
-				//return;
-				connection.Open();
+                //string query = $"SELECT * FROM dbo.Empleados WHERE {ConvertirACriterioDeBusqueda(this.CriterioDeBusqueda.Text)}";
+                //MessageBox.Show(query);
+                //return;
+                connection.Open();
 
-				SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM dbo.Empleados", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM dbo.Empleados", connection);
 
 
-				DataTable data = new DataTable();
-				adapter.Fill(data);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
 
-				/*his.ListadodeEmpleados.DataSource = data;*/
-				foreach (DataRow row in data.Rows)
-				{
+                /*his.ListadodeEmpleados.DataSource = data;*/
+                foreach (DataRow row in data.Rows)
+                {
                     //  Get.Green("[" + row["ID"] + "]" + "[" + row["created"] + "]" + " " + "[" + row["uname"] + "]" + " " + "[" + row["msg"] + "]");
                     if (row["CEDULA"].ToString() == this.txtbusqueda.Text)
                     {
@@ -609,16 +609,16 @@ namespace ManSys
                         return;
                     }
                     if (row["Id"].ToString()  == id)
-					{
-						this.TomarDatos(row);
+                    {
+                        this.TomarDatos(row);
                         return;
-					}
-					if (row["Id"].ToString()  == this.txtbusqueda.Text)
-					{
-						this.TomarDatos(row);
-						return;
-					}
-					if (row["Nombre"].ToString().ToLower() +" "+row["Apellido"].ToString().ToLower()  ==  this.txtbusqueda.Text.ToLower())
+                    }
+                    if (row["Id"].ToString()  == this.txtbusqueda.Text)
+                    {
+                        this.TomarDatos(row);
+                        return;
+                    }
+                    if (row["Nombre"].ToString().ToLower() +" "+row["Apellido"].ToString().ToLower()  ==  this.txtbusqueda.Text.ToLower())
                     {
                         this.TomarDatos(row);
                         return;
@@ -651,11 +651,11 @@ namespace ManSys
             }
 
 
-			//}
-			//else
-			MessageBox.Show("Ningun Registro Encontrado con el Dato de Busqueda Ingresado");
+            //}
+            //else
+            MessageBox.Show("Ningun Registro Encontrado con el Dato de Busqueda Ingresado");
 
-		}
+        }
 		private void TomarDatos(DataRow datos)
 		{
             //  DateTime.ParseExact(datos["Fecha_de_Ingreso"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
