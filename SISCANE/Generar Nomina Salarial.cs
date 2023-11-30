@@ -37,42 +37,44 @@ namespace ManSys
             this.ActualizarDiasTrabajados();
             this.ActualizarDescuentos();
             this.ActualizarMontoTotal();
+            this.InicioDeNomina.Value = DateTime.Today;
+            this.CierreDeNomina.Value = DateTime.Today;
          }
         private void ActualizarMontoTotal()
         {   
-            double neto, descuento, total;
-            neto = double.Parse(SueldoNeto.Text);
-            descuento = double.Parse(Descuentos.Text);
-            total =  neto - descuento;
-            PagoTotal.Text = total.ToString();
+            //double neto, descuento, total;
+            //neto = double.Parse(SueldoNeto.Text);
+            //descuento = double.Parse(Descuentos.Text);
+            //total =  neto - descuento;
+            //PagoTotal.Text = total.ToString();
         }
         private void ActualizarDescuentos()
         {
-            double ars, afp, descuento, pago;  
-            ars = double.Parse(DescuentoArs.Text);
-            afp = double.Parse(DescuentoAfp.Text);
-            pago = double.Parse(SueldoNeto.Text);
-            descuento = (((ars+afp) / 100) * pago);
-            Descuentos.Text = $"{descuento}"; 
+            //double ars, afp, descuento, pago;  
+            //ars = double.Parse(DescuentoArs.Text);
+            //afp = double.Parse(DescuentoAfp.Text);
+            //pago = double.Parse(SueldoNeto.Text);
+            //descuento = (((ars+afp) / 100) * pago);
+            //Descuentos.Text = $"{descuento}"; 
         }
         private bool ValidarDatos()
         {
-            if (!Get.IsNumber(txthorasn.Text))
-            {
-                return false;
-            }
-            if (!Get.IsNumber(txthorase.Text))
-            {
-                return false;
-            }
-            if (!Get.IsNumber(PrecioHoraNormal.Text))
-            {
-                return false;
-            }
-            if (!Get.IsNumber(PrecioHoraExtra.Text))
-            {
-                return false;
-            }
+            //if (!Get.IsNumber(txthorasn.Text))
+            //{
+            //    return false;
+            //}
+            //if (!Get.IsNumber(txthorase.Text))
+            //{
+            //    return false;
+            //}
+            //if (!Get.IsNumber(PrecioHoraNormal.Text))
+            //{
+            //    return false;
+            //}
+            //if (!Get.IsNumber(PrecioHoraExtra.Text))
+            //{
+            //    return false;
+            //}
             return true; 
         }
         private void ActualizarDiasTrabajados()
@@ -84,23 +86,20 @@ namespace ManSys
             }
             
             //string dia = $"{DateTime.Parse(InicioDeNomina.Text).ToString("dd")} {DateTime.Parse(CierreDeNomina.Text).ToString("dd")}";
-            int inicio, final, dias; 
-           
-            inicio = int.Parse(DateTime.Parse(InicioDeNomina.Text).ToString("dd"));
-            final = int.Parse(DateTime.Parse(CierreDeNomina.Text).ToString("dd"));
-            dias =1; 
-            for(int d = inicio; d < final; d++)
-            {
-                dias++; 
-            }
-            DiasTrabajados.Text = $"{dias}";
-            SueldoNeto.Text = $"{dias * int.Parse(SueldoNeto.Text)}"; 
-            //MessageBox.Show($"{dias}"); 
-            // 5 6 7 8 9
-            // 1 2 3 4 5
 
-        }
-        private void ActualizarSalarioNeto()
+            this.DiasTrabajadosBox.Text = (int.Parse((CierreDeNomina.Value-InicioDeNomina.Value).Days.ToString())+1).ToString();
+            this.PeridoDeNomina.Text = InicioDeNomina.Value.ToString("dd/MM/yyyy")+"-"+CierreDeNomina.Value.ToString("dd/MM/yyyy"); 
+			//for(int d = inicio; d < final; d++)
+			//{
+			//    dias++; 
+			//}
+			//SueldoNeto.Text = $"{dias * int.Parse(SueldoNeto.Text)}"; 
+			//MessageBox.Show($"{dias}"); 
+			// 5 6 7 8 9
+			// 1 2 3 4 5
+
+		}
+		private void ActualizarSalarioNeto()
         {
             if (!ValidarDatos())
             {
@@ -108,8 +107,8 @@ namespace ManSys
                 return;
             }
             //horas trabajadas * pago de hora + horas extras * horas trabajadas extra
-            int pago = (int.Parse(txthorasn.Text) * int.Parse(PrecioHoraNormal.Text)) + (int.Parse(txthorase.Text) * int.Parse(PrecioHoraExtra.Text));
-            SueldoNeto.Text = $"{pago}"; 
+            //int pago = (int.Parse(txthorasn.Text) * int.Parse(PrecioHoraNormal.Text)) + (int.Parse(txthorase.Text) * int.Parse(PrecioHoraExtra.Text));
+            //SueldoNeto.Text = $"{pago}"; 
         }
         private void LLenarGridNomina()
         {
@@ -519,45 +518,45 @@ namespace ManSys
        
         private void ActualizarPagoPorHoraNormales()
         {
-            switch (this.PrecioHoraNormalesOpcion.Text)
-            {
-                case "Agente":
-                    this.PrecioHoraNormal.Text = "210";
-                    break;
-                case "Supervisor":
-                    this.PrecioHoraNormal.Text = "315";
+            //switch (this.PrecioHoraNormalesOpcion.Text)
+            //{
+            //    case "Agente":
+            //        this.PrecioHoraNormal.Text = "210";
+            //        break;
+            //    case "Supervisor":
+            //        this.PrecioHoraNormal.Text = "315";
 
-                    break;
-                case "Calidad":
-                    this.PrecioHoraNormal.Text = "335";
-                    break;
-                case "Manager":
-                    this.PrecioHoraNormal.Text = "415";
-                    break;
-            }
+            //        break;
+            //    case "Calidad":
+            //        this.PrecioHoraNormal.Text = "335";
+            //        break;
+            //    case "Manager":
+            //        this.PrecioHoraNormal.Text = "415";
+            //        break;
+            //}
         }
         private void ActualizarPagoPorHoraExtra()
         {
-            switch (this.PrecioHorasExtraOpcion.Text)
-            {
-                case "Agente":
-                    this.PrecioHoraExtra.Text = "285";
-                    break;
-                case "Supervisor":
-                    this.PrecioHoraExtra.Text = "425";
+            //switch (this.PrecioHorasExtraOpcion.Text)
+            //{
+            //    case "Agente":
+            //        this.PrecioHoraExtra.Text = "285";
+            //        break;
+            //    case "Supervisor":
+            //        this.PrecioHoraExtra.Text = "425";
 
-                    break;
-                case "Calidad":
-                    this.PrecioHoraExtra.Text = "452";
-                    break;
-                case "Manager":
-                    this.PrecioHoraExtra.Text = "560";
-                    break;
-            }
+            //        break;
+            //    case "Calidad":
+            //        this.PrecioHoraExtra.Text = "452";
+            //        break;
+            //    case "Manager":
+            //        this.PrecioHoraExtra.Text = "560";
+            //        break;
+            //}
         }
         private void PrecioHoraNormalesOpcion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.CargarDatos();           
+            this.CargarDatos();          
         }
 
         private void PrecioHorasExtraOpcion_SelectedIndexChanged(object sender, EventArgs e)
@@ -567,17 +566,20 @@ namespace ManSys
 
         private void InicioDeNomina_ValueChanged(object sender, EventArgs e)
         {
-            this.CargarDatos();
-        }
+			//this.CargarDatos();
+			this.ActualizarDiasTrabajados();
 
-        private void CierreDeNomina_ValueChanged(object sender, EventArgs e)
+		}
+
+		private void CierreDeNomina_ValueChanged(object sender, EventArgs e)
         {
-            this.CargarDatos();
+            //this.CargarDatos();
+            this.ActualizarDiasTrabajados();
         }
 
         private void txthorasn_TextChanged(object sender, EventArgs e)
         {
             this.CargarDatos();
         }
-    }
+	}
 }

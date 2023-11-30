@@ -36,13 +36,17 @@ namespace ManSys
             //{
             Application.EnableVisualStyles();
 			//Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MenuPrincipal());
+			//Application.Run(new MenuPrincipal());
 			//Application.Run(new MantenimientoDeEmpleados());
-			//Application.Run(new GenerarNomina()); 
 			//Application.Run(new mantenimientoDept());
 			//Application.Run(new mantenimientoPosc());
 			//Application.Run(new mantenimientoImp
 			//Application.Run(new mantenimientoDeducciones()); 
+			//Application.Run(new GenerarVolanteDePago());
+			//Application.Run(new GenerarNomina());
+			//Application.Run(new Incidencias());
+			//Application.Run(new GenerarNomina()); 
+			Application.Run(new Empleado());
 			//}
 			//catch (Exception e)
 			//{

@@ -32,6 +32,7 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MantenimientoDeEmpleados));
 			this.label14 = new System.Windows.Forms.Label();
 			this.gblistadovisitas = new System.Windows.Forms.GroupBox();
+			this.BusquedaAvanzadaCheck = new System.Windows.Forms.CheckBox();
 			this.btnRefrescar = new System.Windows.Forms.Button();
 			this.ListadodeEmpleados = new System.Windows.Forms.DataGridView();
 			this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,13 +79,12 @@
 			this.txtNombre = new System.Windows.Forms.TextBox();
 			this.txtId = new System.Windows.Forms.TextBox();
 			this.txtfechadeingreso = new System.Windows.Forms.DateTimePicker();
-			this.txttipodecobro = new System.Windows.Forms.ComboBox();
 			this.txtdeparmento = new System.Windows.Forms.ComboBox();
 			this.txtpuestoocupado = new System.Windows.Forms.ComboBox();
 			this.txtturno = new System.Windows.Forms.ComboBox();
 			this.empleadosTableAdapter = new ManSys.EmpleadosDataSetTableAdapters.EmpleadosTableAdapter();
 			this.Fecha_de_Ingreso_Label = new System.Windows.Forms.Label();
-			this.BusquedaAvanzadaCheck = new System.Windows.Forms.CheckBox();
+			this.txttipodecobro = new System.Windows.Forms.ComboBox();
 			this.gblistadovisitas.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ListadodeEmpleados)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.empleadosBindingSource)).BeginInit();
@@ -123,6 +123,16 @@
 			this.gblistadovisitas.TabIndex = 137;
 			this.gblistadovisitas.TabStop = false;
 			this.gblistadovisitas.Text = "Empleados Registrados";
+			// 
+			// BusquedaAvanzadaCheck
+			// 
+			this.BusquedaAvanzadaCheck.AutoSize = true;
+			this.BusquedaAvanzadaCheck.Location = new System.Drawing.Point(1059, 78);
+			this.BusquedaAvanzadaCheck.Name = "BusquedaAvanzadaCheck";
+			this.BusquedaAvanzadaCheck.Size = new System.Drawing.Size(218, 26);
+			this.BusquedaAvanzadaCheck.TabIndex = 9;
+			this.BusquedaAvanzadaCheck.Text = "Busqueda Avanzada";
+			this.BusquedaAvanzadaCheck.UseVisualStyleBackColor = true;
 			// 
 			// btnRefrescar
 			// 
@@ -602,20 +612,6 @@
 			this.txtfechadeingreso.Size = new System.Drawing.Size(298, 26);
 			this.txtfechadeingreso.TabIndex = 142;
 			// 
-			// txttipodecobro
-			// 
-			this.txttipodecobro.FormattingEnabled = true;
-			this.txttipodecobro.Items.AddRange(new object[] {
-            "Efectivo",
-            "Checke",
-            "Deposito",
-            "Paypal"});
-			this.txttipodecobro.Location = new System.Drawing.Point(876, 227);
-			this.txttipodecobro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.txttipodecobro.Name = "txttipodecobro";
-			this.txttipodecobro.Size = new System.Drawing.Size(298, 28);
-			this.txttipodecobro.TabIndex = 143;
-			// 
 			// txtdeparmento
 			// 
 			this.txtdeparmento.FormattingEnabled = true;
@@ -765,15 +761,19 @@
 			this.Fecha_de_Ingreso_Label.Size = new System.Drawing.Size(0, 29);
 			this.Fecha_de_Ingreso_Label.TabIndex = 147;
 			// 
-			// BusquedaAvanzadaCheck
+			// txttipodecobro
 			// 
-			this.BusquedaAvanzadaCheck.AutoSize = true;
-			this.BusquedaAvanzadaCheck.Location = new System.Drawing.Point(1059, 78);
-			this.BusquedaAvanzadaCheck.Name = "BusquedaAvanzadaCheck";
-			this.BusquedaAvanzadaCheck.Size = new System.Drawing.Size(218, 26);
-			this.BusquedaAvanzadaCheck.TabIndex = 9;
-			this.BusquedaAvanzadaCheck.Text = "Busqueda Avanzada";
-			this.BusquedaAvanzadaCheck.UseVisualStyleBackColor = true;
+			this.txttipodecobro.FormattingEnabled = true;
+			this.txttipodecobro.Items.AddRange(new object[] {
+            "Efectivo",
+            "Checke",
+            "Deposito",
+            "Paypal"});
+			this.txttipodecobro.Location = new System.Drawing.Point(876, 227);
+			this.txttipodecobro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.txttipodecobro.Name = "txttipodecobro";
+			this.txttipodecobro.Size = new System.Drawing.Size(298, 28);
+			this.txttipodecobro.TabIndex = 143;
 			// 
 			// MantenimientoDeEmpleados
 			// 
@@ -865,7 +865,6 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Button bntlimpiar;
         private System.Windows.Forms.DateTimePicker txtfechadeingreso;
-        private System.Windows.Forms.ComboBox txttipodecobro;
         private System.Windows.Forms.ComboBox txtdeparmento;
         private System.Windows.Forms.ComboBox txtpuestoocupado;
         private System.Windows.Forms.ComboBox txtturno;
@@ -886,5 +885,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Turno;
 		private System.Windows.Forms.Label Fecha_de_Ingreso_Label;
 		private System.Windows.Forms.CheckBox BusquedaAvanzadaCheck;
+		private System.Windows.Forms.ComboBox txttipodecobro;
 	}
 }

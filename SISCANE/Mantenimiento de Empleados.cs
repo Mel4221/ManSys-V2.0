@@ -280,16 +280,21 @@ namespace ManSys
 
             //new Task(() =>
             //{
-
-
-            using (SqlConnection dataConnection = new SqlConnection(Connection.ConnectionString))
+            try
             {
-                dataConnection.Open();
-                DataTable dtempleados = new DataTable();
-                SqlDataAdapter daempleados = new SqlDataAdapter("GetDB_Mantenimiento_de_Empleados", dataConnection);
-                daempleados.SelectCommand.CommandType = CommandType.StoredProcedure;
-                daempleados.Fill(dtempleados);
-                ListadodeEmpleados.DataSource = dtempleados;
+
+                using (SqlConnection dataConnection = new SqlConnection(Connection.ConnectionString))
+                {
+                    dataConnection.Open();
+                    DataTable dtempleados = new DataTable();
+                    SqlDataAdapter daempleados = new SqlDataAdapter("GetDB_Mantenimiento_de_Empleados", dataConnection);
+                    daempleados.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    daempleados.Fill(dtempleados);
+                    ListadodeEmpleados.DataSource = dtempleados;
+                }
+            }catch(Exception ex)
+            {
+                ShowError("Hubo un error al Cargar los Empleados", ex);
             }
 			//}).RunSynchronously();
 			//ListadodeEmpleados.Update();/
@@ -374,7 +379,7 @@ namespace ManSys
             //MessageBox.Show(DateTime.ParseExact(datos["Fecha_de_Ingreso"].ToString(), "dd/MM/yyyy"));
             //return;
 			txtId.Text = datos["Id"].ToString();
-			txtNombre.Text = datos["Nombre"].ToString();
+			txtApellido.Text = datos["Nombre"].ToString();
 			txtApellido.Text = datos["Apellido"].ToString();
 			txtdireccion.Text = datos["Direccion"].ToString();
 			txttelefono.Text = datos["Telefono"].ToString();

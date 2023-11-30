@@ -748,6 +748,7 @@
 			this.Name = "GenerarVolanteDePago";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Generar Volante de Pago";
+			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.Load += new System.EventHandler(this.GenerarVolanteDePago_Load);
 			this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GenerarVolanteDePago_MouseDown);
 			this.toolStripContainer1.ContentPanel.ResumeLayout(false);

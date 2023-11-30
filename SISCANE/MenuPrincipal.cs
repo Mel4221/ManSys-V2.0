@@ -136,7 +136,7 @@ namespace ManSys
 
         private void gestiónDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formulario = new Gestión_de_Usuarios();
+            Form formulario = new Empleado();
             formulario.Show();
         }
 

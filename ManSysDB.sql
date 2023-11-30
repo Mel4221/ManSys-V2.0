@@ -298,6 +298,7 @@
 
 
 use ManSysDB
+/*
 select * from  [dbo].[Empleados]
 select * from  [dbo].[Incidencias]
 select * from  [dbo].[Bonificaciones]
@@ -305,7 +306,7 @@ select * from  [dbo].[Deducciones]
 select * from  [dbo].[Departamentos]
 select * from  [dbo].[Impuestos]
 select * from  [dbo].[Posiciones]
+*/
 
 
-
-
+ 

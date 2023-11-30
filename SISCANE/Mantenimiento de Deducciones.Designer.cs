@@ -33,6 +33,9 @@
 			this.gblistadovisitas = new System.Windows.Forms.GroupBox();
 			this.btnRefrescar = new System.Windows.Forms.Button();
 			this.ListadodeUsuarios = new System.Windows.Forms.DataGridView();
+			this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnBuscar = new System.Windows.Forms.Button();
 			this.label15 = new System.Windows.Forms.Label();
 			this.txtbusqueda = new System.Windows.Forms.TextBox();
@@ -48,9 +51,6 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtid = new System.Windows.Forms.TextBox();
-			this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.gblistadovisitas.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ListadodeUsuarios)).BeginInit();
 			this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -121,6 +121,33 @@
 			this.ListadodeUsuarios.RowHeadersWidth = 62;
 			this.ListadodeUsuarios.Size = new System.Drawing.Size(868, 423);
 			this.ListadodeUsuarios.TabIndex = 8;
+			// 
+			// Id
+			// 
+			this.Id.DataPropertyName = "Id";
+			this.Id.HeaderText = "ID";
+			this.Id.MinimumWidth = 8;
+			this.Id.Name = "Id";
+			this.Id.ReadOnly = true;
+			this.Id.Width = 150;
+			// 
+			// Nombre
+			// 
+			this.Nombre.DataPropertyName = "Nombre";
+			this.Nombre.HeaderText = "Nombre";
+			this.Nombre.MinimumWidth = 8;
+			this.Nombre.Name = "Nombre";
+			this.Nombre.ReadOnly = true;
+			this.Nombre.Width = 200;
+			// 
+			// Cantidad
+			// 
+			this.Cantidad.DataPropertyName = "Cantidad";
+			this.Cantidad.HeaderText = "Cantidad";
+			this.Cantidad.MinimumWidth = 8;
+			this.Cantidad.Name = "Cantidad";
+			this.Cantidad.ReadOnly = true;
+			this.Cantidad.Width = 150;
 			// 
 			// btnBuscar
 			// 
@@ -308,33 +335,6 @@
 			this.txtid.Size = new System.Drawing.Size(116, 26);
 			this.txtid.TabIndex = 170;
 			// 
-			// Id
-			// 
-			this.Id.DataPropertyName = "Id";
-			this.Id.HeaderText = "ID";
-			this.Id.MinimumWidth = 8;
-			this.Id.Name = "Id";
-			this.Id.ReadOnly = true;
-			this.Id.Width = 150;
-			// 
-			// Nombre
-			// 
-			this.Nombre.DataPropertyName = "Nombre";
-			this.Nombre.HeaderText = "Nombre";
-			this.Nombre.MinimumWidth = 8;
-			this.Nombre.Name = "Nombre";
-			this.Nombre.ReadOnly = true;
-			this.Nombre.Width = 200;
-			// 
-			// Cantidad
-			// 
-			this.Cantidad.DataPropertyName = "Cantidad";
-			this.Cantidad.HeaderText = "Cantidad";
-			this.Cantidad.MinimumWidth = 8;
-			this.Cantidad.Name = "Cantidad";
-			this.Cantidad.ReadOnly = true;
-			this.Cantidad.Width = 150;
-			// 
 			// mantenimientoDeducciones
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -355,6 +355,7 @@
 			this.Name = "mantenimientoDeducciones";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "mantenimientoDeducciones";
+			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.Load += new System.EventHandler(this.mantenimientoDeducciones_Load);
 			this.gblistadovisitas.ResumeLayout(false);
 			this.gblistadovisitas.PerformLayout();
