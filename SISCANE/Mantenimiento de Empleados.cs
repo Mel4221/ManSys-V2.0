@@ -228,11 +228,8 @@ namespace ManSys
 
 
 }
-        public void ShowError(string message , Exception ex)
-        {
-            MessageBox.Show($"{message}\n{ex}", "Algo Salio mal!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-        }
+        public void ShowError(string message , Exception ex) => MessageBox.Show($"{message}\n{ex}", "Algo Salio mal!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        
         private void Limpiar()
         {
             txtId.ResetText();
@@ -309,7 +306,7 @@ namespace ManSys
             //btnNuevo.Enabled = false;
             btnRegistrar.Enabled = true;
             btnModificar.Enabled = true;
-            btnCancelar.Enabled = true;
+            // btnCancelar.Enabled = true;
             btnEliminar.Enabled = true;
             btnBuscar.Enabled = true;
             txtbusqueda.Enabled = true;
@@ -319,13 +316,13 @@ namespace ManSys
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             //btnNuevo.Enabled = true;
-            btnRegistrar.Enabled = false;
-            btnModificar.Enabled = false;
-            btnCancelar.Enabled = true;
-            btnEliminar.Enabled = true;
-            btnBuscar.Enabled = true;
-            txtbusqueda.Enabled = true;
-            Limpiar();
+            //btnRegistrar.Enabled = false;
+            //btnModificar.Enabled = false;
+            //btnCancelar.Enabled = true;
+            //btnEliminar.Enabled = true;
+            //btnBuscar.Enabled = true;
+            //txtbusqueda.Enabled = true;
+            //Limpiar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -355,7 +352,7 @@ namespace ManSys
             //btnNuevo.Enabled = true;
             btnRegistrar.Enabled = false;
             btnModificar.Enabled = false;
-            btnCancelar.Enabled = true;
+            //btnCancelar.Enabled = true;
             btnEliminar.Enabled = false;
             btnBuscar.Enabled = true;
             txtbusqueda.Enabled = true;
@@ -369,7 +366,7 @@ namespace ManSys
 
         private void txtfechadeingreso_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void TomarDatos(DataRow datos)

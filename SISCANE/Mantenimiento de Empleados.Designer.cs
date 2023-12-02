@@ -54,7 +54,6 @@
 			this.empleadosDataSet = new ManSys.EmpleadosDataSet();
 			this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
 			this.bntlimpiar = new System.Windows.Forms.Button();
-			this.btnCancelar = new System.Windows.Forms.Button();
 			this.btnCerrar = new System.Windows.Forms.Button();
 			this.btnModificar = new System.Windows.Forms.Button();
 			this.btnEliminar = new System.Windows.Forms.Button();
@@ -273,7 +272,7 @@
 			this.btnBuscar.Location = new System.Drawing.Point(1379, 39);
 			this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnBuscar.Name = "btnBuscar";
-			this.btnBuscar.Size = new System.Drawing.Size(112, 35);
+			this.btnBuscar.Size = new System.Drawing.Size(111, 35);
 			this.btnBuscar.TabIndex = 5;
 			this.btnBuscar.Text = "Buscar";
 			this.btnBuscar.UseVisualStyleBackColor = true;
@@ -316,7 +315,6 @@
 			// toolStripContainer1.ContentPanel
 			// 
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.bntlimpiar);
-			this.toolStripContainer1.ContentPanel.Controls.Add(this.btnCancelar);
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.btnCerrar);
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.btnModificar);
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.btnEliminar);
@@ -350,26 +348,13 @@
 			this.bntlimpiar.UseVisualStyleBackColor = true;
 			this.bntlimpiar.Click += new System.EventHandler(this.bntlimpiar_Click);
 			// 
-			// btnCancelar
-			// 
-			this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnCancelar.ForeColor = System.Drawing.Color.Red;
-			this.btnCancelar.Location = new System.Drawing.Point(16, 243);
-			this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.btnCancelar.Name = "btnCancelar";
-			this.btnCancelar.Size = new System.Drawing.Size(202, 40);
-			this.btnCancelar.TabIndex = 109;
-			this.btnCancelar.Text = "Cancelar";
-			this.btnCancelar.UseVisualStyleBackColor = true;
-			this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-			// 
 			// btnCerrar
 			// 
 			this.btnCerrar.BackColor = System.Drawing.Color.Red;
 			this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnCerrar.ForeColor = System.Drawing.Color.Black;
-			this.btnCerrar.Location = new System.Drawing.Point(16, 293);
+			this.btnCerrar.Location = new System.Drawing.Point(16, 243);
 			this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnCerrar.Name = "btnCerrar";
 			this.btnCerrar.Size = new System.Drawing.Size(202, 40);
@@ -860,7 +845,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Button bntlimpiar;

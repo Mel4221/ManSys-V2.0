@@ -42,11 +42,13 @@ namespace ManSys
 			//Application.Run(new mantenimientoPosc());
 			//Application.Run(new mantenimientoImp
 			//Application.Run(new mantenimientoDeducciones()); 
+			//Application.Run(new Mantenimiento_de_Horario());
 			//Application.Run(new GenerarVolanteDePago());
 			//Application.Run(new GenerarNomina());
 			//Application.Run(new Incidencias());
 			//Application.Run(new GenerarNomina()); 
-			Application.Run(new Empleado());
+			//Application.Run(new Empleado());
+			Application.Run(new Generar_JornadaLaboral());
 			//}
 			//catch (Exception e)
 			//{

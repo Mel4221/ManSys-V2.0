@@ -238,7 +238,7 @@ namespace ManSys
 
 
 					cm.Parameters.Add(new SqlParameter("@EmpleadoId", SqlDbType.Int));
-					cm.Parameters["@EmpleadoId"].Value = txtid.Text;
+					cm.Parameters["@EmpleadoId"].Value = usuario;
 
 					SqlDataReader reader = cm.ExecuteReader();
 

@@ -309,4 +309,5 @@ select * from  [dbo].[Posiciones]
 */
 
 
- 
+SELECT * FROM dbo.Gestion_de_Usuarios
+SELECT * FROM Gestion_de_Jornada

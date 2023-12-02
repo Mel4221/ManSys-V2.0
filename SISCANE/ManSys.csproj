@@ -127,10 +127,22 @@
     <Compile Include="Consulta de Posiciones.Designer.cs">
       <DependentUpon>Consulta de Posiciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generar JornadaLaboral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar JornadaLaboral.Designer.cs">
+      <DependentUpon>Generar JornadaLaboral.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManSysDBDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ManSysDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento de JornadaLaboral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento de JornadaLaboral.Designer.cs">
+      <DependentUpon>Mantenimiento de JornadaLaboral.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
@@ -262,6 +274,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Consulta de Posiciones.resx">
       <DependentUpon>Consulta de Posiciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar JornadaLaboral.resx">
+      <DependentUpon>Generar JornadaLaboral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento de JornadaLaboral.resx">
+      <DependentUpon>Mantenimiento de JornadaLaboral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
