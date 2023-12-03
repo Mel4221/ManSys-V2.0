@@ -36,6 +36,44 @@ namespace ManSys
 		{
 			this.Close();
 		}
+
+		private string HoraDeEntrada = null;
+		private bool ExisteSalida(string usuario,string fecha)
+		{
+			try
+			{
+				using (SqlConnection cn = new SqlConnection(Connection.ConnectionString))
+				{
+					cn.Open();
+
+					SqlCommand cm = new SqlCommand("SELECT * FROM dbo.Gestion_de_Jornada WHERE EmpleadoId = @EmpleadoId AND Fecha = @Fecha AND Salida = @Salida", cn);
+
+					cm.Parameters.Add(new SqlParameter("@EmpleadoId", SqlDbType.Int));
+					cm.Parameters["@EmpleadoId"].Value = usuario;
+
+					cm.Parameters.Add(new SqlParameter("@Fecha", SqlDbType.VarChar));
+					cm.Parameters["@Fecha"].Value = fecha;
+
+					cm.Parameters.Add(new SqlParameter("@Salida", SqlDbType.VarChar));
+					cm.Parameters["@Salida"].Value = "Pendiente...";
+
+
+					SqlDataReader reader = cm.ExecuteReader();
+
+
+					if (reader.Read())
+					{
+						return false;
+					}else{
+						return true;
+					}
+				}
+			}
+			catch
+			{
+				return true;
+			}
+		}
  		private bool ExisteEntrada(string usuario , string fecha)
 		{
 			try
@@ -57,6 +95,7 @@ namespace ManSys
 
 					if (reader.Read())
 					{
+						this.HoraDeEntrada = reader.GetValue(3).ToString();
 						return true;
 					}
 					return false;
@@ -182,6 +221,7 @@ namespace ManSys
 					filtro.Columns.Add("EmpleadoId", typeof(int));
 					filtro.Columns.Add("Entrada", typeof(string));
 					filtro.Columns.Add("Salida", typeof(string));
+					filtro.Columns.Add("HorasTrabajadas", typeof(float));
 
 					adapter.Fill(table);
 					foreach(DataRow row in table.Rows)
@@ -192,6 +232,7 @@ namespace ManSys
 							r["EmpleadoId"] = row["EmpleadoId"];
 							r["Entrada"] = row["Entrada"];//EmpleadoId,Empleado,Fecha,Entrada,Salida,
 							r["Salida"] = row["Salida"];
+							r["HorasTrabajadas"] = row["HorasTrabajadas"];
 							filtro.Rows.Add(r);
 
 						}
@@ -236,6 +277,39 @@ namespace ManSys
 				MessageBox.Show("No Existe Ninguna Entrada");
 				//this.LimpiarCampos();
 				return;
+			}if(this.ExisteSalida(this.txtId.Text,DateTime.Now.ToString("dd/MM/yyyy")))
+			{
+				MessageBox.Show("Ya se registro su Salida del Dia de Hoy");
+				this.LimpiarCampos();
+				return;
+			}
+			try
+			{
+				 
+				 
+				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+				{
+					con.Open();
+					SqlCommand cmd = new SqlCommand("UPDATE dbo.Gestion_de_Jornada SET Salida = @Salida ,HorasTrabajadas = @HorasTrabajadas WHERE EmpleadoId = @EmpleadoId AND Fecha = @Fecha", con);
+					cmd.Parameters.Add(new SqlParameter("@EmpleadoId", SqlDbType.Int));
+					cmd.Parameters["@EmpleadoId"].Value = this.txtId.Text;
+
+					cmd.Parameters.Add(new SqlParameter("@Fecha", SqlDbType.VarChar));
+					cmd.Parameters["@Fecha"].Value = DateTime.Now.ToString("dd/MM/yyyy");
+
+					cmd.Parameters.Add(new SqlParameter("@Salida", SqlDbType.VarChar));
+					cmd.Parameters["@Salida"].Value = DateTime.Now.ToString("hh:mm");
+
+					cmd.Parameters.Add(new SqlParameter("@HorasTrabajadas", SqlDbType.Float));
+					cmd.Parameters["@HorasTrabajadas"].Value = ((DateTime.Now-DateTime.ParseExact(this.HoraDeEntrada, "hh:mm", null)).TotalMinutes / 60).ToString();
+					cmd.ExecuteNonQuery();
+					this.LimpiarCampos();
+					//MessageBox.Show(float.Parse(((DateTime.ParseExact(DateTime.Now.ToString("hh:mm"),"hh:mm",null)-DateTime.ParseExact(this.HoraDeEntrada, "hh:mm", null)).TotalMinutes).ToString()).ToString());
+				}
+			}
+			catch (Exception ex)
+			{
+				this.ShowError($"Hubo un error al Tratar de Iniciar la Jornada de {this.EntradaUsuario}", ex);
 			}
 		}
 	}

@@ -131,7 +131,7 @@
 			// 
 			this.HoraActual.AutoSize = true;
 			this.HoraActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.HoraActual.Location = new System.Drawing.Point(408, 193);
+			this.HoraActual.Location = new System.Drawing.Point(500, 191);
 			this.HoraActual.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.HoraActual.Name = "HoraActual";
 			this.HoraActual.Size = new System.Drawing.Size(147, 29);
@@ -179,7 +179,7 @@
 			// 
 			// Contra
 			// 
-			this.Contra.Location = new System.Drawing.Point(562, 313);
+			this.Contra.Location = new System.Drawing.Point(654, 311);
 			this.Contra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Contra.Name = "Contra";
 			this.Contra.Size = new System.Drawing.Size(232, 26);
@@ -190,7 +190,7 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(408, 309);
+			this.label2.Location = new System.Drawing.Point(500, 307);
 			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(146, 29);
@@ -199,7 +199,7 @@
 			// 
 			// txtId
 			// 
-			this.txtId.Location = new System.Drawing.Point(562, 261);
+			this.txtId.Location = new System.Drawing.Point(654, 259);
 			this.txtId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.txtId.Name = "txtId";
 			this.txtId.Size = new System.Drawing.Size(232, 26);
@@ -210,7 +210,7 @@
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(408, 257);
+			this.label1.Location = new System.Drawing.Point(500, 255);
 			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(38, 29);
@@ -222,7 +222,7 @@
 			this.label14.AutoSize = true;
 			this.label14.BackColor = System.Drawing.Color.Transparent;
 			this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F, System.Drawing.FontStyle.Bold);
-			this.label14.Location = new System.Drawing.Point(407, 84);
+			this.label14.Location = new System.Drawing.Point(499, 82);
 			this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(498, 35);
@@ -232,6 +232,7 @@
 			// ListadoDeEntradsSalidas
 			// 
 			this.ListadoDeEntradsSalidas.AllowUserToAddRows = false;
+			this.ListadoDeEntradsSalidas.AllowUserToDeleteRows = false;
 			this.ListadoDeEntradsSalidas.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
 			this.ListadoDeEntradsSalidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.ListadoDeEntradsSalidas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -244,6 +245,7 @@
 			this.ListadoDeEntradsSalidas.Location = new System.Drawing.Point(23, 23);
 			this.ListadoDeEntradsSalidas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ListadoDeEntradsSalidas.Name = "ListadoDeEntradsSalidas";
+			this.ListadoDeEntradsSalidas.ReadOnly = true;
 			this.ListadoDeEntradsSalidas.RowHeadersWidth = 62;
 			this.ListadoDeEntradsSalidas.Size = new System.Drawing.Size(507, 991);
 			this.ListadoDeEntradsSalidas.TabIndex = 141;
@@ -272,7 +274,7 @@
 			this.Fecha.MinimumWidth = 8;
 			this.Fecha.Name = "Fecha";
 			this.Fecha.Visible = false;
-			this.Fecha.Width = 150;
+			this.Fecha.Width = 8;
 			// 
 			// Entrada
 			// 
@@ -280,6 +282,7 @@
 			this.Entrada.HeaderText = "Entrada";
 			this.Entrada.MinimumWidth = 8;
 			this.Entrada.Name = "Entrada";
+			this.Entrada.Width = 50;
 			// 
 			// Salida
 			// 
@@ -287,6 +290,7 @@
 			this.Salida.HeaderText = "Salida";
 			this.Salida.MinimumWidth = 8;
 			this.Salida.Name = "Salida";
+			this.Salida.Width = 75;
 			// 
 			// Empleado
 			// 
@@ -295,15 +299,14 @@
 			this.Empleado.MinimumWidth = 8;
 			this.Empleado.Name = "Empleado";
 			this.Empleado.Visible = false;
-			this.Empleado.Width = 150;
+			this.Empleado.Width = 8;
 			// 
 			// HorasTrabajadas
 			// 
 			this.HorasTrabajadas.DataPropertyName = "HorasTrabajadas";
-			this.HorasTrabajadas.HeaderText = "HorasTrabajadas";
+			this.HorasTrabajadas.HeaderText = "Horas Trabajadas";
 			this.HorasTrabajadas.MinimumWidth = 8;
 			this.HorasTrabajadas.Name = "HorasTrabajadas";
-			this.HorasTrabajadas.Visible = false;
 			this.HorasTrabajadas.Width = 150;
 			// 
 			// Generar_JornadaLaboral
