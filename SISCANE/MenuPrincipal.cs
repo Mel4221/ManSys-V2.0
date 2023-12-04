@@ -255,5 +255,15 @@ namespace ManSys
         {
 
         }
-    }
+
+		private void jORNADAToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+            new Mantenimiento_de_Horario().Show();
+		}
+
+		private void jORNADAESToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+            new Generar_JornadaLaboral().Show();
+		}
+	}
 }

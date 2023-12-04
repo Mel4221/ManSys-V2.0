@@ -47,6 +47,7 @@ namespace ManSys
 			//Application.Run(new GenerarNomina());
 			//Application.Run(new Incidencias());
 			//Application.Run(new GenerarNomina()); 
+			Application.Run(new Bonificaciones());
 			//Application.Run(new Empleado());
 			//Application.Run(new Generar_JornadaLaboral());
 			//}

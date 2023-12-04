@@ -29,28 +29,27 @@
 		private void InitializeComponent()
 		{
 			this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+			this.Registrar_Jornada = new System.Windows.Forms.Button();
 			this.bntlimpiar = new System.Windows.Forms.Button();
 			this.btnCerrar = new System.Windows.Forms.Button();
 			this.btnModificar = new System.Windows.Forms.Button();
 			this.btnEliminar = new System.Windows.Forms.Button();
 			this.ListadodeEmpleados = new System.Windows.Forms.DataGridView();
-			this.txtfechadeingreso = new System.Windows.Forms.DateTimePicker();
+			this.FechaDeJornada = new System.Windows.Forms.DateTimePicker();
 			this.EmpleadoIdLabel = new System.Windows.Forms.Label();
 			this.EmpleadoId = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label14 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.HoraDeEntrada = new System.Windows.Forms.DateTimePicker();
 			this.label3 = new System.Windows.Forms.Label();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+			this.HoraDeSalida = new System.Windows.Forms.DateTimePicker();
 			this.btnRefrescar = new System.Windows.Forms.Button();
-			this.btnBuscar = new System.Windows.Forms.Button();
 			this.BuscarJornadaLaboral = new System.Windows.Forms.DateTimePicker();
-			this.txtNombre = new System.Windows.Forms.TextBox();
+			this.NomreDeEmpleado = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
 			this.label5 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.HorasTrabajadas = new System.Windows.Forms.TextBox();
 			this.toolStripContainer1.ContentPanel.SuspendLayout();
 			this.toolStripContainer1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ListadodeEmpleados)).BeginInit();
@@ -62,7 +61,7 @@
 			// 
 			// toolStripContainer1.ContentPanel
 			// 
-			this.toolStripContainer1.ContentPanel.Controls.Add(this.button1);
+			this.toolStripContainer1.ContentPanel.Controls.Add(this.Registrar_Jornada);
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.bntlimpiar);
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.btnCerrar);
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.btnModificar);
@@ -83,6 +82,18 @@
 			this.toolStripContainer1.TopToolStripPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.toolStripContainer1.TopToolStripPanelVisible = false;
 			// 
+			// Registrar_Jornada
+			// 
+			this.Registrar_Jornada.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Registrar_Jornada.Location = new System.Drawing.Point(16, 18);
+			this.Registrar_Jornada.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.Registrar_Jornada.Name = "Registrar_Jornada";
+			this.Registrar_Jornada.Size = new System.Drawing.Size(202, 43);
+			this.Registrar_Jornada.TabIndex = 111;
+			this.Registrar_Jornada.Text = "Registrar";
+			this.Registrar_Jornada.UseVisualStyleBackColor = true;
+			this.Registrar_Jornada.Click += new System.EventHandler(this.Registrar_Jornada_Click);
+			// 
 			// bntlimpiar
 			// 
 			this.bntlimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -94,6 +105,7 @@
 			this.bntlimpiar.TabIndex = 110;
 			this.bntlimpiar.Text = "Limpiar";
 			this.bntlimpiar.UseVisualStyleBackColor = true;
+			this.bntlimpiar.Click += new System.EventHandler(this.bntlimpiar_Click);
 			// 
 			// btnCerrar
 			// 
@@ -132,26 +144,30 @@
 			this.btnEliminar.TabIndex = 33;
 			this.btnEliminar.Text = "Eliminar";
 			this.btnEliminar.UseVisualStyleBackColor = true;
+			this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
 			// 
 			// ListadodeEmpleados
 			// 
 			this.ListadodeEmpleados.AllowUserToAddRows = false;
+			this.ListadodeEmpleados.AllowUserToDeleteRows = false;
 			this.ListadodeEmpleados.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
 			this.ListadodeEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.ListadodeEmpleados.Location = new System.Drawing.Point(91, 487);
 			this.ListadodeEmpleados.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ListadodeEmpleados.Name = "ListadodeEmpleados";
+			this.ListadodeEmpleados.ReadOnly = true;
 			this.ListadodeEmpleados.RowHeadersWidth = 62;
 			this.ListadodeEmpleados.Size = new System.Drawing.Size(1432, 605);
 			this.ListadodeEmpleados.TabIndex = 138;
 			// 
-			// txtfechadeingreso
+			// FechaDeJornada
 			// 
-			this.txtfechadeingreso.Location = new System.Drawing.Point(205, 132);
-			this.txtfechadeingreso.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.txtfechadeingreso.Name = "txtfechadeingreso";
-			this.txtfechadeingreso.Size = new System.Drawing.Size(298, 26);
-			this.txtfechadeingreso.TabIndex = 143;
+			this.FechaDeJornada.Location = new System.Drawing.Point(205, 132);
+			this.FechaDeJornada.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.FechaDeJornada.Name = "FechaDeJornada";
+			this.FechaDeJornada.Size = new System.Drawing.Size(298, 26);
+			this.FechaDeJornada.TabIndex = 143;
+			this.FechaDeJornada.ValueChanged += new System.EventHandler(this.FechaDeJornada_ValueChanged);
 			// 
 			// EmpleadoIdLabel
 			// 
@@ -172,6 +188,8 @@
 			this.EmpleadoId.Size = new System.Drawing.Size(296, 26);
 			this.EmpleadoId.TabIndex = 145;
 			this.EmpleadoId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.EmpleadoId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EmpleadoId_KeyDown);
+			this.EmpleadoId.Leave += new System.EventHandler(this.EmpleadoId_Leave);
 			// 
 			// label1
 			// 
@@ -207,14 +225,16 @@
 			this.label2.TabIndex = 148;
 			this.label2.Text = "Entrada";
 			// 
-			// dateTimePicker1
+			// HoraDeEntrada
 			// 
-			this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-			this.dateTimePicker1.Location = new System.Drawing.Point(205, 189);
-			this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(298, 26);
-			this.dateTimePicker1.TabIndex = 149;
+			this.HoraDeEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.HoraDeEntrada.Location = new System.Drawing.Point(205, 189);
+			this.HoraDeEntrada.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.HoraDeEntrada.Name = "HoraDeEntrada";
+			this.HoraDeEntrada.Size = new System.Drawing.Size(298, 26);
+			this.HoraDeEntrada.TabIndex = 149;
+			this.HoraDeEntrada.Value = new System.DateTime(2023, 12, 4, 9, 0, 0, 0);
+			this.HoraDeEntrada.ValueChanged += new System.EventHandler(this.HoraDeEntrada_ValueChanged);
 			// 
 			// label3
 			// 
@@ -227,53 +247,46 @@
 			this.label3.TabIndex = 150;
 			this.label3.Text = "Salida";
 			// 
-			// dateTimePicker2
+			// HoraDeSalida
 			// 
-			this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-			this.dateTimePicker2.Location = new System.Drawing.Point(205, 239);
-			this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(298, 26);
-			this.dateTimePicker2.TabIndex = 151;
+			this.HoraDeSalida.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.HoraDeSalida.Location = new System.Drawing.Point(205, 239);
+			this.HoraDeSalida.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.HoraDeSalida.Name = "HoraDeSalida";
+			this.HoraDeSalida.Size = new System.Drawing.Size(298, 26);
+			this.HoraDeSalida.TabIndex = 151;
+			this.HoraDeSalida.Value = new System.DateTime(2023, 12, 4, 17, 0, 0, 0);
+			this.HoraDeSalida.ValueChanged += new System.EventHandler(this.HoraDeSalida_ValueChanged);
 			// 
 			// btnRefrescar
 			// 
 			this.btnRefrescar.ForeColor = System.Drawing.Color.DodgerBlue;
-			this.btnRefrescar.Location = new System.Drawing.Point(1369, 418);
+			this.btnRefrescar.Location = new System.Drawing.Point(1335, 442);
 			this.btnRefrescar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnRefrescar.Name = "btnRefrescar";
 			this.btnRefrescar.Size = new System.Drawing.Size(154, 35);
 			this.btnRefrescar.TabIndex = 153;
 			this.btnRefrescar.Text = "Refrescar";
 			this.btnRefrescar.UseVisualStyleBackColor = true;
-			// 
-			// btnBuscar
-			// 
-			this.btnBuscar.ForeColor = System.Drawing.Color.DodgerBlue;
-			this.btnBuscar.Location = new System.Drawing.Point(1232, 418);
-			this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.btnBuscar.Name = "btnBuscar";
-			this.btnBuscar.Size = new System.Drawing.Size(111, 35);
-			this.btnBuscar.TabIndex = 152;
-			this.btnBuscar.Text = "Buscar";
-			this.btnBuscar.UseVisualStyleBackColor = true;
+			this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
 			// 
 			// BuscarJornadaLaboral
 			// 
-			this.BuscarJornadaLaboral.Location = new System.Drawing.Point(900, 420);
+			this.BuscarJornadaLaboral.Location = new System.Drawing.Point(1029, 451);
 			this.BuscarJornadaLaboral.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.BuscarJornadaLaboral.Name = "BuscarJornadaLaboral";
 			this.BuscarJornadaLaboral.Size = new System.Drawing.Size(298, 26);
 			this.BuscarJornadaLaboral.TabIndex = 154;
+			this.BuscarJornadaLaboral.ValueChanged += new System.EventHandler(this.BuscarJornadaLaboral_ValueChanged);
 			// 
-			// txtNombre
+			// NomreDeEmpleado
 			// 
-			this.txtNombre.Location = new System.Drawing.Point(707, 84);
-			this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.txtNombre.Name = "txtNombre";
-			this.txtNombre.ReadOnly = true;
-			this.txtNombre.Size = new System.Drawing.Size(296, 26);
-			this.txtNombre.TabIndex = 156;
+			this.NomreDeEmpleado.Location = new System.Drawing.Point(693, 87);
+			this.NomreDeEmpleado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.NomreDeEmpleado.Name = "NomreDeEmpleado";
+			this.NomreDeEmpleado.ReadOnly = true;
+			this.NomreDeEmpleado.Size = new System.Drawing.Size(487, 26);
+			this.NomreDeEmpleado.TabIndex = 156;
 			// 
 			// label4
 			// 
@@ -286,17 +299,6 @@
 			this.label4.TabIndex = 155;
 			this.label4.Text = "Empleado";
 			// 
-			// button1
-			// 
-			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button1.Location = new System.Drawing.Point(16, 18);
-			this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(202, 43);
-			this.button1.TabIndex = 111;
-			this.button1.Text = "Registrar";
-			this.button1.UseVisualStyleBackColor = true;
-			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
@@ -308,14 +310,15 @@
 			this.label5.TabIndex = 157;
 			this.label5.Text = "Total de Horas Trabajadas";
 			// 
-			// textBox1
+			// HorasTrabajadas
 			// 
-			this.textBox1.Location = new System.Drawing.Point(438, 291);
-			this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(65, 26);
-			this.textBox1.TabIndex = 158;
-			this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.HorasTrabajadas.Location = new System.Drawing.Point(438, 291);
+			this.HorasTrabajadas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.HorasTrabajadas.Name = "HorasTrabajadas";
+			this.HorasTrabajadas.ReadOnly = true;
+			this.HorasTrabajadas.Size = new System.Drawing.Size(65, 26);
+			this.HorasTrabajadas.TabIndex = 158;
+			this.HorasTrabajadas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// Mantenimiento_de_Horario
 			// 
@@ -323,28 +326,28 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Silver;
 			this.ClientSize = new System.Drawing.Size(1543, 1106);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.HorasTrabajadas);
 			this.Controls.Add(this.label5);
-			this.Controls.Add(this.txtNombre);
+			this.Controls.Add(this.NomreDeEmpleado);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.BuscarJornadaLaboral);
 			this.Controls.Add(this.btnRefrescar);
-			this.Controls.Add(this.btnBuscar);
-			this.Controls.Add(this.dateTimePicker2);
+			this.Controls.Add(this.HoraDeSalida);
 			this.Controls.Add(this.label3);
-			this.Controls.Add(this.dateTimePicker1);
+			this.Controls.Add(this.HoraDeEntrada);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label14);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.EmpleadoId);
 			this.Controls.Add(this.EmpleadoIdLabel);
-			this.Controls.Add(this.txtfechadeingreso);
+			this.Controls.Add(this.FechaDeJornada);
 			this.Controls.Add(this.ListadodeEmpleados);
 			this.Controls.Add(this.toolStripContainer1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "Mantenimiento_de_Horario";
 			this.Text = "Mantenimiento_de_Horario";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.Load += new System.EventHandler(this.Mantenimiento_de_Horario_Load);
 			this.toolStripContainer1.ContentPanel.ResumeLayout(false);
 			this.toolStripContainer1.ResumeLayout(false);
 			this.toolStripContainer1.PerformLayout();
@@ -362,22 +365,21 @@
 		private System.Windows.Forms.Button btnModificar;
 		private System.Windows.Forms.Button btnEliminar;
 		private System.Windows.Forms.DataGridView ListadodeEmpleados;
-		private System.Windows.Forms.DateTimePicker txtfechadeingreso;
+		private System.Windows.Forms.DateTimePicker FechaDeJornada;
 		private System.Windows.Forms.Label EmpleadoIdLabel;
 		private System.Windows.Forms.TextBox EmpleadoId;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
+		private System.Windows.Forms.DateTimePicker HoraDeEntrada;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.DateTimePicker dateTimePicker2;
+		private System.Windows.Forms.DateTimePicker HoraDeSalida;
 		private System.Windows.Forms.Button btnRefrescar;
-		private System.Windows.Forms.Button btnBuscar;
 		private System.Windows.Forms.DateTimePicker BuscarJornadaLaboral;
-		private System.Windows.Forms.TextBox txtNombre;
+		private System.Windows.Forms.TextBox NomreDeEmpleado;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button Registrar_Jornada;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox HorasTrabajadas;
 	}
 }

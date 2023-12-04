@@ -183,7 +183,7 @@ namespace ManSys
 					cmd.Parameters["@Fecha"].Value = DateTime.Now.ToString("dd/MM/yyyy");
 
 					cmd.Parameters.Add(new SqlParameter("@Entrada", SqlDbType.VarChar));
-					cmd.Parameters["@Entrada"].Value = DateTime.Now.ToString("hh:mm");
+					cmd.Parameters["@Entrada"].Value = DateTime.Now.ToString("hh:mm tt");
 
 					cmd.Parameters.Add(new SqlParameter("@Salida", SqlDbType.VarChar));
 					cmd.Parameters["@Salida"].Value = "Pendiente...";
@@ -196,7 +196,7 @@ namespace ManSys
 				}
 			}catch(Exception ex)
 			{
-				this.ShowError($"Hubo un error al Tratar de Iniciar la Jornada de {this.EntradaUsuario}", ex);
+				this.ShowError($"Hubo un error al Tratar de Registrar  Entrada de {this.EntradaUsuario}", ex);
 			}
 		}
 		private void LimpiarCampos()
@@ -225,17 +225,19 @@ namespace ManSys
 
 					adapter.Fill(table);
 					foreach(DataRow row in table.Rows)
-					{
-						if(row["Fecha"].ToString() == DateTime.Now.ToString("dd/MM/yyyy"))
-						{
-							DataRow r = filtro.NewRow();
-							r["EmpleadoId"] = row["EmpleadoId"];
-							r["Entrada"] = row["Entrada"];//EmpleadoId,Empleado,Fecha,Entrada,Salida,
-							r["Salida"] = row["Salida"];
-							r["HorasTrabajadas"] = row["HorasTrabajadas"];
-							filtro.Rows.Add(r);
+					{ 
+							if (row["Fecha"].ToString() == DateTime.Now.ToString("dd/MM/yyyy"))
+							{
+								DataRow r = filtro.NewRow();
+								r["EmpleadoId"] = row["EmpleadoId"];
+								r["Entrada"] = row["Entrada"];//EmpleadoId,Empleado,Fecha,Entrada,Salida,
+								r["Salida"] = row["Salida"];
+								r["HorasTrabajadas"] = row["HorasTrabajadas"];
+								filtro.Rows.Add(r);
 
-						}
+							}
+						 
+							
 					}
 					this.ListadoDeEntradsSalidas.DataSource = filtro; 
 				}
@@ -298,18 +300,18 @@ namespace ManSys
 					cmd.Parameters["@Fecha"].Value = DateTime.Now.ToString("dd/MM/yyyy");
 
 					cmd.Parameters.Add(new SqlParameter("@Salida", SqlDbType.VarChar));
-					cmd.Parameters["@Salida"].Value = DateTime.Now.ToString("hh:mm");
+					cmd.Parameters["@Salida"].Value = DateTime.Now.ToString("hh:mm tt");
 
 					cmd.Parameters.Add(new SqlParameter("@HorasTrabajadas", SqlDbType.Float));
-					cmd.Parameters["@HorasTrabajadas"].Value = ((DateTime.Now-DateTime.ParseExact(this.HoraDeEntrada, "hh:mm", null)).TotalMinutes / 60).ToString();
+					cmd.Parameters["@HorasTrabajadas"].Value = ((DateTime.ParseExact(DateTime.Now.ToString("hh:mm tt"), "hh:mm tt", null)-DateTime.ParseExact(HoraDeEntrada, "hh:mm tt", null)).TotalMinutes/60).ToString(); //((DateTime.Now-DateTime.ParseExact(this.HoraDeEntrada, "hh:mm", null)).TotalMinutes / 60).ToString();
 					cmd.ExecuteNonQuery();
 					this.LimpiarCampos();
-					//MessageBox.Show(float.Parse(((DateTime.ParseExact(DateTime.Now.ToString("hh:mm"),"hh:mm",null)-DateTime.ParseExact(this.HoraDeEntrada, "hh:mm", null)).TotalMinutes).ToString()).ToString());
+					//MessageBox.Show((DateTime.ParseExact(DateTime.Now.ToString("hh:mm tt"), "hh:mm tt",null)-DateTime.ParseExact(HoraDeEntrada, "hh:mm tt", null)).TotalMinutes.ToString());
 				}
 			}
 			catch (Exception ex)
 			{
-				this.ShowError($"Hubo un error al Tratar de Iniciar la Jornada de {this.EntradaUsuario}", ex);
+				this.ShowError($"Hubo un error al Tratar de Registrar la Salida de {this.EntradaUsuario}", ex);
 			}
 		}
 	}

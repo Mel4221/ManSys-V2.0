@@ -265,6 +265,7 @@
 			this.EmpleadoId.HeaderText = "ID";
 			this.EmpleadoId.MinimumWidth = 8;
 			this.EmpleadoId.Name = "EmpleadoId";
+			this.EmpleadoId.ReadOnly = true;
 			this.EmpleadoId.Width = 50;
 			// 
 			// Fecha
@@ -273,6 +274,7 @@
 			this.Fecha.HeaderText = "Fecha";
 			this.Fecha.MinimumWidth = 8;
 			this.Fecha.Name = "Fecha";
+			this.Fecha.ReadOnly = true;
 			this.Fecha.Visible = false;
 			this.Fecha.Width = 8;
 			// 
@@ -282,7 +284,8 @@
 			this.Entrada.HeaderText = "Entrada";
 			this.Entrada.MinimumWidth = 8;
 			this.Entrada.Name = "Entrada";
-			this.Entrada.Width = 50;
+			this.Entrada.ReadOnly = true;
+			this.Entrada.Width = 75;
 			// 
 			// Salida
 			// 
@@ -290,6 +293,7 @@
 			this.Salida.HeaderText = "Salida";
 			this.Salida.MinimumWidth = 8;
 			this.Salida.Name = "Salida";
+			this.Salida.ReadOnly = true;
 			this.Salida.Width = 75;
 			// 
 			// Empleado
@@ -298,16 +302,17 @@
 			this.Empleado.HeaderText = "Empleado";
 			this.Empleado.MinimumWidth = 8;
 			this.Empleado.Name = "Empleado";
+			this.Empleado.ReadOnly = true;
 			this.Empleado.Visible = false;
 			this.Empleado.Width = 8;
 			// 
 			// HorasTrabajadas
 			// 
 			this.HorasTrabajadas.DataPropertyName = "HorasTrabajadas";
-			this.HorasTrabajadas.HeaderText = "Horas Trabajadas";
+			this.HorasTrabajadas.HeaderText = "Trabajadas";
 			this.HorasTrabajadas.MinimumWidth = 8;
 			this.HorasTrabajadas.Name = "HorasTrabajadas";
-			this.HorasTrabajadas.Width = 150;
+			this.HorasTrabajadas.ReadOnly = true;
 			// 
 			// Generar_JornadaLaboral
 			// 

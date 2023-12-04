@@ -306,8 +306,10 @@ select * from  [dbo].[Deducciones]
 select * from  [dbo].[Departamentos]
 select * from  [dbo].[Impuestos]
 select * from  [dbo].[Posiciones]
-*/
-
 
 SELECT * FROM dbo.Gestion_de_Usuarios
 SELECT * FROM Gestion_de_Jornada
+*/
+
+
+select * from  [dbo].[Bonificaciones]
