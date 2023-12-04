@@ -29,11 +29,6 @@ namespace ManSys
 
         }
 
-        private void Bonificaciones_MouseDown(object sender, MouseEventArgs e)
-        {
-            
-        }
-
 		private void btnRegistrar_Click(object sender, EventArgs e)
 		{
 

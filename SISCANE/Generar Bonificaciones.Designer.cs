@@ -56,6 +56,9 @@ namespace ManSys
 			this.label8 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.comboBox2 = new System.Windows.Forms.ComboBox();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
+			this.checkBox2 = new System.Windows.Forms.CheckBox();
+			this.checkBox3 = new System.Windows.Forms.CheckBox();
 			this.toolStripContainer1.ContentPanel.SuspendLayout();
 			this.toolStripContainer1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -86,7 +89,7 @@ namespace ManSys
 			// 
 			// textBox2
 			// 
-			this.textBox2.Location = new System.Drawing.Point(18, 297);
+			this.textBox2.Location = new System.Drawing.Point(18, 306);
 			this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.textBox2.Name = "textBox2";
 			this.textBox2.Size = new System.Drawing.Size(355, 26);
@@ -118,7 +121,7 @@ namespace ManSys
 			this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1095, 98);
 			this.toolStripContainer1.LeftToolStripPanelVisible = false;
-			this.toolStripContainer1.Location = new System.Drawing.Point(18, 334);
+			this.toolStripContainer1.Location = new System.Drawing.Point(18, 435);
 			this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.toolStripContainer1.Name = "toolStripContainer1";
 			this.toolStripContainer1.RightToolStripPanelVisible = false;
@@ -219,7 +222,7 @@ namespace ManSys
 			// dataGridView1
 			// 
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(18, 442);
+			this.dataGridView1.Location = new System.Drawing.Point(18, 567);
 			this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.RowHeadersWidth = 62;
@@ -362,12 +365,45 @@ namespace ManSys
 			this.comboBox2.Size = new System.Drawing.Size(298, 28);
 			this.comboBox2.TabIndex = 218;
 			// 
+			// checkBox1
+			// 
+			this.checkBox1.AutoSize = true;
+			this.checkBox1.Location = new System.Drawing.Point(1058, 106);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(267, 24);
+			this.checkBox1.TabIndex = 220;
+			this.checkBox1.Text = "Applicar a Todos Los Empleados";
+			this.checkBox1.UseVisualStyleBackColor = true;
+			// 
+			// checkBox2
+			// 
+			this.checkBox2.AutoSize = true;
+			this.checkBox2.Location = new System.Drawing.Point(1058, 197);
+			this.checkBox2.Name = "checkBox2";
+			this.checkBox2.Size = new System.Drawing.Size(224, 24);
+			this.checkBox2.TabIndex = 221;
+			this.checkBox2.Text = "Solo a Este Departamento";
+			this.checkBox2.UseVisualStyleBackColor = true;
+			// 
+			// checkBox3
+			// 
+			this.checkBox3.AutoSize = true;
+			this.checkBox3.Location = new System.Drawing.Point(1058, 237);
+			this.checkBox3.Name = "checkBox3";
+			this.checkBox3.Size = new System.Drawing.Size(205, 24);
+			this.checkBox3.TabIndex = 222;
+			this.checkBox3.Text = "Solo a Estas Posiciones";
+			this.checkBox3.UseVisualStyleBackColor = true;
+			// 
 			// Bonificaciones
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Silver;
-			this.ClientSize = new System.Drawing.Size(1131, 818);
+			this.ClientSize = new System.Drawing.Size(1514, 919);
+			this.Controls.Add(this.checkBox3);
+			this.Controls.Add(this.checkBox2);
+			this.Controls.Add(this.checkBox1);
 			this.Controls.Add(this.comboBox3);
 			this.Controls.Add(this.comboBox2);
 			this.Controls.Add(this.label9);
@@ -393,8 +429,8 @@ namespace ManSys
 			this.Name = "Bonificaciones";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "bonificaciones";
+			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.Load += new System.EventHandler(this.Bonificaciones_Load);
-			this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Bonificaciones_MouseDown);
 			this.toolStripContainer1.ContentPanel.ResumeLayout(false);
 			this.toolStripContainer1.ResumeLayout(false);
 			this.toolStripContainer1.PerformLayout();
@@ -433,5 +469,8 @@ namespace ManSys
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboBox2;
-    }
+		private System.Windows.Forms.CheckBox checkBox1;
+		private System.Windows.Forms.CheckBox checkBox2;
+		private System.Windows.Forms.CheckBox checkBox3;
+	}
 }
