@@ -89,15 +89,15 @@ namespace ManSys
 				using (SqlConnection dataConnection = new SqlConnection(Connection.ConnectionString))
 				{
 					dataConnection.Open();
-					DataTable departamentos = new DataTable();
+					DataTable posiciones = new DataTable();
 
 
-					SqlDataAdapter daempleados = new SqlDataAdapter("SELECT * FROM dbo.Posiciones", dataConnection);
+					SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM dbo.Posiciones", dataConnection);
 
 
-					daempleados.Fill(departamentos);
+					adapter.Fill(posiciones);
 					this.txtpuestoocupado.Items.Clear();
-					foreach (DataRow row in departamentos.Rows)
+					foreach (DataRow row in posiciones.Rows)
 					{
 						this.txtpuestoocupado.Items.Add(row["Nombre"].ToString());
 					}
