@@ -312,4 +312,4 @@ SELECT * FROM Gestion_de_Jornada
 */
 
 
-select * from  [dbo].[Bonificaciones]
+ drop table [dbo].[Bonificaciones]
