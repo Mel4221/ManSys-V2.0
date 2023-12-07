@@ -29,33 +29,35 @@ namespace ManSys
         {
 
 
-            
-              Color.Green("Starting ManSys...");
-            Log.Event("ProgramFlow",$"Program Started: {DateTime.Now}");
-            //try
-            //{
-            Application.EnableVisualStyles();
-			//Application.SetCompatibleTextRenderingDefault(false);
-			//Application.Run(new MenuPrincipal());
-			//Application.Run(new MantenimientoDeEmpleados());
-			//Application.Run(new mantenimientoDept());
-			//Application.Run(new mantenimientoPosc());
-			//Application.Run(new mantenimientoImp
-			//Application.Run(new mantenimientoDeducciones()); 
-			//Application.Run(new Mantenimiento_de_Horario());
-			//Application.Run(new GenerarVolanteDePago());
-			//Application.Run(new GenerarNomina());
-			//Application.Run(new Incidencias());
-			//Application.Run(new GenerarNomina()); 
-			Application.Run(new Bonificaciones());
+
+			try
+			{
+
+				Get.Green("Starting ManSys...");
+				Log.Event("ProgramFlow", $"Program Started: {DateTime.Now}");
+				Application.EnableVisualStyles();
+				//Application.SetCompatibleTextRenderingDefault(false);
+				//Application.Run(new MenuPrincipal());
+				//Application.Run(new MantenimientoDeEmpleados());
+				//Application.Run(new mantenimientoDept());
+				//Application.Run(new mantenimientoPosc());
+				//Application.Run(new mantenimientoImp
+				//Application.Run(new mantenimientoDeducciones()); 
+				//Application.Run(new Mantenimiento_de_Horario());
+				//Application.Run(new GenerarVolanteDePago());
+				//Application.Run(new GenerarNomina());
+				//Application.Run(new Incidencias());
+				//Application.Run(new GenerarNomina()); 
+				Application.Run(new Bonificaciones());
 			//Application.Run(new Empleado());
 			//Application.Run(new Generar_JornadaLaboral());
-			//}
-			//catch (Exception e)
-			//{
-			//    Log.Event("FatalError",e);
-			//    Color.Red("Something Really Bad just happened , more details : \n"+e);
-			//}
+			}
+			catch (Exception e)
+			{
+				Log.Event("FatalError", e);
+				Get.Red("Something Really Bad just happened , more details : \n"+e);
+				Get.Wait();
+			}
 
 
 

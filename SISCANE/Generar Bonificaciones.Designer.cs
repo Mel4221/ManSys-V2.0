@@ -50,7 +50,6 @@ namespace ManSys
 			this.ApplicarSoloADepartamento = new System.Windows.Forms.CheckBox();
 			this.ApplicarSoloAPosicion = new System.Windows.Forms.CheckBox();
 			this.CajaDeEmpleadoId = new System.Windows.Forms.TextBox();
-			this.CajaDeTipoDeBonificacion = new System.Windows.Forms.TextBox();
 			this.BuscarBonificacion = new System.Windows.Forms.Button();
 			this.bntlimpiar = new System.Windows.Forms.Button();
 			this.btnCerrar = new System.Windows.Forms.Button();
@@ -59,6 +58,8 @@ namespace ManSys
 			this.btnRegistrar = new System.Windows.Forms.Button();
 			this.FechaDeEmision = new System.Windows.Forms.DateTimePicker();
 			this.label1 = new System.Windows.Forms.Label();
+			this.CajaDeTipoDeBonificacion = new System.Windows.Forms.ComboBox();
+			this.BtnRefrescar = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.ListadoDeBonificaciones)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -67,7 +68,7 @@ namespace ManSys
 			this.label14.AutoSize = true;
 			this.label14.BackColor = System.Drawing.Color.Transparent;
 			this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label14.Location = new System.Drawing.Point(639, 9);
+			this.label14.Location = new System.Drawing.Point(715, 21);
 			this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(336, 40);
@@ -78,7 +79,7 @@ namespace ManSys
 			// 
 			this.label5.AutoSize = true;
 			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label5.Location = new System.Drawing.Point(357, 69);
+			this.label5.Location = new System.Drawing.Point(433, 81);
 			this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(38, 29);
@@ -88,7 +89,7 @@ namespace ManSys
 			// BtnDeBusqueda
 			// 
 			this.BtnDeBusqueda.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-			this.BtnDeBusqueda.Location = new System.Drawing.Point(975, 63);
+			this.BtnDeBusqueda.Location = new System.Drawing.Point(1051, 75);
 			this.BtnDeBusqueda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.BtnDeBusqueda.Name = "BtnDeBusqueda";
 			this.BtnDeBusqueda.Size = new System.Drawing.Size(112, 35);
@@ -100,17 +101,17 @@ namespace ManSys
 			// ListadoDeBonificaciones
 			// 
 			this.ListadoDeBonificaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.ListadoDeBonificaciones.Location = new System.Drawing.Point(147, 556);
+			this.ListadoDeBonificaciones.Location = new System.Drawing.Point(241, 540);
 			this.ListadoDeBonificaciones.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ListadoDeBonificaciones.Name = "ListadoDeBonificaciones";
 			this.ListadoDeBonificaciones.RowHeadersWidth = 62;
-			this.ListadoDeBonificaciones.Size = new System.Drawing.Size(1310, 358);
+			this.ListadoDeBonificaciones.Size = new System.Drawing.Size(1236, 534);
 			this.ListadoDeBonificaciones.TabIndex = 174;
 			// 
 			// CajaDePosicion
 			// 
 			this.CajaDePosicion.FormattingEnabled = true;
-			this.CajaDePosicion.Location = new System.Drawing.Point(653, 205);
+			this.CajaDePosicion.Location = new System.Drawing.Point(729, 217);
 			this.CajaDePosicion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.CajaDePosicion.Name = "CajaDePosicion";
 			this.CajaDePosicion.Size = new System.Drawing.Size(298, 28);
@@ -118,7 +119,7 @@ namespace ManSys
 			// 
 			// CajaDeCodigoDeBonificacion
 			// 
-			this.CajaDeCodigoDeBonificacion.Location = new System.Drawing.Point(653, 400);
+			this.CajaDeCodigoDeBonificacion.Location = new System.Drawing.Point(729, 412);
 			this.CajaDeCodigoDeBonificacion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.CajaDeCodigoDeBonificacion.Name = "CajaDeCodigoDeBonificacion";
 			this.CajaDeCodigoDeBonificacion.Size = new System.Drawing.Size(298, 26);
@@ -128,7 +129,7 @@ namespace ManSys
 			// 
 			this.label10.AutoSize = true;
 			this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label10.Location = new System.Drawing.Point(357, 397);
+			this.label10.Location = new System.Drawing.Point(433, 409);
 			this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(98, 29);
@@ -139,7 +140,7 @@ namespace ManSys
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(357, 241);
+			this.label3.Location = new System.Drawing.Point(433, 258);
 			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(282, 29);
@@ -150,7 +151,7 @@ namespace ManSys
 			// 
 			this.label4.AutoSize = true;
 			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label4.Location = new System.Drawing.Point(357, 359);
+			this.label4.Location = new System.Drawing.Point(433, 371);
 			this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(250, 29);
@@ -159,7 +160,7 @@ namespace ManSys
 			// 
 			// FechaDeApplicacion
 			// 
-			this.FechaDeApplicacion.Location = new System.Drawing.Point(653, 361);
+			this.FechaDeApplicacion.Location = new System.Drawing.Point(729, 373);
 			this.FechaDeApplicacion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.FechaDeApplicacion.Name = "FechaDeApplicacion";
 			this.FechaDeApplicacion.Size = new System.Drawing.Size(298, 26);
@@ -167,7 +168,7 @@ namespace ManSys
 			// 
 			// CajaDeMonto
 			// 
-			this.CajaDeMonto.Location = new System.Drawing.Point(653, 284);
+			this.CajaDeMonto.Location = new System.Drawing.Point(729, 296);
 			this.CajaDeMonto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.CajaDeMonto.Name = "CajaDeMonto";
 			this.CajaDeMonto.Size = new System.Drawing.Size(298, 26);
@@ -177,7 +178,7 @@ namespace ManSys
 			// 
 			this.label6.AutoSize = true;
 			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label6.Location = new System.Drawing.Point(357, 283);
+			this.label6.Location = new System.Drawing.Point(433, 296);
 			this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(272, 29);
@@ -186,7 +187,7 @@ namespace ManSys
 			// 
 			// CajaDeEmpleado
 			// 
-			this.CajaDeEmpleado.Location = new System.Drawing.Point(653, 117);
+			this.CajaDeEmpleado.Location = new System.Drawing.Point(729, 129);
 			this.CajaDeEmpleado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.CajaDeEmpleado.Name = "CajaDeEmpleado";
 			this.CajaDeEmpleado.ReadOnly = true;
@@ -197,7 +198,7 @@ namespace ManSys
 			// 
 			this.label7.AutoSize = true;
 			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(357, 114);
+			this.label7.Location = new System.Drawing.Point(433, 126);
 			this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(132, 29);
@@ -208,7 +209,7 @@ namespace ManSys
 			// 
 			this.label8.AutoSize = true;
 			this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label8.Location = new System.Drawing.Point(357, 197);
+			this.label8.Location = new System.Drawing.Point(433, 217);
 			this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(114, 29);
@@ -219,7 +220,7 @@ namespace ManSys
 			// 
 			this.label9.AutoSize = true;
 			this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label9.Location = new System.Drawing.Point(357, 156);
+			this.label9.Location = new System.Drawing.Point(433, 168);
 			this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(177, 29);
@@ -229,7 +230,7 @@ namespace ManSys
 			// CajaDeDepartamento
 			// 
 			this.CajaDeDepartamento.FormattingEnabled = true;
-			this.CajaDeDepartamento.Location = new System.Drawing.Point(653, 161);
+			this.CajaDeDepartamento.Location = new System.Drawing.Point(729, 173);
 			this.CajaDeDepartamento.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.CajaDeDepartamento.Name = "CajaDeDepartamento";
 			this.CajaDeDepartamento.Size = new System.Drawing.Size(298, 28);
@@ -238,7 +239,7 @@ namespace ManSys
 			// ApplicarATodos
 			// 
 			this.ApplicarATodos.AutoSize = true;
-			this.ApplicarATodos.Location = new System.Drawing.Point(975, 118);
+			this.ApplicarATodos.Location = new System.Drawing.Point(1051, 130);
 			this.ApplicarATodos.Name = "ApplicarATodos";
 			this.ApplicarATodos.Size = new System.Drawing.Size(267, 24);
 			this.ApplicarATodos.TabIndex = 220;
@@ -248,7 +249,7 @@ namespace ManSys
 			// ApplicarSoloADepartamento
 			// 
 			this.ApplicarSoloADepartamento.AutoSize = true;
-			this.ApplicarSoloADepartamento.Location = new System.Drawing.Point(975, 162);
+			this.ApplicarSoloADepartamento.Location = new System.Drawing.Point(1051, 174);
 			this.ApplicarSoloADepartamento.Name = "ApplicarSoloADepartamento";
 			this.ApplicarSoloADepartamento.Size = new System.Drawing.Size(224, 24);
 			this.ApplicarSoloADepartamento.TabIndex = 221;
@@ -258,7 +259,7 @@ namespace ManSys
 			// ApplicarSoloAPosicion
 			// 
 			this.ApplicarSoloAPosicion.AutoSize = true;
-			this.ApplicarSoloAPosicion.Location = new System.Drawing.Point(975, 202);
+			this.ApplicarSoloAPosicion.Location = new System.Drawing.Point(1051, 214);
 			this.ApplicarSoloAPosicion.Name = "ApplicarSoloAPosicion";
 			this.ApplicarSoloAPosicion.Size = new System.Drawing.Size(205, 24);
 			this.ApplicarSoloAPosicion.TabIndex = 222;
@@ -267,7 +268,7 @@ namespace ManSys
 			// 
 			// CajaDeEmpleadoId
 			// 
-			this.CajaDeEmpleadoId.Location = new System.Drawing.Point(653, 73);
+			this.CajaDeEmpleadoId.Location = new System.Drawing.Point(729, 85);
 			this.CajaDeEmpleadoId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.CajaDeEmpleadoId.Name = "CajaDeEmpleadoId";
 			this.CajaDeEmpleadoId.Size = new System.Drawing.Size(298, 26);
@@ -275,18 +276,10 @@ namespace ManSys
 			this.CajaDeEmpleadoId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CajaDeEmpleadoId_KeyDown);
 			this.CajaDeEmpleadoId.Leave += new System.EventHandler(this.CajaDeEmpleadoId_Leave);
 			// 
-			// CajaDeTipoDeBonificacion
-			// 
-			this.CajaDeTipoDeBonificacion.Location = new System.Drawing.Point(653, 248);
-			this.CajaDeTipoDeBonificacion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.CajaDeTipoDeBonificacion.Name = "CajaDeTipoDeBonificacion";
-			this.CajaDeTipoDeBonificacion.Size = new System.Drawing.Size(298, 26);
-			this.CajaDeTipoDeBonificacion.TabIndex = 224;
-			// 
 			// BuscarBonificacion
 			// 
 			this.BuscarBonificacion.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-			this.BuscarBonificacion.Location = new System.Drawing.Point(975, 396);
+			this.BuscarBonificacion.Location = new System.Drawing.Point(1051, 408);
 			this.BuscarBonificacion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.BuscarBonificacion.Name = "BuscarBonificacion";
 			this.BuscarBonificacion.Size = new System.Drawing.Size(112, 35);
@@ -299,7 +292,7 @@ namespace ManSys
 			// 
 			this.bntlimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.bntlimpiar.ForeColor = System.Drawing.Color.Black;
-			this.bntlimpiar.Location = new System.Drawing.Point(815, 440);
+			this.bntlimpiar.Location = new System.Drawing.Point(891, 452);
 			this.bntlimpiar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.bntlimpiar.Name = "bntlimpiar";
 			this.bntlimpiar.Size = new System.Drawing.Size(136, 45);
@@ -314,7 +307,7 @@ namespace ManSys
 			this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnCerrar.ForeColor = System.Drawing.Color.Black;
-			this.btnCerrar.Location = new System.Drawing.Point(975, 440);
+			this.btnCerrar.Location = new System.Drawing.Point(1051, 452);
 			this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnCerrar.Name = "btnCerrar";
 			this.btnCerrar.Size = new System.Drawing.Size(260, 45);
@@ -326,7 +319,7 @@ namespace ManSys
 			// btnModificar
 			// 
 			this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnModificar.Location = new System.Drawing.Point(503, 440);
+			this.btnModificar.Location = new System.Drawing.Point(579, 452);
 			this.btnModificar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnModificar.Name = "btnModificar";
 			this.btnModificar.Size = new System.Drawing.Size(136, 45);
@@ -338,7 +331,7 @@ namespace ManSys
 			// btnEliminar
 			// 
 			this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnEliminar.Location = new System.Drawing.Point(653, 440);
+			this.btnEliminar.Location = new System.Drawing.Point(729, 452);
 			this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnEliminar.Name = "btnEliminar";
 			this.btnEliminar.Size = new System.Drawing.Size(136, 45);
@@ -350,7 +343,7 @@ namespace ManSys
 			// btnRegistrar
 			// 
 			this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnRegistrar.Location = new System.Drawing.Point(362, 440);
+			this.btnRegistrar.Location = new System.Drawing.Point(438, 452);
 			this.btnRegistrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnRegistrar.Name = "btnRegistrar";
 			this.btnRegistrar.Size = new System.Drawing.Size(136, 45);
@@ -361,7 +354,7 @@ namespace ManSys
 			// 
 			// FechaDeEmision
 			// 
-			this.FechaDeEmision.Location = new System.Drawing.Point(653, 323);
+			this.FechaDeEmision.Location = new System.Drawing.Point(729, 335);
 			this.FechaDeEmision.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.FechaDeEmision.Name = "FechaDeEmision";
 			this.FechaDeEmision.Size = new System.Drawing.Size(298, 26);
@@ -371,19 +364,42 @@ namespace ManSys
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(357, 321);
+			this.label1.Location = new System.Drawing.Point(433, 333);
 			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(223, 29);
 			this.label1.TabIndex = 232;
 			this.label1.Text = "Fecha de Emision";
 			// 
+			// CajaDeTipoDeBonificacion
+			// 
+			this.CajaDeTipoDeBonificacion.FormattingEnabled = true;
+			this.CajaDeTipoDeBonificacion.Location = new System.Drawing.Point(729, 258);
+			this.CajaDeTipoDeBonificacion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.CajaDeTipoDeBonificacion.Name = "CajaDeTipoDeBonificacion";
+			this.CajaDeTipoDeBonificacion.Size = new System.Drawing.Size(298, 28);
+			this.CajaDeTipoDeBonificacion.TabIndex = 234;
+			// 
+			// BtnRefrescar
+			// 
+			this.BtnRefrescar.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+			this.BtnRefrescar.Location = new System.Drawing.Point(1365, 495);
+			this.BtnRefrescar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.BtnRefrescar.Name = "BtnRefrescar";
+			this.BtnRefrescar.Size = new System.Drawing.Size(112, 35);
+			this.BtnRefrescar.TabIndex = 235;
+			this.BtnRefrescar.Text = "Refrescar";
+			this.BtnRefrescar.UseVisualStyleBackColor = true;
+			this.BtnRefrescar.Click += new System.EventHandler(this.BtnRefrescar_Click);
+			// 
 			// Bonificaciones
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Silver;
-			this.ClientSize = new System.Drawing.Size(1822, 919);
+			this.ClientSize = new System.Drawing.Size(1946, 1106);
+			this.Controls.Add(this.BtnRefrescar);
+			this.Controls.Add(this.CajaDeTipoDeBonificacion);
 			this.Controls.Add(this.FechaDeEmision);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.bntlimpiar);
@@ -392,7 +408,6 @@ namespace ManSys
 			this.Controls.Add(this.btnEliminar);
 			this.Controls.Add(this.btnRegistrar);
 			this.Controls.Add(this.BuscarBonificacion);
-			this.Controls.Add(this.CajaDeTipoDeBonificacion);
 			this.Controls.Add(this.CajaDeEmpleadoId);
 			this.Controls.Add(this.ApplicarSoloAPosicion);
 			this.Controls.Add(this.ApplicarSoloADepartamento);
@@ -418,7 +433,7 @@ namespace ManSys
 			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Name = "Bonificaciones";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "bonificaciones";
+			this.Text = "BONIFICACIONES";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.Load += new System.EventHandler(this.Bonificaciones_Load);
 			((System.ComponentModel.ISupportInitialize)(this.ListadoDeBonificaciones)).EndInit();
@@ -450,7 +465,6 @@ namespace ManSys
 		private System.Windows.Forms.CheckBox ApplicarSoloADepartamento;
 		private System.Windows.Forms.CheckBox ApplicarSoloAPosicion;
 		private System.Windows.Forms.TextBox CajaDeEmpleadoId;
-		private System.Windows.Forms.TextBox CajaDeTipoDeBonificacion;
 		private System.Windows.Forms.Button BuscarBonificacion;
 		private System.Windows.Forms.Button bntlimpiar;
 		private System.Windows.Forms.Button btnCerrar;
@@ -459,5 +473,7 @@ namespace ManSys
 		private System.Windows.Forms.Button btnRegistrar;
 		private System.Windows.Forms.DateTimePicker FechaDeEmision;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.ComboBox CajaDeTipoDeBonificacion;
+		private System.Windows.Forms.Button BtnRefrescar;
 	}
 }

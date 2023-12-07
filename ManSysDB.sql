@@ -312,4 +312,22 @@ SELECT * FROM Gestion_de_Jornada
 */
 
 
- drop table [dbo].[Bonificaciones]
+
+--CREATE TABLE [dbo].[Empleados](
+--	[Id] [int] IDENTITY(1000,1) NOT NULL,
+--	[Nombre] [varchar](50) NULL,
+--	[Apellido] [varchar](50) NULL,
+--	[Direccion] [varchar](100) NULL,
+--	[Telefono] [varchar](50) NULL,
+--	[Fecha_de_Ingreso] [varchar](50) NULL,
+--	[Puesto_Ocupado] [varchar](50) NULL,
+--	[Departamento] [varchar](50) NULL,
+--	[CEDULA] [varchar](50) NULL,
+--	[Salario_Base] [varchar](100) NULL,
+--	[Tipo_de_Cobro] [varchar](50) NULL,
+--	[Turno] [varchar](50) NULL
+--) ON [PRIMARY]
+--GO
+
+ select * from dbo.Bonificaciones
+ 

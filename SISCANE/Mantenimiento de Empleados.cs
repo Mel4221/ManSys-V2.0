@@ -376,7 +376,7 @@ namespace ManSys
             //MessageBox.Show(DateTime.ParseExact(datos["Fecha_de_Ingreso"].ToString(), "dd/MM/yyyy"));
             //return;
 			txtId.Text = datos["Id"].ToString();
-			txtApellido.Text = datos["Nombre"].ToString();
+			txtNombre.Text = datos["Nombre"].ToString();
 			txtApellido.Text = datos["Apellido"].ToString();
 			txtdireccion.Text = datos["Direccion"].ToString();
 			txttelefono.Text = datos["Telefono"].ToString();
