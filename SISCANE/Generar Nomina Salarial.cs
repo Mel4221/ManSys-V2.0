@@ -11,7 +11,8 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Runtime.InteropServices;
 using QuickTools.QCore;
-
+using ManSysDbBuilder.Data;
+using QuickTools.QData; 
 
 namespace ManSys
 {
@@ -37,7 +38,12 @@ namespace ManSys
             this.ActualizarDiasTrabajados();
             this.ActualizarDescuentos();
             this.ActualizarMontoTotal();
-            this.InicioDeNomina.Value = DateTime.Today;
+            this.CargarEmpleados();
+            this.CargarDeducciones();
+            this.CargarImpuestos();
+            this.CargarBonificaiones(); 
+
+			this.InicioDeNomina.Value = DateTime.Today;
             this.CierreDeNomina.Value = DateTime.Today;
          }
         private void ActualizarMontoTotal()
@@ -135,7 +141,7 @@ namespace ManSys
         private void bntlimpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
-        }
+            }
         private void Limpiar()
         {
             //txtcodigo.Clear();
@@ -328,8 +334,265 @@ namespace ManSys
             
         }
 
-        private void btnRegistrar_Click(object sender, EventArgs e)
+        private DataTable _Empleados { get; set; } = new DataTable();
+        private DataTable _Deducciones { get; set; } = new DataTable();
+        private DataTable _Impuestos { get; set; } = new DataTable(); 
+        private DataTable _Bonificaciones { get; set; } = new DataTable(); 
+      
+        private void CargarBonificaiones()
         {
+			try
+			{
+				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+				{
+					con.Open();
+
+					DataTable table = new DataTable();
+					SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM dbo.Bonificaciones ", con);
+					adapter.Fill(_Bonificaciones);
+
+				}
+			}
+			catch (Exception ex) { ShowError("Hubo un error al tratar de cargar las Bonificaciones", ex); }
+		}
+        private void CargarImpuestos()
+        {
+			try
+			{
+				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+				{
+					con.Open();
+
+					DataTable table = new DataTable();
+					SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM dbo.Impuestos ", con);
+					adapter.Fill(_Impuestos);
+
+				}
+			}
+			catch (Exception ex) { ShowError("Hubo un error al tratar de cargar los Impuestos", ex); }
+		}
+        private void CargarDeducciones()
+        {
+			try
+			{
+				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+				{
+					con.Open();
+
+					DataTable table = new DataTable();
+					SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM dbo.Deducciones ", con);
+					adapter.Fill(_Deducciones);
+
+				}
+			}
+			catch (Exception ex) { ShowError("Hubo un error al tratar de cargar las Deducciones", ex); }
+		}
+        private void CargarEmpleados()
+        {
+			//mantenimientoDeducciones
+			try
+			{
+                using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+                {
+                    con.Open();
+
+                    DataTable table = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM dbo.Empleados ", con);
+                    adapter.Fill(_Empleados);
+
+                }
+            }catch(Exception ex){ ShowError("Hubo un error al tratar de cargar los Empleados", ex); }
+		}
+
+
+		public void ShowError(string message, Exception ex) => MessageBox.Show($"{message}\n{ex}", "Algo Salio mal!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        public float ConseguirSueldoNetoPorDia(string empleadoId)
+        {
+            try {
+                foreach(DataRow row in this._Empleados.Rows)
+                {
+                    if(row["Id"].ToString() == empleadoId)
+                    {
+                        return (float.Parse(row["Salario_Base"].ToString())/30);    
+                    }
+                }
+                    return 0; 
+            }catch(Exception ex){
+                    this.ShowError("Hubo un error al Tratar de Conseguir el sueldo del Empleado",ex);
+                    return 0; 
+            }
+        }
+        private float ConseguirTotalDeDescuento()
+        {
+        
+            float total = 0;
+            foreach(DataRow row in this._Deducciones.Rows)
+            {
+                total += float.Parse(row["Cantidad"].ToString());
+            }
+            return total; 
+        }
+        private class Jornada
+        {
+            public int EmpleadoId{ get; set; }
+            public string Empleado { get; set; }
+            public string Fecha { get; set; }   
+            public string Entrada { get; set; }
+            public string Salida { get; set; }
+            public float HorasTrabajadas { get; set; }
+			public override string ToString()
+			{
+                return $"[{EmpleadoId}] [{Empleado}] [{Fecha}] [{Entrada}] [{Salida}] [{HorasTrabajadas}] ";
+			}
+
+		}
+		
+		List<Jornada> Jornadas { get; set; } = new List<Jornada>(); 
+        private void ActualizaHoras(int empleado,float horas)
+        {
+           for(int i = 0; i<this.Jornadas.Count; i++)
+           {
+                if(this.Jornadas[i].EmpleadoId == empleado)
+                {
+                    this.Jornadas[i].HorasTrabajadas += horas;
+				}
+           }
+        }
+		private bool InRange(DateTime dateToCheck, DateTime startDate, DateTime endDate)
+		{
+			return dateToCheck >= startDate && dateToCheck < endDate;
+		}
+		private bool ExisteEmpleadoEnJornada(int empleado)
+        {
+            foreach(Jornada jornada in Jornadas) 
+            {
+                if(jornada.EmpleadoId == empleado)
+                {
+                    return true; 
+                }
+            }
+            return false; 
+        }
+        private void RegistrarNominaAuto()
+        {
+
+			//MessageBox.Show(ConseguirSueldoNeto(1000.ToString()).ToString());
+			DataTable table = new DataTable();
+            DataTable filtro = new DataTable();
+			filtro.Columns.Add("EmpleadoId", typeof(int));
+			filtro.Columns.Add("Empleado", typeof(string));
+			filtro.Columns.Add("Fecha", typeof(string));
+			filtro.Columns.Add("Entrada", typeof(string));
+			filtro.Columns.Add("Salida", typeof(string));
+			filtro.Columns.Add("HorasTrabajadas", typeof(float));
+
+
+			using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+            {
+                con.Open();
+
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM dbo.Gestion_de_Jornada ", con);
+                adapter.Fill(table);
+
+                foreach(DataRow row in  table.Rows) 
+                {
+                    if (this.InRange(DateTime.ParseExact(row["Fecha"].ToString(), "dd/MM/yyyy", null), this.InicioDeNomina.Value, this.CierreDeNomina.Value))
+						
+                    {
+                        DataRow r = filtro.NewRow();
+
+                        r["EmpleadoId"] = row["EmpleadoId"];
+                        r["Empleado"] = row["Empleado"];
+                        r["Fecha"] = row["Fecha"];
+                        r["Entrada"] = row["Entrada"];
+                        r["Salida"] = row["Salida"];
+                        r["HorasTrabajadas"] = row["HorasTrabajadas"];
+                        filtro.Rows.Add(r);
+                    }
+				}
+
+
+				foreach (DataRow row in filtro.Rows)
+                {
+                   if(!this.ExisteEmpleadoEnJornada(int.Parse(row["EmpleadoId"].ToString())))
+                   {
+                        this.Jornadas.Add(new Jornada()
+                        {
+                            EmpleadoId = int.Parse(row["EmpleadoId"].ToString()),
+                            Empleado = row["Empleado"].ToString(),
+                            Fecha = row["Fecha"].ToString(),
+                            Entrada = row["Entrada"].ToString(),
+                            Salida = row["Salida"].ToString(),
+                            HorasTrabajadas = float.Parse(row["HorasTrabajadas"].ToString())
+                        }) ;
+                   }
+					if (this.ExisteEmpleadoEnJornada(int.Parse(row["EmpleadoId"].ToString())))
+                    {
+                        this.ActualizaHoras(int.Parse(row["EmpleadoId"].ToString()), float.Parse(row["HorasTrabajadas"].ToString()));
+                    }
+
+				}
+                this.Jornadas.ForEach(item => Get.Yellow(item.ToString()));
+                return;
+			}
+            using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+            {
+                con.Open();
+                float descuento, sueldo, total, sueldoHora, horas, horaExtra, totalExtras;
+                descuento = this.ConseguirTotalDeDescuento();
+                sueldo = 0;
+                total = 0;
+                sueldoHora = 0; 
+                
+				foreach (Jornada row in this.Jornadas)
+				{
+                    sueldoHora = this.ConseguirSueldoNetoPorDia(row.EmpleadoId.ToString());
+                    horas = row.HorasTrabajadas;
+                    horaExtra = horas-8<=0 ? 0 : horas-8 ;
+                    totalExtras = horaExtra==0 ? 0 : horaExtra*sueldoHora+(sueldoHora*15/100);
+                    sueldo = horas * sueldoHora;
+                    total = (totalExtras + sueldo) - descuento;
+					SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Nomina(Periodo,EmpleadoId,Salario_Base,Horas_Trabajadas,Horas_Extras,Ingreso,Descuento,Total_Ingreso) values(@Periodo,@EmpleadoId,@Salario_Base,@Horas_Trabajadas,@Horas_Extras,@Ingreso,@Descuento,@Total_Ingreso)", con);
+
+					cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar));
+                    cmd.Parameters["@Periodo"].Value = this.PeridoDeNomina.Text; 
+
+					cmd.Parameters.Add(new SqlParameter("@EmpleadoId", SqlDbType.Int));
+                    cmd.Parameters["@EmpleadoId"].Value = row.EmpleadoId; 
+
+					cmd.Parameters.Add(new SqlParameter("@Salario_Base", SqlDbType.Float));
+                    cmd.Parameters["@Salario_Base"].Value = sueldoHora; 
+
+					cmd.Parameters.Add(new SqlParameter("@Horas_Trabajadas", SqlDbType.Float));
+                    cmd.Parameters["@Horas_Trabajadas"].Value = horas; 
+
+					cmd.Parameters.Add(new SqlParameter("@Horas_Extras", SqlDbType.Float));
+                    cmd.Parameters["@Horas_Extras"].Value = horaExtra; 
+
+					cmd.Parameters.Add(new SqlParameter("@Ingreso", SqlDbType.Float));
+                    cmd.Parameters["@Ingreso"].Value = sueldo;
+
+					cmd.Parameters.Add(new SqlParameter("@Descuento", SqlDbType.Float));
+					cmd.Parameters["@Descuento"].Value = descuento;
+
+					cmd.Parameters.Add(new SqlParameter("@Total_Ingreso", SqlDbType.Float));
+                    cmd.Parameters["@Total_Ingreso"].Value =total;
+
+					cmd.ExecuteNonQuery();
+
+				}
+
+			}
+		}
+		private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+
+            if(this.RegistroAutomatico.Checked)
+            {
+                this.RegistrarNominaAuto(); 
+                return;
+            }
             /*
             SqlConnection cn = new SqlConnection(Connection.ConnectionString);
             SqlCommand cm = new SqlCommand();

@@ -40,7 +40,7 @@ namespace ManSys
 					cmd.Parameters["@Entrada"].Value = this.HoraDeEntrada.Value.ToString("hh:mm tt");
 
 					cmd.Parameters.Add(new SqlParameter("@Salida", SqlDbType.VarChar));
-					cmd.Parameters["@Salida"].Value = this.HoraDeSalida.Value.ToString("hh:mm tt");
+					cmd.Parameters["@Salida"].Value =  this.SalidaPendiente.Checked ? "Pendiente..." : this.HoraDeSalida.Value.ToString("hh:mm tt");
 
 					cmd.Parameters.Add(new SqlParameter("@HorasTrabajadas", SqlDbType.Float));
 					cmd.Parameters["@HorasTrabajadas"].Value = this.HorasTrabajadas.Text; //((DateTime.Now-DateTime.ParseExact(this.HoraDeEntrada, "hh:mm", null)).TotalMinutes / 60).ToString();
@@ -235,7 +235,7 @@ namespace ManSys
 					cmd.Parameters["@Entrada"].Value = this.HoraDeEntrada.Value.ToString("hh:mm tt");
 
 					cmd.Parameters.Add(new SqlParameter("@Salida", SqlDbType.VarChar));
-					cmd.Parameters["@Salida"].Value = this.HoraDeSalida.Value.ToString("hh:mm tt");
+					cmd.Parameters["@Salida"].Value = this.SalidaPendiente.Checked?"Pendiente..." : this.HoraDeSalida.Value.ToString("hh:mm tt"); 
 
 					cmd.Parameters.Add(new SqlParameter("@HorasTrabajadas", SqlDbType.Float));
 					cmd.Parameters["@HorasTrabajadas"].Value = this.HorasTrabajadas.Text; //((DateTime.Now-DateTime.ParseExact(this.HoraDeEntrada, "hh:mm", null)).TotalMinutes / 60).ToString();
@@ -428,6 +428,7 @@ namespace ManSys
 		{
 			this.EmpleadoId.Clear();
 			this.NomreDeEmpleado.Clear();
+			this.SalidaPendiente.Checked = false; 
 		}
 		private void bntlimpiar_Click(object sender, EventArgs e)
 		{

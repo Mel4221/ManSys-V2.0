@@ -50,6 +50,7 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.HorasTrabajadas = new System.Windows.Forms.TextBox();
+			this.SalidaPendiente = new System.Windows.Forms.CheckBox();
 			this.toolStripContainer1.ContentPanel.SuspendLayout();
 			this.toolStripContainer1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ListadodeEmpleados)).BeginInit();
@@ -320,12 +321,23 @@
 			this.HorasTrabajadas.TabIndex = 158;
 			this.HorasTrabajadas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
+			// SalidaPendiente
+			// 
+			this.SalidaPendiente.AutoSize = true;
+			this.SalidaPendiente.Location = new System.Drawing.Point(526, 243);
+			this.SalidaPendiente.Name = "SalidaPendiente";
+			this.SalidaPendiente.Size = new System.Drawing.Size(107, 24);
+			this.SalidaPendiente.TabIndex = 159;
+			this.SalidaPendiente.Text = "Pendiente";
+			this.SalidaPendiente.UseVisualStyleBackColor = true;
+			// 
 			// Mantenimiento_de_Horario
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Silver;
 			this.ClientSize = new System.Drawing.Size(1543, 1106);
+			this.Controls.Add(this.SalidaPendiente);
 			this.Controls.Add(this.HorasTrabajadas);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.NomreDeEmpleado);
@@ -381,5 +393,6 @@
 		private System.Windows.Forms.Button Registrar_Jornada;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox HorasTrabajadas;
+		private System.Windows.Forms.CheckBox SalidaPendiente;
 	}
 }

@@ -901,15 +901,231 @@ namespace ManSys
 		}
 		private void ModificarCombinados()
 		{
-			
+			try
+			{
+				SqlDataAdapter adapter;
+				DataTable table;
+				if (this.CajaDeDepartamento.Text == "")
+				{
+					MessageBox.Show("Falta el Departamento");
+					return;
+				}
+				if(this.CajaDePosicion.Text == "")
+				{
+					MessageBox.Show("Falta La Posicion");
+					return;
+				}
+				if (this.CajaDeTipoDeBonificacion.Text == "")
+				{
+					MessageBox.Show("Falta el Tipo de Bonificacion");
+					return;
+				}
+				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+				{
+					con.Open();
+					table = new DataTable();
+					SqlCommand cmd; cmd = new SqlCommand("SELECT * FROM dbo.Empleados WHERE Departamento = @Departamento AND Puesto_Ocupado = @Puesto_Ocupado", con);
+
+					cmd.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar));
+					cmd.Parameters["@Departamento"].Value =  this.CajaDeDepartamento.Text;
+
+
+					cmd.Parameters.Add(new SqlParameter("@Puesto_Ocupado", SqlDbType.VarChar));
+					cmd.Parameters["@Puesto_Ocupado"].Value =  this.CajaDePosicion.Text;
+
+					adapter = new SqlDataAdapter(cmd);
+					adapter.Fill(table);
+				}
+				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+				{
+					con.Open();
+
+					foreach (DataRow row in table.Rows)
+					{
+						//SqlCommand cmd = new SqlCommand($"UPDATE dbo.Bonificaciones SET EmpleadoId = @EmpleadoId ,Empleado = @Empleado,Tipo_de_Bonificacion = @Tipo_de_Bonificacion,Monto = @Monto,Fecha = @Fecha,Fecha_de_Applicacion = @Fecha_de_Applicacion WHERE Id = @Id AND EmpleadoId = @EmpleadoId AND Fecha = @Fecha", con);
+						SqlCommand cmd = new SqlCommand($"UPDATE dbo.Bonificaciones SET Tipo_de_Bonificacion = @Tipo_de_Bonificacion,Monto = @Monto,Fecha_de_Applicacion = @Fecha_de_Applicacion WHERE Fecha = @Fecha AND Tipo_de_Bonificacion = @Tipo_de_Bonificacion AND EmpleadoId = @EmpleadoId", con);
+
+						cmd.Parameters.Add(new SqlParameter("@EmpleadoId", SqlDbType.Int));
+						cmd.Parameters["@EmpleadoId"].Value = row["Id"].ToString();
+
+
+						//cmd.Parameters.Add(new SqlParameter("@EmpleadoId", SqlDbType.Int));
+						//cmd.Parameters["@EmpleadoId"].Value = this.CajaDeEmpleadoId.Text;
+
+						//cmd.Parameters.Add(new SqlParameter("@Empleado", SqlDbType.VarChar));
+						//cmd.Parameters["@Empleado"].Value = this.CajaDeEmpleado.Text;
+
+
+						cmd.Parameters.Add(new SqlParameter("@Tipo_de_Bonificacion", SqlDbType.VarChar));
+						cmd.Parameters["@Tipo_de_Bonificacion"].Value = CajaDeTipoDeBonificacion.Text;
+
+						cmd.Parameters.Add(new SqlParameter("@Monto", SqlDbType.Float));
+						cmd.Parameters["@Monto"].Value = this.CajaDeMonto.Text;
+
+						cmd.Parameters.Add(new SqlParameter("@Fecha", SqlDbType.VarChar));
+						cmd.Parameters["@Fecha"].Value = this.FechaDeEmision.Value.ToString("dd/MM/yyyy");
+
+						cmd.Parameters.Add(new SqlParameter("@Fecha_de_Applicacion", SqlDbType.VarChar));
+						cmd.Parameters["@Fecha_de_Applicacion"].Value = FechaDeApplicacion.Value.ToString("dd/MM/yyyy");
+
+						cmd.ExecuteNonQuery();
+					}
+
+					this.CargarBonificaciones();
+					this.LimpiarCampos();
+
+				}
+			}
+			catch (Exception ex)
+			{
+				ShowError($"Hubo un errror al Modificar la Bonificacion", ex);
+			}
 		}
 		private void ModificarSoloDepartamento()
 		{
+			try
+			{
+				SqlDataAdapter adapter;
+				DataTable table;
+				if (this.CajaDeDepartamento.Text == "")
+				{
+					MessageBox.Show("Falta el Departamento");
+					return;
+				}
+				if (this.CajaDeTipoDeBonificacion.Text == "")
+				{
+					MessageBox.Show("Falta el Tipo de Bonificacion");
+					return;
+				}
+				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+				{
+					con.Open();
+					table = new DataTable();
+					SqlCommand cmd; cmd = new SqlCommand("SELECT * FROM dbo.Empleados WHERE Departamento = @Departamento", con);
 
+					cmd.Parameters.Add(new SqlParameter("@Departamento", SqlDbType.VarChar));
+					cmd.Parameters["@Departamento"].Value =  this.CajaDeDepartamento.Text;
+
+					adapter = new SqlDataAdapter(cmd);
+					adapter.Fill(table);
+				}
+				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+				{
+					con.Open();
+
+					foreach (DataRow row in table.Rows)
+					{
+						//SqlCommand cmd = new SqlCommand($"UPDATE dbo.Bonificaciones SET EmpleadoId = @EmpleadoId ,Empleado = @Empleado,Tipo_de_Bonificacion = @Tipo_de_Bonificacion,Monto = @Monto,Fecha = @Fecha,Fecha_de_Applicacion = @Fecha_de_Applicacion WHERE Id = @Id AND EmpleadoId = @EmpleadoId AND Fecha = @Fecha", con);
+						SqlCommand cmd = new SqlCommand($"UPDATE dbo.Bonificaciones SET Tipo_de_Bonificacion = @Tipo_de_Bonificacion,Monto = @Monto,Fecha_de_Applicacion = @Fecha_de_Applicacion WHERE Fecha = @Fecha AND Tipo_de_Bonificacion = @Tipo_de_Bonificacion AND EmpleadoId = @EmpleadoId", con);
+
+						cmd.Parameters.Add(new SqlParameter("@EmpleadoId", SqlDbType.Int));
+						cmd.Parameters["@EmpleadoId"].Value = row["Id"].ToString();
+
+
+						//cmd.Parameters.Add(new SqlParameter("@EmpleadoId", SqlDbType.Int));
+						//cmd.Parameters["@EmpleadoId"].Value = this.CajaDeEmpleadoId.Text;
+
+						//cmd.Parameters.Add(new SqlParameter("@Empleado", SqlDbType.VarChar));
+						//cmd.Parameters["@Empleado"].Value = this.CajaDeEmpleado.Text;
+
+
+						cmd.Parameters.Add(new SqlParameter("@Tipo_de_Bonificacion", SqlDbType.VarChar));
+						cmd.Parameters["@Tipo_de_Bonificacion"].Value = CajaDeTipoDeBonificacion.Text;
+
+						cmd.Parameters.Add(new SqlParameter("@Monto", SqlDbType.Float));
+						cmd.Parameters["@Monto"].Value = this.CajaDeMonto.Text;
+
+						cmd.Parameters.Add(new SqlParameter("@Fecha", SqlDbType.VarChar));
+						cmd.Parameters["@Fecha"].Value = this.FechaDeEmision.Value.ToString("dd/MM/yyyy");
+
+						cmd.Parameters.Add(new SqlParameter("@Fecha_de_Applicacion", SqlDbType.VarChar));
+						cmd.Parameters["@Fecha_de_Applicacion"].Value = FechaDeApplicacion.Value.ToString("dd/MM/yyyy");
+
+						cmd.ExecuteNonQuery();
+					}
+
+					this.CargarBonificaciones();
+					this.LimpiarCampos();
+
+				}
+			}
+			catch (Exception ex)
+			{
+				ShowError($"Hubo un errror al Modificar la Bonificacion", ex);
+			}
 		}
 		private void ModificarSoloPosicion()
 		{
+			try
+			{
+				SqlDataAdapter adapter;
+				DataTable table;
+				if (this.CajaDePosicion.Text == "")
+				{
+					MessageBox.Show("Falta La Posicion");
+					return;
+				}
+				if (this.CajaDeTipoDeBonificacion.Text == "")
+				{
+					MessageBox.Show("Falta el Tipo de Bonificacion");
+					return;
+				}
+				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+				{
+					con.Open();
+					table = new DataTable();
+					SqlCommand cmd; cmd = new SqlCommand("SELECT * FROM dbo.Empleados WHERE Puesto_Ocupado = @Puesto_Ocupado", con);
 
+					cmd.Parameters.Add(new SqlParameter("@Puesto_Ocupado", SqlDbType.VarChar));
+					cmd.Parameters["@Puesto_Ocupado"].Value =  this.CajaDePosicion.Text;
+
+					adapter = new SqlDataAdapter(cmd);
+					adapter.Fill(table);
+				}
+				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+				{
+					con.Open();
+
+					foreach (DataRow row in table.Rows)
+					{
+						//SqlCommand cmd = new SqlCommand($"UPDATE dbo.Bonificaciones SET EmpleadoId = @EmpleadoId ,Empleado = @Empleado,Tipo_de_Bonificacion = @Tipo_de_Bonificacion,Monto = @Monto,Fecha = @Fecha,Fecha_de_Applicacion = @Fecha_de_Applicacion WHERE Id = @Id AND EmpleadoId = @EmpleadoId AND Fecha = @Fecha", con);
+						SqlCommand cmd = new SqlCommand($"UPDATE dbo.Bonificaciones SET Tipo_de_Bonificacion = @Tipo_de_Bonificacion,Monto = @Monto,Fecha_de_Applicacion = @Fecha_de_Applicacion WHERE Fecha = @Fecha AND Tipo_de_Bonificacion = @Tipo_de_Bonificacion AND EmpleadoId = @EmpleadoId", con);
+
+						cmd.Parameters.Add(new SqlParameter("@EmpleadoId", SqlDbType.Int));
+						cmd.Parameters["@EmpleadoId"].Value = row["Id"].ToString();
+
+
+						//cmd.Parameters.Add(new SqlParameter("@EmpleadoId", SqlDbType.Int));
+						//cmd.Parameters["@EmpleadoId"].Value = this.CajaDeEmpleadoId.Text;
+
+						//cmd.Parameters.Add(new SqlParameter("@Empleado", SqlDbType.VarChar));
+						//cmd.Parameters["@Empleado"].Value = this.CajaDeEmpleado.Text;
+
+
+						cmd.Parameters.Add(new SqlParameter("@Tipo_de_Bonificacion", SqlDbType.VarChar));
+						cmd.Parameters["@Tipo_de_Bonificacion"].Value = CajaDeTipoDeBonificacion.Text;
+
+						cmd.Parameters.Add(new SqlParameter("@Monto", SqlDbType.Float));
+						cmd.Parameters["@Monto"].Value = this.CajaDeMonto.Text;
+
+						cmd.Parameters.Add(new SqlParameter("@Fecha", SqlDbType.VarChar));
+						cmd.Parameters["@Fecha"].Value = this.FechaDeEmision.Value.ToString("dd/MM/yyyy");
+
+						cmd.Parameters.Add(new SqlParameter("@Fecha_de_Applicacion", SqlDbType.VarChar));
+						cmd.Parameters["@Fecha_de_Applicacion"].Value = FechaDeApplicacion.Value.ToString("dd/MM/yyyy");
+
+						cmd.ExecuteNonQuery();
+					}
+
+					this.CargarBonificaciones();
+					this.LimpiarCampos();
+
+				}
+			}
+			catch (Exception ex)
+			{
+				ShowError($"Hubo un errror al Modificar la Bonificacion", ex);
+			}
 		}
 		private void ModificarMultiples()
 		{

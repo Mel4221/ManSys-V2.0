@@ -329,5 +329,5 @@ SELECT * FROM Gestion_de_Jornada
 --) ON [PRIMARY]
 --GO
 
- select * from dbo.Bonificaciones
- 
+SELECT * FROM dbo.Gestion_de_Jornada
+SELECT * FROM dbo.Nomina
