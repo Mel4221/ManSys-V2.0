@@ -328,6 +328,7 @@ namespace ManSys
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             string sql = "DELETE FROM dbo.Empleados WHERE Id=" + txtId.Text;
+            if (MessageBox.Show($"Esta seguro que quiere Eliminar el Empleado: {txtNombre.Text} {txtApellido.Text}", "Alerta", MessageBoxButtons.YesNo) != DialogResult.Yes) return;
 
             SqlConnection con = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand(sql, con);

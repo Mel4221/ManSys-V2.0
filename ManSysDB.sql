@@ -328,6 +328,8 @@ SELECT * FROM Gestion_de_Jornada
 --	[Turno] [varchar](50) NULL
 --) ON [PRIMARY]
 --GO
-
+use ManSysDB
 SELECT * FROM dbo.Gestion_de_Jornada
 SELECT * FROM dbo.Nomina
+ 
+ --delete from dbo.Nomina where EmpleadoId != 0
