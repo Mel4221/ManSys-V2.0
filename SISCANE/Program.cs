@@ -50,7 +50,8 @@ namespace ManSys
 				//Application.Run(new GenerarNomina()); 
 				//Application.Run(new Bonificaciones());
 				Application.Run(new GenerarVolanteDePago());
-			    //Application.Run(new Empleado());
+				//Application.Run(new VolanteDePago());
+				//Application.Run(new Empleado());
 
 			//Application.Run(new Generar_JornadaLaboral());
 			}

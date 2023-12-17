@@ -14,6 +14,8 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>C:\Users\William\Desktop\C#\ManSys_Publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -189,6 +191,9 @@
     <Compile Include="Consulta de Departamentos.Designer.cs">
       <DependentUpon>Consulta de Departamentos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Printing.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ProveedorDeAplicacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +267,12 @@
     </Compile>
     <Compile Include="SISCANEDataSet.Designer.cs">
       <DependentUpon>SISCANEDataSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VolanteDePago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VolanteDePago.Designer.cs">
+      <DependentUpon>VolanteDePago.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Generar Bonificaciones.resx">
       <DependentUpon>Generar Bonificaciones.cs</DependentUpon>
@@ -348,6 +359,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="VolanteDePago.resx">
+      <DependentUpon>VolanteDePago.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="EmpleadosDataSet.xsc">
       <DependentUpon>EmpleadosDataSet.xsd</DependentUpon>
     </None>
@@ -413,6 +427,26 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="FindNetPrintersLib">
+      <Guid>{0FFF9602-69CF-4728-9EA4-141514866CA2}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="PrinterExtensionLib">
+      <Guid>{91CE54EE-C67C-4B46-A4FF-99416F27A8BF}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

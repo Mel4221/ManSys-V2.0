@@ -329,7 +329,11 @@ SELECT * FROM Gestion_de_Jornada
 --) ON [PRIMARY]
 --GO
 use ManSysDB
-SELECT * FROM dbo.Gestion_de_Jornada
-SELECT * FROM dbo.Nomina
+--SELECT * FROM dbo.Empleados
+--SELECT * FROM dbo.Gestion_de_Jornada
+--SELECT * FROM dbo.Nomina
+
+
+select * from dbo.Bonificaciones
  
  --delete from dbo.Nomina where EmpleadoId != 0

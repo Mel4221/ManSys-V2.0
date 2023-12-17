@@ -36,6 +36,7 @@
 			this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Applicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnBuscar = new System.Windows.Forms.Button();
 			this.label15 = new System.Windows.Forms.Label();
 			this.txtbusqueda = new System.Windows.Forms.TextBox();
@@ -51,6 +52,9 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtid = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.ApplicacionOId = new System.Windows.Forms.ComboBox();
+			this.ApplicacionOIdLimpiear = new System.Windows.Forms.Button();
 			this.gblistadovisitas.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ListadodeUsuarios)).BeginInit();
 			this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -89,7 +93,7 @@
 			this.gblistadovisitas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.gblistadovisitas.Name = "gblistadovisitas";
 			this.gblistadovisitas.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.gblistadovisitas.Size = new System.Drawing.Size(885, 546);
+			this.gblistadovisitas.Size = new System.Drawing.Size(1170, 546);
 			this.gblistadovisitas.TabIndex = 176;
 			this.gblistadovisitas.TabStop = false;
 			this.gblistadovisitas.Text = "Empleados Registrados";
@@ -113,13 +117,14 @@
 			this.ListadodeUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Nombre,
-            this.Cantidad});
+            this.Cantidad,
+            this.Applicacion});
 			this.ListadodeUsuarios.Location = new System.Drawing.Point(10, 112);
 			this.ListadodeUsuarios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ListadodeUsuarios.Name = "ListadodeUsuarios";
 			this.ListadodeUsuarios.ReadOnly = true;
 			this.ListadodeUsuarios.RowHeadersWidth = 62;
-			this.ListadodeUsuarios.Size = new System.Drawing.Size(868, 423);
+			this.ListadodeUsuarios.Size = new System.Drawing.Size(1148, 423);
 			this.ListadodeUsuarios.TabIndex = 8;
 			// 
 			// Id
@@ -148,6 +153,15 @@
 			this.Cantidad.Name = "Cantidad";
 			this.Cantidad.ReadOnly = true;
 			this.Cantidad.Width = 150;
+			// 
+			// Applicacion
+			// 
+			this.Applicacion.DataPropertyName = "Applicacion";
+			this.Applicacion.HeaderText = "Applicacion";
+			this.Applicacion.MinimumWidth = 8;
+			this.Applicacion.Name = "Applicacion";
+			this.Applicacion.ReadOnly = true;
+			this.Applicacion.Width = 150;
 			// 
 			// btnBuscar
 			// 
@@ -186,7 +200,7 @@
 			this.label14.AutoSize = true;
 			this.label14.BackColor = System.Drawing.Color.Transparent;
 			this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label14.Location = new System.Drawing.Point(129, 11);
+			this.label14.Location = new System.Drawing.Point(498, 9);
 			this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(680, 40);
@@ -208,7 +222,7 @@
 			this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(222, 451);
 			this.toolStripContainer1.LeftToolStripPanelVisible = false;
-			this.toolStripContainer1.Location = new System.Drawing.Point(902, 331);
+			this.toolStripContainer1.Location = new System.Drawing.Point(1218, 346);
 			this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.toolStripContainer1.Name = "toolStripContainer1";
 			this.toolStripContainer1.RightToolStripPanelVisible = false;
@@ -335,12 +349,47 @@
 			this.txtid.Size = new System.Drawing.Size(116, 26);
 			this.txtid.TabIndex = 170;
 			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.Location = new System.Drawing.Point(827, 143);
+			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(366, 29);
+			this.label3.TabIndex = 179;
+			this.label3.Text = "Applicacion o ID de Empleado";
+			// 
+			// ApplicacionOId
+			// 
+			this.ApplicacionOId.FormattingEnabled = true;
+			this.ApplicacionOId.Items.AddRange(new object[] {
+            "A Todos"});
+			this.ApplicacionOId.Location = new System.Drawing.Point(832, 186);
+			this.ApplicacionOId.Name = "ApplicacionOId";
+			this.ApplicacionOId.Size = new System.Drawing.Size(238, 28);
+			this.ApplicacionOId.TabIndex = 180;
+			this.ApplicacionOId.Text = "A Todos";
+			// 
+			// ApplicacionOIdLimpiear
+			// 
+			this.ApplicacionOIdLimpiear.Location = new System.Drawing.Point(1076, 185);
+			this.ApplicacionOIdLimpiear.Name = "ApplicacionOIdLimpiear";
+			this.ApplicacionOIdLimpiear.Size = new System.Drawing.Size(90, 32);
+			this.ApplicacionOIdLimpiear.TabIndex = 181;
+			this.ApplicacionOIdLimpiear.Text = "Limpiear";
+			this.ApplicacionOIdLimpiear.UseVisualStyleBackColor = true;
+			this.ApplicacionOIdLimpiear.Click += new System.EventHandler(this.ApplicacionOIdLimpiear_Click);
+			// 
 			// mantenimientoDeducciones
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Silver;
-			this.ClientSize = new System.Drawing.Size(1131, 818);
+			this.ClientSize = new System.Drawing.Size(1534, 818);
+			this.Controls.Add(this.ApplicacionOIdLimpiear);
+			this.Controls.Add(this.ApplicacionOId);
+			this.Controls.Add(this.label3);
 			this.Controls.Add(this.txtcantidad);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.gblistadovisitas);
@@ -391,8 +440,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtid;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.ComboBox ApplicacionOId;
+		private System.Windows.Forms.Button ApplicacionOIdLimpiear;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Id;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Applicacion;
 	}
 }

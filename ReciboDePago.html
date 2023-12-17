@@ -1,0 +1,114 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Recibo de @Nombre</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+	 			.center{
+					  text-align: center;
+					  border-style: solid;
+					  width:100%;
+				}	
+				
+				.top{
+					text-align: center;
+			
+
+				}
+				.left{
+					text-align:left;										border-style: solid;
+					width:48%;
+					float: left;
+				}
+		 	 	h5{
+					margin:5px;
+					text-align:center;
+				}
+				.right{
+					text-align:left;										border-style: solid;
+					width:48%;
+					float: right;
+				}
+				.page{
+					width:80%;
+					position:absolute;
+					margin:10%;
+			
+				}
+				#button{
+					position:absolute;
+					top:100%;
+					border-style: solid;
+					margin:5px;
+					text-align:right;
+					width:100%;
+
+					 
+				}
+
+		</style>
+
+<div class="page">
+
+ <h4 class="top">COMPROBANTE DE PAGO</h4>
+<p class="top">PERIODO @Nomina</p>
+<p class="top">DEL @Inicio AL @Final</p>
+<h4 class="top">FECHA EMISION: @Fecha_de_Pago</h4>
+
+<div class="center">	
+		<table>
+			<tr>
+				<th>Empleado:</th>
+				<td>@Id @Nombre @Apellido</td>
+			</tr>
+			<tr>
+				<th>Departamento:</th>
+				<td>@Departamento</td>
+			</tr>
+			<tr>
+				<th>Cargo:</th>
+				<td>@Posicion</td>
+			</tr>
+			<tr>
+				<th>Salario Base:</th>
+				<td>@Salario_Base </td>
+			</tr>
+
+	
+		</table>
+</div>
+</br>
+
+<div class="left">
+		<h5>INGRESOS</h5>
+		<p>REGULARES (@Horas_Normales)</p>
+		<p>EXTRAS (@Horas_Extras)</p>
+		<p>BONOS (@Bonificaciones)</p>
+
+<h5 class="bordered">INGRESOS TOTAL : @Total </h5>
+</div>
+
+
+<div class="right">
+		<h5>DESCUENTOS</h5>
+		@Descuentos
+		<h5>Total de descuentos: @Total_Descuentos</h5>	
+
+</div>
+	
+
+ 
+	
+		<h5 id="button">Neto a Pagar: @Pago</h5>
+ 
+</div> 
+
+	</body>
+</html>

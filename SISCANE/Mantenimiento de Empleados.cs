@@ -527,70 +527,78 @@ namespace ManSys
             txtbusqueda.Enabled = true;
             txtNombre.Focus();
             */
-			using (SqlConnection connection = new SqlConnection(Connection.ConnectionString))
-			{
-
-				//string query = $"SELECT * FROM dbo.Empleados WHERE {ConvertirACriterioDeBusqueda(this.CriterioDeBusqueda.Text)}";
-				//MessageBox.Show(query);
-				//return;
-				connection.Open();
-
-				SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM dbo.Empleados", connection);
-
-
-				DataTable data = new DataTable();
-				adapter.Fill(data);
-
-				/*his.ListadodeEmpleados.DataSource = data;*/
-				foreach (DataRow row in data.Rows)
+			try
+            {
+				using (SqlConnection connection = new SqlConnection(Connection.ConnectionString))
 				{
-					//  Get.Green("[" + row["ID"] + "]" + "[" + row["created"] + "]" + " " + "[" + row["uname"] + "]" + " " + "[" + row["msg"] + "]");
-					if (row["CEDULA"].ToString() == this.txtbusqueda.Text)
+
+					//string query = $"SELECT * FROM dbo.Empleados WHERE {ConvertirACriterioDeBusqueda(this.CriterioDeBusqueda.Text)}";
+					//MessageBox.Show(query);
+					//return;
+					connection.Open();
+
+					SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM dbo.Empleados", connection);
+
+
+					DataTable data = new DataTable();
+					adapter.Fill(data);
+
+					/*his.ListadodeEmpleados.DataSource = data;*/
+					foreach (DataRow row in data.Rows)
 					{
-						this.TomarDatos(row);
-						return;
+						//  Get.Green("[" + row["ID"] + "]" + "[" + row["created"] + "]" + " " + "[" + row["uname"] + "]" + " " + "[" + row["msg"] + "]");
+						if (row["CEDULA"].ToString() == this.txtbusqueda.Text)
+						{
+							this.TomarDatos(row);
+							return;
+						}
+						if (row["Id"].ToString()  == this.txtbusqueda.Text)
+						{
+							this.TomarDatos(row);
+							return;
+						}
+						if (row["Nombre"].ToString().ToLower() +" "+row["Apellido"].ToString().ToLower()  ==  this.txtbusqueda.Text.ToLower())
+						{
+							this.TomarDatos(row);
+							return;
+						}
+						if (row["Telefono"].ToString()  == this.txtbusqueda.Text)
+						{
+							this.TomarDatos(row);
+							return;
+						}
 					}
-					if (row["Id"].ToString()  == this.txtbusqueda.Text)
-					{
-						this.TomarDatos(row);
-						return;
-					}
-					if (row["Nombre"].ToString().ToLower() +" "+row["Apellido"].ToString().ToLower()  ==  this.txtbusqueda.Text.ToLower())
-					{
-						this.TomarDatos(row);
-						return;
-					}
-					if (row["Telefono"].ToString()  == this.txtbusqueda.Text)
-					{
-						this.TomarDatos(row);
-						return;
-					}
+
+
+
+					/*
+					txtId.Text = reader[0].ToString();
+					txtNombre.Text = reader[1].ToString();
+					txtApellido.Text = reader[2].ToString();
+					txtdireccion.Text = reader[3].ToString();
+					txttelefono.Text = reader[4].ToString();
+					txtfechadeingreso.Text = reader[5].ToString();
+					txtpuestoocupado.Text = reader[6].ToString();
+					txtdeparmento.Text = reader[7].ToString();
+					txtdni.Text = reader[8].ToString();
+					txtsalariobase.Text = reader[9].ToString();
+					txttipodecobro.Text = reader[10].ToString();
+					txtturno.Text = reader[11].ToString();
+					*/
+					//nuevo = false;
+					MessageBox.Show("Ningun Registro Encontrado con el Dato de Busqueda Ingresado");
+
+
 				}
-
-
-
-				/*
-				txtId.Text = reader[0].ToString();
-				txtNombre.Text = reader[1].ToString();
-				txtApellido.Text = reader[2].ToString();
-				txtdireccion.Text = reader[3].ToString();
-				txttelefono.Text = reader[4].ToString();
-				txtfechadeingreso.Text = reader[5].ToString();
-				txtpuestoocupado.Text = reader[6].ToString();
-				txtdeparmento.Text = reader[7].ToString();
-				txtdni.Text = reader[8].ToString();
-				txtsalariobase.Text = reader[9].ToString();
-				txttipodecobro.Text = reader[10].ToString();
-				txtturno.Text = reader[11].ToString();
-				*/
-				//nuevo = false;
-
 			}
+			catch(Exception ex)
+            {
+                ShowError("Hubo un error al buscar el Empleado", ex);
+            }
 
 
 			//}
 			//else
-			MessageBox.Show("Ningun Registro Encontrado con el Dato de Busqueda Ingresado");
 
 		}
 		private void btnBuscar_Click(object sender, EventArgs e)
@@ -694,7 +702,7 @@ namespace ManSys
 			if (e.KeyCode == Keys.Enter)
 			{
                 this.BuscarEmpleado();
-				e.SuppressKeyPress = false;
+				e.SuppressKeyPress = true;
 			}
 
 

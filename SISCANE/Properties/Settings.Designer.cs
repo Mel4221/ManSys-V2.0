@@ -26,7 +26,7 @@ namespace ManSys.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-802OK33;Initial Catalog=ManSys;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=HP\\SQLEXPRESS;Database=ManSysDB;Trusted_Connection=True;")]
         public string ManSysConnectionString {
             get {
                 return ((string)(this["ManSysConnectionString"]));
@@ -36,7 +36,7 @@ namespace ManSys.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP\\SQLEXPRESS;Initial Catalog=ManSysDB;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=HP\\SQLEXPRESS;Database=ManSysDB;Trusted_Connection=True;")]
         public string ManSysDBConnectionString {
             get {
                 return ((string)(this["ManSysDBConnectionString"]));

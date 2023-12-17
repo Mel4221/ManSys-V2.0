@@ -29,7 +29,7 @@ namespace ManSys
         {
             this.CargarDatos(); 
         }
-        private void CargarDatos()
+        public void CargarDatos()
         {
             this.LLenarGridNomina();
             this.ActualizarPagoPorHoraNormales();
@@ -354,9 +354,12 @@ namespace ManSys
         private DataTable _Empleados { get; set; }  
         private DataTable _Deducciones { get; set; }
         private DataTable _Impuestos { get; set; } 
-        private DataTable _Bonificaciones { get; set; } 
-      
-        private void CargarBonificaiones()
+        private DataTable _Bonificaciones { get; set; }
+        public List<Key> BonosPersonales { get; set; } = new List<Key>();
+		public List<Key> DescuentosPersonales{ get; set; } = new List<Key>();
+
+
+		private void CargarBonificaiones()
         {
 			try
 			{
@@ -420,13 +423,14 @@ namespace ManSys
 
 		public void ShowError(string message, Exception ex) => MessageBox.Show($"{message}\n{ex}", "Algo Salio mal!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-        public float ConseguirSueldoNetoPorDia(string empleadoId)
+        public float ConseguirSueldoNetoPorDia(int empleadoId)
         {
             try {
+				string empleado = empleadoId.ToString();
 
-                foreach(DataRow row in this._Empleados.Rows)
+				foreach (DataRow row in this._Empleados.Rows)
                 {
-                    if(row["Id"].ToString() == empleadoId)
+                    if(row["Id"].ToString() == empleado)
                     {
                         float hora = (float.Parse(row["Salario_Base"].ToString())/30/8);
 						//Divide el sueldo que cobra mensual por los dias y horas que trabaja 
@@ -443,15 +447,53 @@ namespace ManSys
                     return 0; 
             }
         }
-        private float ConseguirTotalDeDescuento()
+
+        public float ToPorcent(string empleado,string porcentage)
+        {
+            float porcent, sueldo;
+            sueldo = this.ConseguirSueldoNetoPorDia(int.Parse(empleado))*8*30;//Sueldo Mensual del Empleado
+            porcent = float.Parse(porcentage.Replace("%", "")) * sueldo / 100; 
+			return porcent; 
+        }
+        public float ConseguirTotalDeDescuento(int empleadoId)
         {
         
             float total = 0;
+            string empleado, cantidad;
+            empleado = empleadoId.ToString();
+            this.DescuentosPersonales = new List<Key>(); 
+
             foreach(DataRow row in this._Deducciones.Rows)
             {
-                total += float.Parse(row["Cantidad"].ToString());
-            }
-            return total; 
+                cantidad = row["Cantidad"].ToString();
+                
+                if (cantidad.Contains("%"))
+                {
+                    cantidad = this.ToPorcent(empleado, cantidad).ToString();
+                }
+
+                if(row["Applicacion"].ToString() == empleado)
+                {
+                     
+					total += float.Parse(cantidad);
+                    this.DescuentosPersonales.Add(new Key()
+                    {
+                        Name = row["Nombre"].ToString(),
+                        Value = total.ToString()
+                    });  ; 
+                    
+				}
+				if (row["Applicacion"].ToString() != empleado && row["Applicacion"].ToString() == "A Todos")
+				{
+					total += float.Parse(cantidad);
+					this.DescuentosPersonales.Add(new Key()
+					{
+						Name = row["Nombre"].ToString(),
+						Value = total.ToString()
+					}); ;
+				}
+			}
+			return total; 
         }
         private class Jornada
         {
@@ -496,7 +538,31 @@ namespace ManSys
             }
             return false; 
         }
+        public float ConseguirTotalDeBonificaciones(int empleadoId)
+        {
+            float total = 0;
+             try{
+                this.BonosPersonales = new List<Key>(); 
+                    foreach(DataRow row in this._Bonificaciones.Rows)
+                    {
+                        if(row["EmpleadoId"].ToString() == empleadoId.ToString() && this.CierreDeNomina.Value.ToString("dd/MM/yyyy") == row["Fecha_de_Applicacion"].ToString())
+                        {
+                            total += float.Parse(row["Monto"].ToString());
+                        this.BonosPersonales.Add(new Key()
+                        {
+                            Name = row["Nombre"].ToString(),
+                            Value = row["Monto"].ToString()
+                        });
+                        }
+                    }
 
+                return total;
+             }catch(Exception ex)
+             {
+                ShowError($"Hubo un errror al tratar de conseguir las bonfificaciones personales de El EmpleadoId {empleadoId}", ex);
+                return total;
+             }
+        }
         private void RegistrarNominaAuto()
         {
 
@@ -570,23 +636,26 @@ namespace ManSys
             using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
             {
                 con.Open();
-                float descuento, sueldo, total, sueldoHora, horas, horaExtra, totalExtras;
-                descuento = this.ConseguirTotalDeDescuento();
+                float descuento, sueldo, total, sueldoHora, horas, horaExtra, totalExtras, bonos;
                 sueldo = 0;
                 total = 0;
                 sueldoHora = 0; 
                 
 				foreach (Jornada row in this.Jornadas)
 				{
-                    sueldoHora = this.ConseguirSueldoNetoPorDia(row.EmpleadoId.ToString());
+					descuento = this.ConseguirTotalDeDescuento(row.EmpleadoId);
+
+                    bonos = this.ConseguirTotalDeBonificaciones(row.EmpleadoId);
+
+                    sueldoHora = this.ConseguirSueldoNetoPorDia(row.EmpleadoId);
                     
                     horas = row.HorasExtras == 0 ? row.HorasTrabajadas : row.HorasTrabajadas - row.HorasExtras;
                     
                     horaExtra = row.HorasExtras/*horas-8<=0 ? 0 : horas-8*/ ;
                     //pagale las horas extras al 15% si las horas extras no son igual a cero
                     totalExtras =  horaExtra!=0?((sueldoHora * float.Parse(this.HorasExtrasPorcentage.Text) / 100)+sueldoHora)*horaExtra:0;/*horaExtra==0 ? 0 : horaExtra*sueldoHora+(sueldoHora*15/100);*/
-                   
-                    sueldo = (horas * sueldoHora)+totalExtras;
+
+                    sueldo = (horas * sueldoHora)+totalExtras+bonos;
                     total =  sueldo - descuento  ;
 					SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Nomina(Periodo,EmpleadoId,Salario_Base,Horas_Trabajadas,Horas_Extras,Ingreso,Descuento,Total_Ingreso) values(@Periodo,@EmpleadoId,@Salario_Base,@Horas_Trabajadas,@Horas_Extras,@Ingreso,@Descuento,@Total_Ingreso)", con);
 
@@ -624,6 +693,7 @@ namespace ManSys
             this.CargarNominas();
 
 		}
+        
         private bool ExistePeriodo(string periodo)
         {
 			try
@@ -648,10 +718,12 @@ namespace ManSys
 
 			return false; 
 		}
+
+        
 		private void btnRegistrar_Click(object sender, EventArgs e)
         {
          
-            
+             
             if(this.RegistroAutomatico.Checked)
             {
                 if(this.ExistePeriodo(this.PeridoDeNomina.Text)){
@@ -827,15 +899,21 @@ namespace ManSys
 				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
 				{
 					con.Open();
-					float descuento, sueldo, total, sueldoHora, horas, horaExtra, totalExtras;
-					descuento = this.ConseguirTotalDeDescuento();
+                    float descuento, sueldo, total, sueldoHora, horas, horaExtra, totalExtras, bonos;
+				
+
 					sueldo = 0;
 					total = 0;
 					sueldoHora = 0;
 
 					foreach (Jornada row in this.Jornadas)
 					{
-						sueldoHora = this.ConseguirSueldoNetoPorDia(row.EmpleadoId.ToString());
+						bonos = ConseguirTotalDeBonificaciones(row.EmpleadoId);
+
+
+						descuento = this.ConseguirTotalDeDescuento(row.EmpleadoId);
+
+						sueldoHora = this.ConseguirSueldoNetoPorDia(row.EmpleadoId);
 
 						horas = row.HorasExtras == 0 ? row.HorasTrabajadas : row.HorasTrabajadas - row.HorasExtras;
 
@@ -843,7 +921,7 @@ namespace ManSys
 						//pagale las horas extras al 15% si las horas extras no son igual a cero
 						totalExtras =  horaExtra!=0 ? ((sueldoHora * float.Parse(this.HorasExtrasPorcentage.Text) / 100)+sueldoHora)*horaExtra : 0;/*horaExtra==0 ? 0 : horaExtra*sueldoHora+(sueldoHora*15/100);*/
 
-						sueldo = (horas * sueldoHora)+totalExtras;
+                        sueldo = (horas * sueldoHora)+totalExtras+bonos;
 						total =  sueldo - descuento;
 						SqlCommand cmd = new SqlCommand("UPDATE dbo.Nomina SET Periodo = @Periodo,EmpleadoId = @EmpleadoId,Salario_Base = @Salario_Base,Horas_Trabajadas = @Horas_Trabajadas,Horas_Extras = @Horas_Extras,Ingreso = @Ingreso,Descuento = @Descuento,Total_Ingreso = @Total_Ingreso WHERE EmpleadoId = @EmpleadoId", con);
 

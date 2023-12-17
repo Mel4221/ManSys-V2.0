@@ -72,19 +72,30 @@ namespace ManSys
 
 					filled.Columns.Add("Id", typeof(int));
 					filled.Columns.Add("Nombre", typeof(string));
+					filled.Columns.Add("Cantidad", typeof(float)); 
+					filled.Columns.Add("Applicacion", typeof(string));
+
 
 					foreach (DataRow row in departamentos.Rows)
 					{
-						if (this.IsLike(row["Nombre"].ToString().ToLower(), this.txtbusqueda.Text.ToLower()))
+					
+						if (this.IsLike(row["Nombre"].ToString().ToLower(), this.txtbusqueda.Text.ToLower()) || row["Id"].ToString() == this.txtbusqueda.Text)
 						{
 							DataRow r = filled.NewRow();
 							r["Id"]  = row["Id"];
 							r["Nombre"] = row["Nombre"];
+							r["Applicacion"] = row["Applicacion"];
+							r["Cantidad"] = row["Cantidad"];
+							//agregandolos al formulario de manera automatica
+							txtid.Text = r["Id"].ToString();
+							txtnombre.Text = r["Nombre"].ToString();
+							txtcantidad.Text = r["Cantidad"].ToString();
+							ApplicacionOId.Text =r["Applicacion"].ToString();
 							filled.Rows.Add(r);
-
+							
 							//MessageBox.Show($"Row: {row["Nombre"].ToString()} Match: {this.Match(row["Nombre"].ToString(), this.txtbusqueda.Text)}");
 							//if (!this.txtbusqueda.Items.Contains(row["Nombre"].ToString()))
-							//{
+							//{;
 							//	//this.txtbusqueda.Items.Add(row["Nombre"].ToString());
 							//	}
 							//this.txtbusqueda.Focus();
@@ -168,7 +179,28 @@ namespace ManSys
 				ShowError($"Hubo un error al Cargar los Impuestos", ex);
 			}
 		}
+		private bool EsEmpleado()
+		{
+			try
+			{
+				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+				{
+					con.Open();
+					SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Empleados WHERE Id = @Id",con);
+					cmd.Parameters.AddWithValue("@Id", int.Parse(this.ApplicacionOId.Text));
 
+					if(cmd.ExecuteReader().Read())
+					{
+						return true;
+					}
+				}
+				return false;
+			}catch(Exception ex)
+			{
+				ShowError("Hubo un error al tratar de verificar si el usuario es un empleado", ex);
+				return false;
+			}
+		}
 		private void ShowError(string message, Exception ex)
 		{
 			MessageBox.Show($"{message}\n{ex}", "Algo Salio mal!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -176,6 +208,7 @@ namespace ManSys
 		}
 		private void btnRegistrar_Click(object sender, EventArgs e)
 		{
+			
 			if (this.txtnombre.Text == "" || this.txtcantidad.Text == "")
 			{
 				MessageBox.Show("Porfavor Agregar la informacion de la deduccion");
@@ -186,23 +219,30 @@ namespace ManSys
 				MessageBox.Show($"La Deduccion '{this.txtnombre.Text}' ya existe!!!");
 				return;
 			}
-			if (!QuickTools.QCore.Get.IsNumber(this.txtcantidad.Text))
+			//if (!QuickTools.QCore.Get.IsNumber(this.txtcantidad.Text))
+			//{
+			//	MessageBox.Show($"La cantidad no parece correcta {this.txtcantidad.Text}");
+			//	return;
+			//}
+			if(this.ApplicacionOId.Text != "A Todos" && !this.EsEmpleado())
 			{
-				MessageBox.Show($"La cantidad no parece correcta {this.txtcantidad.Text}");
+				MessageBox.Show($"El Empleado Id o Tipo De Applicacion no es Valido: {this.ApplicacionOId.Text}");
 				return;
 			}
+			
 			using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
 			{
 
 				try
 				{
 					con.Open();
-					string query = $"INSERT INTO dbo.Deducciones(Nombre,Cantidad) values(@Nombre,@Cantidad)";
+					string query = $"INSERT INTO dbo.Deducciones(Nombre,Applicacion,Cantidad) values(@Nombre,@Applicacion,@Cantidad)";
 
 					SqlCommand cmd = new SqlCommand(query, con);
 					cmd.Parameters.AddWithValue("@Nombre", this.txtnombre.Text);
-					cmd.Parameters.AddWithValue("@Cantidad", float.Parse(this.txtcantidad.Text));
-
+					cmd.Parameters.AddWithValue("@Applicacion", this.ApplicacionOId.Text);
+					cmd.Parameters.AddWithValue("@Cantidad", this.txtcantidad.Text);
+					
 					cmd.ExecuteNonQuery();
 					this.CargarDeducciones();
 				}
@@ -225,29 +265,38 @@ namespace ManSys
 			//	MessageBox.Show($"El Impuesto '{this.txtnombre.Text}' ya existe!!!");
 			//	return;
 			//}
-			if (!QuickTools.QCore.Get.IsNumber(this.txtcantidad.Text))
-			{
-				MessageBox.Show($"El porcentaje no parece correcto {this.txtcantidad.Text}");
-				return;
-			}
+			//if (!QuickTools.QCore.Get.IsNumber(this.txtcantidad.Text))
+			//{
+			//	MessageBox.Show($"El porcentaje no parece correcto {this.txtcantidad.Text}");
+			//	return;
+			//}
 
 			if (txtid.Text == "" || txtnombre.Text == "")
 			{
 				MessageBox.Show("Porfavor completar los campos requeridos!!!");
 				return;
 			}
+			if (this.ApplicacionOId.Text != "A Todos" && !this.EsEmpleado())
+			{
+				MessageBox.Show($"El Empleado Id o Tipo De Applicacion no es Valido: {this.ApplicacionOId.Text}");
+				return;
+			}
+			
 			using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
 			{
 				try
 				{
 
 					con.Open();
-					string query = $"UPDATE dbo.Deducciones SET Nombre = @Nombre , Cantidad = @Cantidad WHERE Id = @Id";
+					string query = $"UPDATE dbo.Deducciones SET Nombre =  @Nombre ,Applicacion = @Applicacion, Cantidad = @Cantidad WHERE Id = @Id";
 					SqlCommand cmd = new SqlCommand(query, con);
 					cmd.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.VarChar));
 					cmd.Parameters["@Nombre"].Value = txtnombre.Text;
 
-					cmd.Parameters.Add(new SqlParameter("@Cantidad", SqlDbType.Float));
+					cmd.Parameters.Add(new SqlParameter("@Applicacion", SqlDbType.VarChar));
+					cmd.Parameters["@Applicacion"].Value = this.ApplicacionOId.Text;
+
+					cmd.Parameters.Add(new SqlParameter("@Cantidad", SqlDbType.VarChar));
 					cmd.Parameters["@Cantidad"].Value = txtcantidad.Text;
 
 					cmd.Parameters.Add(new SqlParameter("@Id", SqlDbType.Int));
@@ -309,6 +358,11 @@ namespace ManSys
 		private void txtbusqueda_KeyDown(object sender, KeyEventArgs e)
 		{
 			this.BuscarDeducciones();
+		}
+
+		private void ApplicacionOIdLimpiear_Click(object sender, EventArgs e)
+		{
+			this.ApplicacionOId.Text = "";
 		}
 	}
 }
