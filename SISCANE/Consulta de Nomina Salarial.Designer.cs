@@ -28,13 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.panel1 = new System.Windows.Forms.Panel();
 			this.btnCerrar = new System.Windows.Forms.Button();
 			this.bntlimpiar = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
 			this.bntbuscar = new System.Windows.Forms.Button();
-			this.btnIndividual = new System.Windows.Forms.Button();
-			this.btnGrupal = new System.Windows.Forms.Button();
 			this.label22 = new System.Windows.Forms.Label();
 			this.label31 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
@@ -42,24 +38,8 @@
 			this.label30 = new System.Windows.Forms.Label();
 			this.ListadodeNominaRegistrada = new System.Windows.Forms.DataGridView();
 			this.PeriodoDeNomina = new System.Windows.Forms.ComboBox();
-			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ListadodeNominaRegistrada)).BeginInit();
 			this.SuspendLayout();
-			// 
-			// panel1
-			// 
-			this.panel1.Controls.Add(this.btnCerrar);
-			this.panel1.Controls.Add(this.bntlimpiar);
-			this.panel1.Controls.Add(this.label1);
-			this.panel1.Controls.Add(this.bntbuscar);
-			this.panel1.Controls.Add(this.btnIndividual);
-			this.panel1.Controls.Add(this.btnGrupal);
-			this.panel1.Location = new System.Drawing.Point(1226, 14);
-			this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(213, 488);
-			this.panel1.TabIndex = 258;
-			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
 			// 
 			// btnCerrar
 			// 
@@ -67,7 +47,7 @@
 			this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnCerrar.ForeColor = System.Drawing.Color.Black;
-			this.btnCerrar.Location = new System.Drawing.Point(26, 379);
+			this.btnCerrar.Location = new System.Drawing.Point(1058, 243);
 			this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.btnCerrar.Name = "btnCerrar";
 			this.btnCerrar.Size = new System.Drawing.Size(160, 74);
@@ -80,59 +60,25 @@
 			// 
 			this.bntlimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.bntlimpiar.ForeColor = System.Drawing.Color.Black;
-			this.bntlimpiar.Location = new System.Drawing.Point(26, 317);
+			this.bntlimpiar.Location = new System.Drawing.Point(886, 254);
 			this.bntlimpiar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.bntlimpiar.Name = "bntlimpiar";
 			this.bntlimpiar.Size = new System.Drawing.Size(160, 52);
 			this.bntlimpiar.TabIndex = 237;
 			this.bntlimpiar.Text = "Limpiar";
 			this.bntlimpiar.UseVisualStyleBackColor = true;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F, System.Drawing.FontStyle.Bold);
-			this.label1.Location = new System.Drawing.Point(32, 22);
-			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(154, 31);
-			this.label1.TabIndex = 234;
-			this.label1.Text = "BOTONES";
+			this.bntlimpiar.Click += new System.EventHandler(this.bntlimpiar_Click);
 			// 
 			// bntbuscar
 			// 
 			this.bntbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.bntbuscar.Location = new System.Drawing.Point(26, 255);
+			this.bntbuscar.Location = new System.Drawing.Point(697, 254);
 			this.bntbuscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.bntbuscar.Name = "bntbuscar";
 			this.bntbuscar.Size = new System.Drawing.Size(160, 52);
 			this.bntbuscar.TabIndex = 267;
 			this.bntbuscar.Text = "Buscar";
 			this.bntbuscar.UseVisualStyleBackColor = true;
-			// 
-			// btnIndividual
-			// 
-			this.btnIndividual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnIndividual.Location = new System.Drawing.Point(26, 68);
-			this.btnIndividual.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.btnIndividual.Name = "btnIndividual";
-			this.btnIndividual.Size = new System.Drawing.Size(160, 85);
-			this.btnIndividual.TabIndex = 230;
-			this.btnIndividual.Text = "Nomina Individual";
-			this.btnIndividual.UseVisualStyleBackColor = true;
-			this.btnIndividual.Click += new System.EventHandler(this.btnRegistrar_Click);
-			// 
-			// btnGrupal
-			// 
-			this.btnGrupal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnGrupal.Location = new System.Drawing.Point(26, 162);
-			this.btnGrupal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.btnGrupal.Name = "btnGrupal";
-			this.btnGrupal.Size = new System.Drawing.Size(160, 85);
-			this.btnGrupal.TabIndex = 232;
-			this.btnGrupal.Text = "Nomina Grupal";
-			this.btnGrupal.UseVisualStyleBackColor = true;
 			// 
 			// label22
 			// 
@@ -197,7 +143,7 @@
 			this.ListadodeNominaRegistrada.Name = "ListadodeNominaRegistrada";
 			this.ListadodeNominaRegistrada.ReadOnly = true;
 			this.ListadodeNominaRegistrada.RowHeadersWidth = 62;
-			this.ListadodeNominaRegistrada.Size = new System.Drawing.Size(1144, 713);
+			this.ListadodeNominaRegistrada.Size = new System.Drawing.Size(1195, 713);
 			this.ListadodeNominaRegistrada.TabIndex = 273;
 			this.ListadodeNominaRegistrada.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadodeNominaRegistrada_CellContentClick);
 			// 
@@ -216,14 +162,16 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Silver;
 			this.ClientSize = new System.Drawing.Size(1472, 1085);
+			this.Controls.Add(this.btnCerrar);
 			this.Controls.Add(this.PeriodoDeNomina);
+			this.Controls.Add(this.bntlimpiar);
 			this.Controls.Add(this.ListadodeNominaRegistrada);
 			this.Controls.Add(this.txtcodigo);
+			this.Controls.Add(this.bntbuscar);
 			this.Controls.Add(this.label30);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label31);
 			this.Controls.Add(this.label22);
-			this.Controls.Add(this.panel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Name = "ConsultadeNominaSalarial";
@@ -231,8 +179,6 @@
 			this.Text = "generarnomina";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.Load += new System.EventHandler(this.ConsultadeNominaSalarial_Load);
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ListadodeNominaRegistrada)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -240,13 +186,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button bntlimpiar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnIndividual;
-        private System.Windows.Forms.Button btnGrupal;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label4;
