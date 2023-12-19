@@ -50,14 +50,20 @@ namespace ManSys
 				//Application.Run(new GenerarNomina()); 
 				//Application.Run(new Bonificaciones());
 				//Application.Run(new GenerarVolanteDePago());
+				Application.Run(new Generar_Volante_de_Pago());
 				//Application.Run(new VolanteDePago());
 				//Application.Run(new Empleado());
 				//Application.Run(new Consulta_de_Deducciones());
 				//Application.Run(new ConsultadeDepartamentos());
 				//Application.Run(new ConsultaDeEmpleados());
-				Application.Run(new ConsultadeNominaSalarial());
+				//Application.Run(new ConsultadeNominaSalarial());
+				//Application.Run(new Consulta_de_Posiciones());
 				//Application.Run(new Consulta_de_Impuestos());
 				//Application.Run(new Consulta_de_Incidencias());	
+				//Application.Run(new ReporteDeNomina());	
+				//Application.Run(new ReporteDeUsuarios());	
+				//Application.Run(new ReporteDeEmpleados());
+				//Application.Run(new Gestión_de_Empresa());
 				//Application.Run(new Generar_JornadaLaboral());
 			}
 			catch (Exception e)

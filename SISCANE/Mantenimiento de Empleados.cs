@@ -138,7 +138,7 @@ namespace ManSys
 		}
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            SqlConnection cn = new SqlConnection(connectionString);
+            SqlConnection cn = new SqlConnection(Connection.ConnectionString);
 
             try
             {

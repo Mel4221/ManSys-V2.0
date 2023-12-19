@@ -130,5 +130,10 @@ namespace ManSys
 			this.txtcodigo.Clear();
 			this.PeriodoDeNomina.Text = "";
 		}
+
+		private void bntbuscar_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

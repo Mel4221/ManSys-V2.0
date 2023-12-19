@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Data.SqlClient;
 
 namespace ManSys
 {
@@ -17,18 +18,32 @@ namespace ManSys
         {
             InitializeComponent();
         }
-
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg,
-int wparam, int lparam);
-
+ 
         private void ReporteDeEmpleados_Load(object sender, EventArgs e)
         {
 
-
+			this.CargarEmpleados();
         }
+        private void CargarEmpleados()
+        {
+			try
+			{
+
+				using (SqlConnection dataConnection = new SqlConnection(Connection.ConnectionString))
+				{
+					dataConnection.Open();
+					DataTable dtempleados = new DataTable();
+					SqlDataAdapter daempleados = new SqlDataAdapter("GetDB_Mantenimiento_de_Empleados", dataConnection);
+					daempleados.SelectCommand.CommandType = CommandType.StoredProcedure;
+					daempleados.Fill(dtempleados);
+					this.Listado_de_Empleados.DataSource = dtempleados;
+				}
+			}
+			catch (Exception ex)
+			{
+				new MantenimientoDeEmpleados().ShowError("Hubo un error al Cargar los Empleados", ex);
+			}
+		}
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -38,8 +53,33 @@ int wparam, int lparam);
         private void ReporteDeEmpleados_MouseDown(object sender, MouseEventArgs e)
         {
 
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+             
         }
-    }
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			this.CargarEmpleados();
+		}
+
+		private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+		{
+			try
+			{
+
+				using (SqlConnection dataConnection = new SqlConnection(Connection.ConnectionString))
+				{
+					dataConnection.Open();
+					DataTable dtempleados = new DataTable();
+					SqlDataAdapter daempleados = new SqlDataAdapter($"SELECT * FROM dbo.Empleados WHERE Fecha_de_Ingreso = '{dateTimePicker1.Value.ToString("dd/MM/yyyy")}'", dataConnection);
+					//daempleados.SelectCommand.CommandType = CommandType.StoredProcedure;
+					daempleados.Fill(dtempleados);
+					this.Listado_de_Empleados.DataSource = dtempleados;
+				}
+			}
+			catch (Exception ex)
+			{
+				new MantenimientoDeEmpleados().ShowError("Hubo un error al Cargar los Empleados", ex);
+			}
+		}
+	}
 }

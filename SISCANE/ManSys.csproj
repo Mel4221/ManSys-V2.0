@@ -138,10 +138,12 @@
     <Compile Include="Generar JornadaLaboral.Designer.cs">
       <DependentUpon>Generar JornadaLaboral.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generar Volante de Pago.cs">
+    <Compile Include="Generar_Volante_de_Pago.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Generar Volante de Pago.Designer.cs" />
+    <Compile Include="Generar_Volante_de_Pago.Designer.cs">
+      <DependentUpon>Generar_Volante_de_Pago.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManSysDBDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -284,8 +286,8 @@
     <EmbeddedResource Include="Generar JornadaLaboral.resx">
       <DependentUpon>Generar JornadaLaboral.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generar Volante de Pago.resx">
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Generar_Volante_de_Pago.resx">
+      <DependentUpon>Generar_Volante_de_Pago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenimiento de JornadaLaboral.resx">
       <DependentUpon>Mantenimiento de JornadaLaboral.cs</DependentUpon>

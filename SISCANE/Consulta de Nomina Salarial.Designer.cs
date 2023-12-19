@@ -79,6 +79,7 @@
 			this.bntbuscar.TabIndex = 267;
 			this.bntbuscar.Text = "Buscar";
 			this.bntbuscar.UseVisualStyleBackColor = true;
+			this.bntbuscar.Click += new System.EventHandler(this.bntbuscar_Click);
 			// 
 			// label22
 			// 
@@ -143,7 +144,7 @@
 			this.ListadodeNominaRegistrada.Name = "ListadodeNominaRegistrada";
 			this.ListadodeNominaRegistrada.ReadOnly = true;
 			this.ListadodeNominaRegistrada.RowHeadersWidth = 62;
-			this.ListadodeNominaRegistrada.Size = new System.Drawing.Size(1195, 713);
+			this.ListadodeNominaRegistrada.Size = new System.Drawing.Size(1526, 713);
 			this.ListadodeNominaRegistrada.TabIndex = 273;
 			this.ListadodeNominaRegistrada.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadodeNominaRegistrada_CellContentClick);
 			// 
@@ -161,7 +162,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Silver;
-			this.ClientSize = new System.Drawing.Size(1472, 1085);
+			this.ClientSize = new System.Drawing.Size(1635, 1085);
 			this.Controls.Add(this.btnCerrar);
 			this.Controls.Add(this.PeriodoDeNomina);
 			this.Controls.Add(this.bntlimpiar);
