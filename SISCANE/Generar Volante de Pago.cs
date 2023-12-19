@@ -16,7 +16,9 @@ using System.Runtime.Remoting.Contexts;
 using System.Threading;
 using QuickTools.QCore;
 using QuickTools.QNet;
- 
+using QuickTools.QIO;
+using ManSysDbBuilder;
+using ManSysDbBuilder.Data;
 
 namespace ManSys
 {
@@ -202,7 +204,8 @@ namespace ManSys
 			}
 		}
 
-	 
+		private string fecha_de_pago;
+		GenerarNomina nomina;
 		private void BuscarNomina()
 		{
 			try
@@ -221,10 +224,13 @@ namespace ManSys
 					DataTable table = new DataTable();
 					SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 					adapter.Fill(table);
-				
-					if(table.Rows.Count > 0 )
+				    fecha_de_pago = this.Fecha_de_Pago.Text;
+					fecha_de_pago = fecha_de_pago.Substring(fecha_de_pago.IndexOf("-")+1);
+					 
+				 
+					if (table.Rows.Count > 0 )
 					{
-						GenerarNomina nomina = new GenerarNomina();
+					    nomina = new GenerarNomina();
 						nomina.CargarDatos();
 						
 						foreach (DataRow row in table.Rows)
@@ -233,11 +239,13 @@ namespace ManSys
 							this.Valor_Hora.Text = row["Salario_Base"].ToString();
 							this.Horas_Trabajadas.Text = row["Horas_Trabajadas"].ToString();
 							this.Horas_Trabajadas_Extra.Text = row["Horas_Extras"].ToString();
-							this.Total_de_Ingreso.Text = row["Ingreso"].ToString();
-							this.TotalBonos.Text = nomina.ConseguirTotalDeBonificaciones(int.Parse(row["EmpleadoId"].ToString())).ToString();
+							//this.Total_de_Ingreso.Text = row["Ingreso"].ToString();
+							this.TotalBonos.Text = nomina.ConseguirTotalDeBonificaciones(int.Parse(row["EmpleadoId"].ToString()), fecha_de_pago).ToString();
 							nomina.BonosPersonales.ForEach(item => this.BonosList.Text+=$"{item.Name} {item.Value}\n");
 							this.Total_de_Descuento.Text = nomina.ConseguirTotalDeDescuento(int.Parse(row["EmpleadoId"].ToString())).ToString();
 							nomina.DescuentosPersonales.ForEach(item => this.DescuentosList.Text+=$"{item.Name} {item.Value}\n");
+
+							this.Total_a_Recibir.Text = row["Ingreso"].ToString(); 
 						}
 						return;
 					}else{
@@ -255,22 +263,158 @@ namespace ManSys
 		}
 		private void Fecha_de_Pago_TextChanged(object sender, EventArgs e)
 		{
+			if (this.EmpleadoId.Text == "") return; 
 			this.BuscarNomina();
 		}
 		//Bitmap bmp;
+
+		private void ImprimirNomina()
+		{
+			string recibo, archivo, bonos, deduc, inicio, final;
+			inicio = this.Fecha_de_Pago.Text.Substring(0, this.Fecha_de_Pago.Text.IndexOf("-"));
+			final = this.Fecha_de_Pago.Text.Substring(this.Fecha_de_Pago.Text.IndexOf("-")+1);
+
+
+			recibo = QuickTools.QIO.Reader.Read("ReciboNuevo.html");
+			recibo = recibo.Replace("@Nombre", this.Nombre.Text);
+			recibo = recibo.Replace("@Apellido", this.Apellido.Text);
+			recibo = recibo.Replace("@Id", this.EmpleadoId.Text);
+			recibo = recibo.Replace("@Nomina", this.Fecha_de_Pago.Text);
+			recibo = recibo.Replace("@Fecha_de_Pago", final);
+			recibo = recibo.Replace("@Departamento", this.Departramento.Text);
+			recibo = recibo.Replace("@Posicion", this.Puesto_Ocupado.Text);
+			recibo = recibo.Replace("@Salario_Base", this.Salario_Base.Text);
+			recibo = recibo.Replace("@Horas_Normales", this.Horas_Trabajadas.Text);
+			recibo = recibo.Replace("@Horas_Extras", this.Horas_Trabajadas_Extra.Text);
+			//recibo = recibo.Replace("@Total", this.Total_a_Recibir.Text);
+			//recibo = recibo.Replace("@Pago", this.Total_a_Recibir.Text);
+			//recibo = recibo.Replace("@Total_Descuentos", nomina.ConseguirTotalDeDescuento(int.Parse(this.EmpleadoId.Text)).ToString());
+			recibo = recibo.Replace("@Total_Descuentos", this.Total_de_Descuento.Text);
+			recibo = recibo.Replace("@Tota_Bonos", this.TotalBonos.Text);
+			recibo = recibo.Replace("@Inicio", inicio);
+			recibo = recibo.Replace("@Final", final);
+
+			recibo = recibo.Replace("@Pago", this.Total_a_Recibir.Text);
+
+			//@Inicio AL @Final
+
+
+			bonos = "";
+			deduc = "";
+			nomina.BonosPersonales.ForEach((item) => {
+				bonos+= $"<tr><td>Bono {item.Name} {item.Value}</td><td></td></tr>";
+			});
+			nomina.DescuentosPersonales.ForEach((item) => {
+				deduc+= $"<tr><td></td> <td>{item.Name} {item.Value}</td></tr>";
+			});
+			recibo = recibo.Replace("@Bonos", bonos);
+			recibo = recibo.Replace("@Descuentos", deduc);
+
+
+			//Total_de_Descuento			
+
+
+			archivo = $"Recibo_de_{this.EmpleadoId.Text}_{this.Nombre.Text}.html";
+			Writer.Write("ultimo.txt", recibo);
+			Writer.Write(archivo, recibo);
+			ProcessStartInfo info = new ProcessStartInfo();
+			info.FileName = archivo;
+
+			Process.Start(info);
+
+		}
 		private void btnImprimir_Click(object sender, EventArgs e)
 		{
 			if (this.Fecha_de_Pago.Text == "") { MessageBox.Show("El Periodo de Nomina esta Vacio"); return; }
-			string recibo = File.ReadAllText("Recibo.html");
-			recibo = recibo.Replace("@Nombre",this.Nombre.Text);
-			recibo = recibo.Replace("@Apellido", this.Apellido.Text);
-			recibo = recibo.Replace("@Id",this.EmpleadoId.Text);
-			recibo = recibo.Replace("@Nomina",this.Fecha_de_Pago.Text);
-
+			if (this.Total_a_Recibir.Text == "") { MessageBox.Show("Datos Incompletos"); return; }
+			this.ImprimirNomina();
 
 
 		}
+	 
+		private Person Buscar(string empleadoId)
+		{
+			foreach(DataRow row in this.nomina._Empleados.Rows)
+			{
+					if(row["Id"].ToString() == empleadoId)
+					{
+					return new Person()
+					{
+						Id = row["Id"].ToString(),
+						Name = row["Nombre"].ToString(),
+						LastName = row["Apellido"].ToString(),
+						Address = row["Direccion"].ToString(),
+						Position = row["Puesto_Ocupado"].ToString(),
+						Department = row["Departamento"].ToString(),
+						Payment = row["Salario_Base"].ToString()
+						};
+					}
+			}
+			return new Person();
+		}
+		private void ImprimirTodasLasNominas_Click(object sender, EventArgs e)
+		{
+			this.nomina = new GenerarNomina();
+			this.nomina.CargarDatos();
+			string buffer = QuickTools.QIO.Reader.Read("ReciboNuevo.html");
+			Person empleado;
+			string recibo, archivo, bonos, deduc, inicio, final, _nomina;
+			inicio = this.Fecha_de_Pago.Text.Substring(0, this.Fecha_de_Pago.Text.IndexOf("-"));
+			final = this.Fecha_de_Pago.Text.Substring(this.Fecha_de_Pago.Text.IndexOf("-")+1);
+			_nomina = this.Fecha_de_Pago.Text;
+			foreach (DataRow row in this._Nomina.Rows)
+			{
+			
+
+				empleado = this.Buscar(row["EmpleadoId"].ToString());
+
+				recibo = buffer;
+				recibo = recibo.Replace("@Nombre",empleado.Name);
+				recibo = recibo.Replace("@Apellido",empleado.LastName);
+				recibo = recibo.Replace("@Id",empleado.Id);
+				recibo = recibo.Replace("@Nomina", _nomina);
+				recibo = recibo.Replace("@Fecha_de_Pago", final);
+				recibo = recibo.Replace("@Departamento",empleado.Department);
+				recibo = recibo.Replace("@Posicion", empleado.Position);
+				recibo = recibo.Replace("@Salario_Base", empleado.Payment);
+				recibo = recibo.Replace("@Horas_Normales", row["Horas_Trabajadas"].ToString());
+				recibo = recibo.Replace("@Horas_Extras", row["Horas_Extras"].ToString());
+				//recibo = recibo.Replace("@Total", this.Total_a_Recibir.Text);
+				//recibo = recibo.Replace("@Pago", this.Total_a_Recibir.Text);
+				//recibo = recibo.Replace("@Total_Descuentos", nomina.ConseguirTotalDeDescuento(int.Parse(this.EmpleadoId.Text)).ToString());
+				recibo = recibo.Replace("@Total_Descuentos", nomina.ConseguirTotalDeDescuento(int.Parse(empleado.Id)).ToString());
+				recibo = recibo.Replace("@Tota_Bonos",nomina.ConseguirTotalDeBonificaciones(int.Parse(empleado.Id),final).ToString());
+				recibo = recibo.Replace("@Inicio", inicio);
+				recibo = recibo.Replace("@Final", final);
+
+				recibo = recibo.Replace("@Pago",row["Total_Ingreso"].ToString());
+
+				//@Inicio AL @Final
 
 
+				bonos = "";
+				deduc = "";
+				nomina.BonosPersonales.ForEach((item) => {
+					bonos+= $"<tr><td>Bono {item.Name} {item.Value}</td><td></td></tr>";
+				});
+				nomina.DescuentosPersonales.ForEach((item) => {
+					deduc+= $"<tr><td></td> <td>{item.Name} {item.Value}</td></tr>";
+				});
+				recibo = recibo.Replace("@Bonos", bonos);
+				recibo = recibo.Replace("@Descuentos", deduc);
+
+
+				//Total_de_Descuento			
+
+
+				archivo = $"Recibo_de_{this.EmpleadoId.Text}_{this.Nombre.Text}.html";
+				Writer.Write("ultimo.txt", recibo);
+				Writer.Write(archivo, recibo);
+				ProcessStartInfo info = new ProcessStartInfo();
+				info.FileName = archivo;
+
+				Process.Start(info);
+			}
+		}
 	}
 }

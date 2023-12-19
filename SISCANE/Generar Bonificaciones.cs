@@ -1197,7 +1197,7 @@ namespace ManSys
 					cmd.Parameters["@Monto"].Value = this.CajaDeMonto.Text;
 
 					cmd.Parameters.Add(new SqlParameter("@Fecha", SqlDbType.VarChar));
-					cmd.Parameters["@Fecha"].Value = this.FechaDeEmision;//this.FechaDeEmision.Value.ToString("dd/MM/yyyy");
+					cmd.Parameters["@Fecha"].Value = this.FechaDeEmision.Value.ToString("dd/MM/yyyy");
 
 					cmd.Parameters.Add(new SqlParameter("@Fecha_de_Applicacion", SqlDbType.VarChar));
 					cmd.Parameters["@Fecha_de_Applicacion"].Value = FechaDeApplicacion.Value.ToString("dd/MM/yyyy");
@@ -1225,7 +1225,7 @@ namespace ManSys
 				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
 				{
 					con.Open();
-					SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.Bonificaciones WHERE Id = @Id",con);
+					SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.Bonificaciones WHERE Id = @Id OR EmpleadoId = @Id",con);
 					cmd.Parameters.Add(new SqlParameter("@Id",SqlDbType.Int));
 					cmd.Parameters["@Id"].Value = this.CajaDeCodigoDeBonificacion.Text; 
 

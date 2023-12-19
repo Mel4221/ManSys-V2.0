@@ -132,9 +132,9 @@ namespace ManSys
 			this.label10.Location = new System.Drawing.Point(433, 409);
 			this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(98, 29);
+			this.label10.Size = new System.Drawing.Size(268, 29);
 			this.label10.TabIndex = 204;
-			this.label10.Text = "Codigo";
+			this.label10.Text = "Codigo o EmpleadoId";
 			// 
 			// label3
 			// 

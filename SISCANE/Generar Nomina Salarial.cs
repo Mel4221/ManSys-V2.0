@@ -351,7 +351,7 @@ namespace ManSys
             
         }
 
-        private DataTable _Empleados { get; set; }  
+        internal DataTable _Empleados { get; set; }  
         private DataTable _Deducciones { get; set; }
         private DataTable _Impuestos { get; set; } 
         private DataTable _Bonificaciones { get; set; }
@@ -479,7 +479,7 @@ namespace ManSys
                     this.DescuentosPersonales.Add(new Key()
                     {
                         Name = row["Nombre"].ToString(),
-                        Value = total.ToString()
+                        Value = cantidad
                     });  ; 
                     
 				}
@@ -489,7 +489,7 @@ namespace ManSys
 					this.DescuentosPersonales.Add(new Key()
 					{
 						Name = row["Nombre"].ToString(),
-						Value = total.ToString()
+						Value = cantidad
 					}); ;
 				}
 			}
@@ -511,7 +511,7 @@ namespace ManSys
 
 		}
 		
-		List<Jornada> Jornadas { get; set; }
+		 List<Jornada> Jornadas { get; set; }
         private void ActualizaHoras(int empleado,float horas,string ultimaFecha,float horasExtras)
         {
             Get.Red($"Actualizando Horas: Empleado [{empleado}] Horas [{horas}] Fecha [{ultimaFecha}]");
@@ -538,19 +538,19 @@ namespace ManSys
             }
             return false; 
         }
-        public float ConseguirTotalDeBonificaciones(int empleadoId)
+        public float ConseguirTotalDeBonificaciones(int empleadoId,string fecha)
         {
             float total = 0;
              try{
                 this.BonosPersonales = new List<Key>(); 
                     foreach(DataRow row in this._Bonificaciones.Rows)
                     {
-                        if(row["EmpleadoId"].ToString() == empleadoId.ToString() && this.CierreDeNomina.Value.ToString("dd/MM/yyyy") == row["Fecha_de_Applicacion"].ToString())
+                        if(row["EmpleadoId"].ToString() == empleadoId.ToString() && fecha == row["Fecha_de_Applicacion"].ToString())
                         {
                             total += float.Parse(row["Monto"].ToString());
                         this.BonosPersonales.Add(new Key()
                         {
-                            Name = row["Nombre"].ToString(),
+                            Name = row["Tipo_de_Bonificacion"].ToString(),
                             Value = row["Monto"].ToString()
                         });
                         }
@@ -645,7 +645,7 @@ namespace ManSys
 				{
 					descuento = this.ConseguirTotalDeDescuento(row.EmpleadoId);
 
-                    bonos = this.ConseguirTotalDeBonificaciones(row.EmpleadoId);
+                    bonos = this.ConseguirTotalDeBonificaciones(row.EmpleadoId, this.CierreDeNomina.Value.ToString("dd/MM/yyyy"));
 
                     sueldoHora = this.ConseguirSueldoNetoPorDia(row.EmpleadoId);
                     
@@ -908,7 +908,7 @@ namespace ManSys
 
 					foreach (Jornada row in this.Jornadas)
 					{
-						bonos = ConseguirTotalDeBonificaciones(row.EmpleadoId);
+						bonos = ConseguirTotalDeBonificaciones(row.EmpleadoId, this.CierreDeNomina.Value.ToString("dd/MM/yyyy"));
 
 
 						descuento = this.ConseguirTotalDeDescuento(row.EmpleadoId);
@@ -927,6 +927,7 @@ namespace ManSys
 
 						cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar));
 						cmd.Parameters["@Periodo"].Value = this.PeridoDeNomina.Text;
+
 
 						cmd.Parameters.Add(new SqlParameter("@EmpleadoId", SqlDbType.Int));
 						cmd.Parameters["@EmpleadoId"].Value = row.EmpleadoId;

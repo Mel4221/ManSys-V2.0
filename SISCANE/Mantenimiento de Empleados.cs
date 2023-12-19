@@ -390,7 +390,7 @@ namespace ManSys
 			txtturno.Text = datos["Turno"].ToString();
 		}
 
-		private bool IsLike(string valueA, string valueB)
+		public bool IsLike(string valueA, string valueB)
 		{
 			int b = 0;
 			try

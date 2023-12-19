@@ -55,14 +55,11 @@
 			this.Valor_Hora_Extra = new System.Windows.Forms.TextBox();
 			this.Horas_Trabajadas_Extra = new System.Windows.Forms.TextBox();
 			this.Horas_Trabajadas = new System.Windows.Forms.TextBox();
-			this.label22 = new System.Windows.Forms.Label();
-			this.Total_de_Ingreso = new System.Windows.Forms.TextBox();
 			this.label23 = new System.Windows.Forms.Label();
 			this.Total_de_Descuento = new System.Windows.Forms.TextBox();
 			this.label24 = new System.Windows.Forms.Label();
-			this.Neto_a_Reducir = new System.Windows.Forms.TextBox();
 			this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-			this.button1 = new System.Windows.Forms.Button();
+			this.ImprimirTodasLasNominas = new System.Windows.Forms.Button();
 			this.btnLimpiar = new System.Windows.Forms.Button();
 			this.btnCerrar = new System.Windows.Forms.Button();
 			this.btnImprimir = new System.Windows.Forms.Button();
@@ -71,7 +68,6 @@
 			this.Tipo_de_Cobro = new System.Windows.Forms.TextBox();
 			this.Departramento = new System.Windows.Forms.TextBox();
 			this.Puesto_Ocupado = new System.Windows.Forms.TextBox();
-			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.label26 = new System.Windows.Forms.Label();
 			this.TotalBonos = new System.Windows.Forms.TextBox();
@@ -80,6 +76,7 @@
 			this.DescuentosList = new System.Windows.Forms.RichTextBox();
 			this.BonosList = new System.Windows.Forms.RichTextBox();
 			this.label15 = new System.Windows.Forms.Label();
+			this.Total_a_Recibir = new System.Windows.Forms.TextBox();
 			this.toolStripContainer1.ContentPanel.SuspendLayout();
 			this.toolStripContainer1.SuspendLayout();
 			this.SuspendLayout();
@@ -236,9 +233,9 @@
 			this.label6.Location = new System.Drawing.Point(1194, 386);
 			this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(150, 29);
+			this.label6.Size = new System.Drawing.Size(165, 29);
 			this.label6.TabIndex = 76;
-			this.label6.Text = "Descuentos";
+			this.label6.Text = "Deducciones";
 			// 
 			// label14
 			// 
@@ -354,40 +351,20 @@
 			this.Horas_Trabajadas.Size = new System.Drawing.Size(233, 26);
 			this.Horas_Trabajadas.TabIndex = 87;
 			// 
-			// label22
-			// 
-			this.label22.AutoSize = true;
-			this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label22.Location = new System.Drawing.Point(300, 698);
-			this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label22.Name = "label22";
-			this.label22.Size = new System.Drawing.Size(218, 29);
-			this.label22.TabIndex = 95;
-			this.label22.Text = "Total de Ingresos";
-			// 
-			// Total_de_Ingreso
-			// 
-			this.Total_de_Ingreso.Location = new System.Drawing.Point(775, 698);
-			this.Total_de_Ingreso.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.Total_de_Ingreso.Name = "Total_de_Ingreso";
-			this.Total_de_Ingreso.ReadOnly = true;
-			this.Total_de_Ingreso.Size = new System.Drawing.Size(142, 26);
-			this.Total_de_Ingreso.TabIndex = 96;
-			// 
 			// label23
 			// 
 			this.label23.AutoSize = true;
 			this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label23.Location = new System.Drawing.Point(930, 694);
+			this.label23.Location = new System.Drawing.Point(922, 645);
 			this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label23.Name = "label23";
-			this.label23.Size = new System.Drawing.Size(254, 29);
+			this.label23.Size = new System.Drawing.Size(269, 29);
 			this.label23.TabIndex = 97;
-			this.label23.Text = "Total de Descuentos";
+			this.label23.Text = "Total de Deducciones";
 			// 
 			// Total_de_Descuento
 			// 
-			this.Total_de_Descuento.Location = new System.Drawing.Point(1410, 696);
+			this.Total_de_Descuento.Location = new System.Drawing.Point(1420, 648);
 			this.Total_de_Descuento.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Total_de_Descuento.Name = "Total_de_Descuento";
 			this.Total_de_Descuento.ReadOnly = true;
@@ -398,21 +375,12 @@
 			// 
 			this.label24.AutoSize = true;
 			this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label24.Location = new System.Drawing.Point(930, 752);
+			this.label24.Location = new System.Drawing.Point(504, 764);
 			this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label24.Name = "label24";
 			this.label24.Size = new System.Drawing.Size(185, 29);
 			this.label24.TabIndex = 100;
 			this.label24.Text = "Total a Recibir";
-			// 
-			// Neto_a_Reducir
-			// 
-			this.Neto_a_Reducir.Location = new System.Drawing.Point(1410, 752);
-			this.Neto_a_Reducir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.Neto_a_Reducir.Name = "Neto_a_Reducir";
-			this.Neto_a_Reducir.ReadOnly = true;
-			this.Neto_a_Reducir.Size = new System.Drawing.Size(157, 26);
-			this.Neto_a_Reducir.TabIndex = 101;
 			// 
 			// toolStripContainer1
 			// 
@@ -420,7 +388,7 @@
 			// 
 			// toolStripContainer1.ContentPanel
 			// 
-			this.toolStripContainer1.ContentPanel.Controls.Add(this.button1);
+			this.toolStripContainer1.ContentPanel.Controls.Add(this.ImprimirTodasLasNominas);
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.btnLimpiar);
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.btnCerrar);
 			this.toolStripContainer1.ContentPanel.Controls.Add(this.btnImprimir);
@@ -440,16 +408,17 @@
 			this.toolStripContainer1.TopToolStripPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.toolStripContainer1.TopToolStripPanelVisible = false;
 			// 
-			// button1
+			// ImprimirTodasLasNominas
 			// 
-			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button1.Location = new System.Drawing.Point(294, 21);
-			this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(202, 45);
-			this.button1.TabIndex = 109;
-			this.button1.Text = "Imprimir Todos";
-			this.button1.UseVisualStyleBackColor = true;
+			this.ImprimirTodasLasNominas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ImprimirTodasLasNominas.Location = new System.Drawing.Point(294, 21);
+			this.ImprimirTodasLasNominas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.ImprimirTodasLasNominas.Name = "ImprimirTodasLasNominas";
+			this.ImprimirTodasLasNominas.Size = new System.Drawing.Size(202, 45);
+			this.ImprimirTodasLasNominas.TabIndex = 109;
+			this.ImprimirTodasLasNominas.Text = "Imprimir Todos";
+			this.ImprimirTodasLasNominas.UseVisualStyleBackColor = true;
+			this.ImprimirTodasLasNominas.Click += new System.EventHandler(this.ImprimirTodasLasNominas_Click);
 			// 
 			// btnLimpiar
 			// 
@@ -539,21 +508,6 @@
 			this.Puesto_Ocupado.Size = new System.Drawing.Size(296, 26);
 			this.Puesto_Ocupado.TabIndex = 155;
 			// 
-			// tableLayoutPanel4
-			// 
-			this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
-			this.tableLayoutPanel4.ColumnCount = 1;
-			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.87719F));
-			this.tableLayoutPanel4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.tableLayoutPanel4.Location = new System.Drawing.Point(923, 740);
-			this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-			this.tableLayoutPanel4.RowCount = 1;
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-			this.tableLayoutPanel4.Size = new System.Drawing.Size(656, 49);
-			this.tableLayoutPanel4.TabIndex = 99;
-			// 
 			// tableLayoutPanel2
 			// 
 			this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
@@ -624,7 +578,7 @@
 			this.DescuentosList.Location = new System.Drawing.Point(924, 473);
 			this.DescuentosList.Name = "DescuentosList";
 			this.DescuentosList.ReadOnly = true;
-			this.DescuentosList.Size = new System.Drawing.Size(644, 200);
+			this.DescuentosList.Size = new System.Drawing.Size(644, 165);
 			this.DescuentosList.TabIndex = 158;
 			this.DescuentosList.Text = "";
 			// 
@@ -648,12 +602,22 @@
 			this.label15.TabIndex = 160;
 			this.label15.Text = "Bonificaciones";
 			// 
+			// Total_a_Recibir
+			// 
+			this.Total_a_Recibir.Location = new System.Drawing.Point(771, 764);
+			this.Total_a_Recibir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.Total_a_Recibir.Name = "Total_a_Recibir";
+			this.Total_a_Recibir.ReadOnly = true;
+			this.Total_a_Recibir.Size = new System.Drawing.Size(157, 26);
+			this.Total_a_Recibir.TabIndex = 101;
+			// 
 			// GenerarVolanteDePago
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Silver;
 			this.ClientSize = new System.Drawing.Size(1706, 1020);
+			this.Controls.Add(this.Total_a_Recibir);
 			this.Controls.Add(this.label15);
 			this.Controls.Add(this.BonosList);
 			this.Controls.Add(this.DescuentosList);
@@ -665,13 +629,9 @@
 			this.Controls.Add(this.Fecha_de_Pago);
 			this.Controls.Add(this.btnBuscar);
 			this.Controls.Add(this.toolStripContainer1);
-			this.Controls.Add(this.Neto_a_Reducir);
 			this.Controls.Add(this.label24);
-			this.Controls.Add(this.tableLayoutPanel4);
 			this.Controls.Add(this.Total_de_Descuento);
 			this.Controls.Add(this.label23);
-			this.Controls.Add(this.Total_de_Ingreso);
-			this.Controls.Add(this.label22);
 			this.Controls.Add(this.Horas_Trabajadas_Extra);
 			this.Controls.Add(this.Horas_Trabajadas);
 			this.Controls.Add(this.Valor_Hora_Extra);
@@ -745,12 +705,9 @@
         private System.Windows.Forms.TextBox Valor_Hora_Extra;
         private System.Windows.Forms.TextBox Horas_Trabajadas_Extra;
         private System.Windows.Forms.TextBox Horas_Trabajadas;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox Total_de_Ingreso;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox Total_de_Descuento;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox Neto_a_Reducir;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnCerrar;
@@ -760,8 +717,7 @@
 		private System.Windows.Forms.TextBox Tipo_de_Cobro;
 		private System.Windows.Forms.TextBox Departramento;
 		private System.Windows.Forms.TextBox Puesto_Ocupado;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+		private System.Windows.Forms.Button ImprimirTodasLasNominas;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Label label26;
 		private System.Windows.Forms.TextBox TotalBonos;
@@ -770,5 +726,6 @@
 		private System.Windows.Forms.RichTextBox DescuentosList;
 		private System.Windows.Forms.RichTextBox BonosList;
 		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.TextBox Total_a_Recibir;
 	}
 }

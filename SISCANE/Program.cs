@@ -49,11 +49,13 @@ namespace ManSys
 				//Application.Run(new Incidencias());
 				//Application.Run(new GenerarNomina()); 
 				//Application.Run(new Bonificaciones());
-				Application.Run(new GenerarVolanteDePago());
+				//Application.Run(new GenerarVolanteDePago());
 				//Application.Run(new VolanteDePago());
 				//Application.Run(new Empleado());
-
-			//Application.Run(new Generar_JornadaLaboral());
+				//Application.Run(new Consulta_de_Deducciones());
+				//Application.Run(new ConsultadeDepartamentos());
+				Application.Run(new ConsultaDeEmpleados());
+				//Application.Run(new Generar_JornadaLaboral());
 			}
 			catch (Exception e)
 			{
