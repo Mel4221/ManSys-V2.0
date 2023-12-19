@@ -97,5 +97,10 @@ namespace ManSys
 		{
             this.BuscarImpuesto();
 		}
+
+		private void btnLimpiar_Click(object sender, EventArgs e)
+		{
+			this.txtnombre.Clear();
+		}
 	}
 }

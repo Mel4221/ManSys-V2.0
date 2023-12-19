@@ -99,6 +99,7 @@ namespace ManSys
 			this.btnLimpiar.TabIndex = 108;
 			this.btnLimpiar.Text = "Limpiar";
 			this.btnLimpiar.UseVisualStyleBackColor = true;
+			this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
 			// 
 			// label25
 			// 

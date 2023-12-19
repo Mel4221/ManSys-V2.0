@@ -107,7 +107,7 @@ namespace ManSys
 					cmd.ExecuteNonQuery();
 		
 					this.CargarIncidencias();
-					this.btnRegistrar.Enabled = false; 
+					this.btnRegistrar.Enabled = false;
 				}
 				catch (Exception ex)
 				{
