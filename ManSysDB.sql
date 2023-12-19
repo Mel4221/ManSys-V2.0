@@ -334,5 +334,6 @@ use ManSysDB
 --SELECT * FROM dbo.Nomina
  
  --delete from dbo.Nomina where EmpleadoId != 0
-select * from dbo.Departamentos 
+select * from dbo.Nomina
+ 
  
