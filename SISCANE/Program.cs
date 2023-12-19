@@ -37,7 +37,7 @@ namespace ManSys
 				Log.Event("ProgramFlow", $"Program Started: {DateTime.Now}");
 				Application.EnableVisualStyles();
 				//Application.SetCompatibleTextRenderingDefault(false);
-				//Application.Run(new MenuPrincipal());
+				Application.Run(new MenuPrincipal());
 				//Application.Run(new MantenimientoDeEmpleados());
 				//Application.Run(new mantenimientoDept());
 				//Application.Run(new mantenimientoPosc());
@@ -56,9 +56,9 @@ namespace ManSys
 				//Application.Run(new ConsultadeDepartamentos());
 				//Application.Run(new ConsultaDeEmpleados());
 				//Application.Run(new Consulta_de_Impuestos());
-				Application.Run(new Consulta_de_Incidencias());	
+				//Application.Run(new Consulta_de_Incidencias());	
 				//Application.Run(new Generar_JornadaLaboral());
-		}
+			}
 			catch (Exception e)
 			{
 				Log.Event("FatalError", e);

@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 using System.Data.SqlClient;
 using System.IO;
 using System.Diagnostics;
- 
+
 using System.Runtime.Remoting.Contexts;
 using System.Threading;
 using QuickTools.QCore;
@@ -22,32 +22,32 @@ using ManSysDbBuilder.Data;
 
 namespace ManSys
 {
-    public partial class GenerarVolanteDePago : Form
-    {
-        public GenerarVolanteDePago()
-        {
-            InitializeComponent();
-        }
+	public partial class GenerarVolanteDePago : Form
+	{
+		public GenerarVolanteDePago()
+		{
+			InitializeComponent();
+		}
 
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
+		private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+		{
 
-        }
+		}
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
+		private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+		{
 
-        }
+		}
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+		private void button2_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
 
-        private void GenerarVolanteDePago_Load(object sender, EventArgs e)
-        {
+		private void GenerarVolanteDePago_Load(object sender, EventArgs e)
+		{
 			this.CargarNomina();
-        }
+		}
 		private DataTable _Nomina;
 
 		public object LocalPrintServer { get; private set; }
@@ -56,7 +56,7 @@ namespace ManSys
 		{
 			try
 			{
-				
+
 				using (SqlConnection dataConnection = new SqlConnection(Connection.ConnectionString))
 				{
 					dataConnection.Open();
@@ -79,7 +79,7 @@ namespace ManSys
 						this.Fecha_de_Pago.Items.Add(item);
 					});
 
-					
+
 
 				}
 			}
@@ -88,15 +88,15 @@ namespace ManSys
 				ShowError("Hubo un error al Cargar las Nominas", ex);
 			}
 		}
-        private void GenerarVolanteDePago_MouseDown(object sender, MouseEventArgs e)
-        {
-           
-        }
+		private void GenerarVolanteDePago_MouseDown(object sender, MouseEventArgs e)
+		{
 
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+		}
+
+		private void btnCerrar_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
 
 		private void TomarDatos(DataRow datos)
 		{
@@ -118,7 +118,7 @@ namespace ManSys
 			//Tuple.Text = datos["Turno"].ToString();
 		}
 		private void BuscarEmpleado()
-        {
+		{
 			try
 			{
 				using (SqlConnection connection = new SqlConnection(Connection.ConnectionString))
@@ -224,15 +224,15 @@ namespace ManSys
 					DataTable table = new DataTable();
 					SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 					adapter.Fill(table);
-				    fecha_de_pago = this.Fecha_de_Pago.Text;
+					fecha_de_pago = this.Fecha_de_Pago.Text;
 					fecha_de_pago = fecha_de_pago.Substring(fecha_de_pago.IndexOf("-")+1);
-					 
-				 
-					if (table.Rows.Count > 0 )
+
+
+					if (table.Rows.Count > 0)
 					{
-					    nomina = new GenerarNomina();
+						nomina = new GenerarNomina();
 						nomina.CargarDatos();
-						
+
 						foreach (DataRow row in table.Rows)
 						{
 							//this.Salario_Base.Text = row["Salario_Base"].ToString();
@@ -245,25 +245,27 @@ namespace ManSys
 							this.Total_de_Descuento.Text = nomina.ConseguirTotalDeDescuento(int.Parse(row["EmpleadoId"].ToString())).ToString();
 							nomina.DescuentosPersonales.ForEach(item => this.DescuentosList.Text+=$"{item.Name} {item.Value}\n");
 
-							this.Total_a_Recibir.Text = row["Ingreso"].ToString(); 
+							this.Total_a_Recibir.Text = row["Ingreso"].ToString();
 						}
 						return;
-					}else{
+					}
+					else
+					{
 						MessageBox.Show($"No se encontraron registros de nomina para ese empleado de la siguiente fecha: {this.Fecha_de_Pago.Text}");
 						return;
 					}
-					
+
 
 				}
 			}
-			catch(Exception ex )
+			catch (Exception ex)
 			{
-				ShowError("Hubo un errror al tratar de buscar la Nomina", ex); 
+				ShowError("Hubo un errror al tratar de buscar la Nomina", ex);
 			}
 		}
 		private void Fecha_de_Pago_TextChanged(object sender, EventArgs e)
 		{
-			if (this.EmpleadoId.Text == "") return; 
+			if (this.EmpleadoId.Text == "") return;
 			this.BuscarNomina();
 		}
 		//Bitmap bmp;
@@ -331,13 +333,13 @@ namespace ManSys
 
 
 		}
-	 
+
 		private Person Buscar(string empleadoId)
 		{
-			foreach(DataRow row in this.nomina._Empleados.Rows)
+			foreach (DataRow row in this.nomina._Empleados.Rows)
 			{
-					if(row["Id"].ToString() == empleadoId)
-					{
+				if (row["Id"].ToString() == empleadoId)
+				{
 					return new Person()
 					{
 						Id = row["Id"].ToString(),
@@ -347,8 +349,8 @@ namespace ManSys
 						Position = row["Puesto_Ocupado"].ToString(),
 						Department = row["Departamento"].ToString(),
 						Payment = row["Salario_Base"].ToString()
-						};
-					}
+					};
+				}
 			}
 			return new Person();
 		}
@@ -364,17 +366,17 @@ namespace ManSys
 			_nomina = this.Fecha_de_Pago.Text;
 			foreach (DataRow row in this._Nomina.Rows)
 			{
-			
+
 
 				empleado = this.Buscar(row["EmpleadoId"].ToString());
 
 				recibo = buffer;
-				recibo = recibo.Replace("@Nombre",empleado.Name);
-				recibo = recibo.Replace("@Apellido",empleado.LastName);
-				recibo = recibo.Replace("@Id",empleado.Id);
+				recibo = recibo.Replace("@Nombre", empleado.Name);
+				recibo = recibo.Replace("@Apellido", empleado.LastName);
+				recibo = recibo.Replace("@Id", empleado.Id);
 				recibo = recibo.Replace("@Nomina", _nomina);
 				recibo = recibo.Replace("@Fecha_de_Pago", final);
-				recibo = recibo.Replace("@Departamento",empleado.Department);
+				recibo = recibo.Replace("@Departamento", empleado.Department);
 				recibo = recibo.Replace("@Posicion", empleado.Position);
 				recibo = recibo.Replace("@Salario_Base", empleado.Payment);
 				recibo = recibo.Replace("@Horas_Normales", row["Horas_Trabajadas"].ToString());
@@ -383,11 +385,11 @@ namespace ManSys
 				//recibo = recibo.Replace("@Pago", this.Total_a_Recibir.Text);
 				//recibo = recibo.Replace("@Total_Descuentos", nomina.ConseguirTotalDeDescuento(int.Parse(this.EmpleadoId.Text)).ToString());
 				recibo = recibo.Replace("@Total_Descuentos", nomina.ConseguirTotalDeDescuento(int.Parse(empleado.Id)).ToString());
-				recibo = recibo.Replace("@Tota_Bonos",nomina.ConseguirTotalDeBonificaciones(int.Parse(empleado.Id),final).ToString());
+				recibo = recibo.Replace("@Tota_Bonos", nomina.ConseguirTotalDeBonificaciones(int.Parse(empleado.Id), final).ToString());
 				recibo = recibo.Replace("@Inicio", inicio);
 				recibo = recibo.Replace("@Final", final);
 
-				recibo = recibo.Replace("@Pago",row["Total_Ingreso"].ToString());
+				recibo = recibo.Replace("@Pago", row["Total_Ingreso"].ToString());
 
 				//@Inicio AL @Final
 

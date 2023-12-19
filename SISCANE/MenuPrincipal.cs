@@ -142,8 +142,8 @@ namespace ManSys
 
         private void generarVolantedePagoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formulario = new GenerarVolanteDePago();
-            formulario.Show();
+            //Form formulario = new GenerarVolanteDePago();
+            //formulario.Show();
         }
 
         private void consultaDeNominaToolStripMenuItem_Click(object sender, EventArgs e)

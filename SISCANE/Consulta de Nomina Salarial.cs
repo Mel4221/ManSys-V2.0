@@ -26,11 +26,6 @@ namespace ManSys
             //this.Close();
         }
 
-        private void label31_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
 
@@ -46,14 +41,22 @@ namespace ManSys
             this.Close();
         }
 
-        private void ConsultadeNominaSalarial_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-
         private void ListadodeNominaRegistrada_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-    }
+        private void BuscarNominas()
+        {
+            
+        }
+		private void ConsultadeNominaSalarial_Load(object sender, EventArgs e)
+		{
+            this.BuscarNominas();
+		}
+
+		private void PeriodoDeNomina_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

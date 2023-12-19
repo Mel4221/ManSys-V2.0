@@ -284,7 +284,9 @@
     <EmbeddedResource Include="Generar JornadaLaboral.resx">
       <DependentUpon>Generar JornadaLaboral.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generar Volante de Pago.resx" />
+    <EmbeddedResource Include="Generar Volante de Pago.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mantenimiento de JornadaLaboral.resx">
       <DependentUpon>Mantenimiento de JornadaLaboral.cs</DependentUpon>
     </EmbeddedResource>
