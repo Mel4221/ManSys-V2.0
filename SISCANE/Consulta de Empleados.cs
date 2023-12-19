@@ -29,6 +29,7 @@ namespace ManSys
 
         private void ConsultaDeEmpleados_Load(object sender, EventArgs e)
         {
+			this.CargarEmpleados();
 			this.BuscarEmpleados();
         }
 
@@ -87,6 +88,7 @@ NOMBRE+APELLIDOS
 					{
 
 						case "ID":
+							if (!QuickTools.QCore.Get.IsNumber(user)) { MessageBox.Show($"El Tipo se encuentra en ID , PERO EL VALOR NO ES DE TIPO NUMERICO  '{user}'");return; }
 							query = $"SELECT * FROM dbo.Empleados WHERE Id = {user}";
 							break;
 						case "CEDULA":
@@ -120,22 +122,29 @@ NOMBRE+APELLIDOS
 		{
 			this.BuscarEmpleados();
 		}
+		DataTable departamentos = new DataTable();
+
+		private void CargarEmpleados()
+		{
+			using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+			{
+				con.Open();//SELECT * FROM ask WHERE name LIKE 'ali'
+				SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.Empleados", con);
+
+				SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+
+				adapter.Fill(departamentos);
+			}
+		}
 
 		private void BuscarAvanzado()
 		{
 			try
 			{
 
-				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
-				{
-					con.Open();//SELECT * FROM ask WHERE name LIKE 'ali'
-					SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.Departamentos", con);
-
-					SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+			
 					DataTable filled = new DataTable();
-					DataTable departamentos = new DataTable();
-					adapter.Fill(departamentos);
-
 					filled.Columns.Add("Id", typeof(int));
 					filled.Columns.Add("Nombre", typeof(string));
 					filled.Columns.Add("Apellido", typeof(string));
@@ -153,7 +162,7 @@ NOMBRE+APELLIDOS
 
 					foreach (DataRow row in departamentos.Rows)
 					{
-						if (new MantenimientoDeEmpleados().IsLike(row["Nombre"].ToString().ToLower(), this.txtbusqueda.Text.ToLower()))
+						if (new MantenimientoDeEmpleados().IsLike(row["Nombre"].ToString().ToLower(), this.txtbusqueda.Text.ToLower()) || row["Id"].ToString() == this.txtbusqueda.Text)
 						{
 							DataRow r = filled.NewRow();
 							r["Id"]  = row["Id"];
@@ -182,7 +191,7 @@ NOMBRE+APELLIDOS
 					}
 					this.ListadodeEmpleados.DataSource = filled;
 
-				}
+			
 				//this.txtbusqueda.CausesValidation = true;
 				//this.txtbusqueda.DropDownStyle = ComboBoxStyle.DropDown;
 				//this.txtbusqueda.DropDownStyle = ComboBoxStyle.DropDown;
@@ -190,7 +199,7 @@ NOMBRE+APELLIDOS
 			}
 			catch (Exception ex)
 			{
-				new Empleado().ShowError("Hubo un error al tratar de buscar los Departamentos", ex);
+				new Empleado().ShowError("Hubo un error al tratar de buscar los Empleados", ex);
 			}
 		}
 		private void txtbusqueda_KeyDown(object sender, KeyEventArgs e)

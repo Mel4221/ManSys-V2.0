@@ -643,7 +643,7 @@ namespace ManSys
                 
 				foreach (Jornada row in this.Jornadas)
 				{
-					descuento = this.ConseguirTotalDeDescuento(row.EmpleadoId);
+                    descuento = this.ConseguirTotalDeDescuento(row.EmpleadoId);
 
                     bonos = this.ConseguirTotalDeBonificaciones(row.EmpleadoId, this.CierreDeNomina.Value.ToString("dd/MM/yyyy"));
 
@@ -657,6 +657,7 @@ namespace ManSys
 
                     sueldo = (horas * sueldoHora)+totalExtras+bonos;
                     total =  sueldo - descuento  ;
+
 					SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Nomina(Periodo,EmpleadoId,Salario_Base,Horas_Trabajadas,Horas_Extras,Ingreso,Descuento,Total_Ingreso) values(@Periodo,@EmpleadoId,@Salario_Base,@Horas_Trabajadas,@Horas_Extras,@Ingreso,@Descuento,@Total_Ingreso)", con);
 
 					cmd.Parameters.Add(new SqlParameter("@Periodo", SqlDbType.VarChar));
@@ -681,7 +682,7 @@ namespace ManSys
 					cmd.Parameters["@Descuento"].Value = descuento;
 
 					cmd.Parameters.Add(new SqlParameter("@Total_Ingreso", SqlDbType.Float));
-                    cmd.Parameters["@Total_Ingreso"].Value =total;
+                    cmd.Parameters["@Total_Ingreso"].Value =total-this.ConseguirTotalDeImpuestos(total);
 
 					cmd.ExecuteNonQuery();
 					Get.Pink($"{this.PeridoDeNomina.Text}\n{row.EmpleadoId}\n{sueldoHora}\n{row.HorasTrabajadas}\n{horaExtra}\n{sueldo}\n{descuento}\n{total}\n\n");
@@ -719,7 +720,33 @@ namespace ManSys
 			return false; 
 		}
 
-        
+
+        public float ConseguirTotalDeImpuestos(float sueldoTotal)
+        {
+            try{
+				float value = 0;
+				using (SqlConnection con = new SqlConnection(Connection.ConnectionString))
+                {
+                    con.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM dbo.Impuestos", con);
+                    DataTable table = new DataTable();
+                    adapter.Fill(table);
+                  
+                    foreach(DataRow row in table.Rows)
+                    {
+                        value += float.Parse(row["Porcentage"].ToString())*sueldoTotal/100;
+                    }
+                }
+                return value; 
+            }catch(Exception ex)
+            {
+                this.ShowError("Hubo un error al tratar de conseguir El total de impuestos", ex);
+                return 0; 
+            }
+        }
+
+
+
 		private void btnRegistrar_Click(object sender, EventArgs e)
         {
          
@@ -948,7 +975,7 @@ namespace ManSys
 						cmd.Parameters["@Descuento"].Value = descuento;
 
 						cmd.Parameters.Add(new SqlParameter("@Total_Ingreso", SqlDbType.Float));
-						cmd.Parameters["@Total_Ingreso"].Value =total;
+						cmd.Parameters["@Total_Ingreso"].Value =total-this.ConseguirTotalDeImpuestos(total);
 
 						cmd.ExecuteNonQuery();
 						Get.Pink($"{this.PeridoDeNomina.Text}\n{row.EmpleadoId}\n{sueldoHora}\n{row.HorasTrabajadas}\n{horaExtra}\n{sueldo}\n{descuento}\n{total}\n\n");

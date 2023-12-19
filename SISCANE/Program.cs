@@ -54,7 +54,8 @@ namespace ManSys
 				//Application.Run(new Empleado());
 				//Application.Run(new Consulta_de_Deducciones());
 				//Application.Run(new ConsultadeDepartamentos());
-				Application.Run(new ConsultaDeEmpleados());
+				//Application.Run(new ConsultaDeEmpleados());
+				Application.Run(new Consulta_de_Impuestos());
 				//Application.Run(new Generar_JornadaLaboral());
 			}
 			catch (Exception e)
