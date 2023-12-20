@@ -37,7 +37,7 @@ namespace ManSys
 				Log.Event("ProgramFlow", $"Program Started: {DateTime.Now}");
 				Application.EnableVisualStyles();
 				//Application.SetCompatibleTextRenderingDefault(false);
-				//Application.Run(new MenuPrincipal());
+				Application.Run(new MenuPrincipal());
 				//Application.Run(new MantenimientoDeEmpleados());
 				//Application.Run(new mantenimientoDept());
 				//Application.Run(new mantenimientoPosc());
@@ -50,7 +50,7 @@ namespace ManSys
 				//Application.Run(new GenerarNomina()); 
 				//Application.Run(new Bonificaciones());
 				//Application.Run(new GenerarVolanteDePago());
-				Application.Run(new Generar_Volante_de_Pago());
+				//Application.Run(new Generar_Volante_de_Pago());
 				//Application.Run(new VolanteDePago());
 				//Application.Run(new Empleado());
 				//Application.Run(new Consulta_de_Deducciones());
